@@ -7,10 +7,10 @@
         mc:Ignorable="d"
         Title="Base Converter" Height="357" Width="818">
     <Grid Background="#FF0D324D">
-        <ComboBox x:Name="conversionCombobox" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="324" Height="30" />
-        <TextBox x:Name="value" HorizontalAlignment="Left" Height="30" Margin="10,50,0,0" TextWrapping="Wrap" Text="Value" VerticalAlignment="Top" Width="486" />
+        <ComboBox x:Name="conversionCombobox" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="183" Height="30" />
+        <TextBox x:Name="value" HorizontalAlignment="Left" Height="30" Margin="10,50,0,0" TextWrapping="Wrap" Text="CONVERSION TABLE EMBEDED?" VerticalAlignment="Top" Width="486" />
         <Label Content="Result:" HorizontalAlignment="Left" Margin="10,247,0,0" VerticalAlignment="Top" Width="45" Foreground="#FFEF7674" />
-        <Button Content="Convert" HorizontalAlignment="Left" Margin="354,10,0,0" VerticalAlignment="Top" Width="142" Height="30" Click="OnConvertClick" Background="#FF7EBDC2" FontSize="14">
+        <Button Content="Reset" HorizontalAlignment="Left" Margin="354,10,0,0" VerticalAlignment="Top" Width="142" Height="30" Click="OnResetClick" Background="#FF7EBDC2" FontSize="14">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="4" />
@@ -18,7 +18,7 @@
             </Button.Resources>
         </Button>
         <TextBox x:Name="userGuess" HorizontalAlignment="Left" Height="28" Margin="10,278,0,0" TextWrapping="Wrap" Text="Your guess" VerticalAlignment="Top" Width="324" />
-        <Button x:Name="submitAnswer" Content="Submit" HorizontalAlignment="Left" Margin="354,278,0,0" VerticalAlignment="Top" Width="142" Height="30" Background="#FF7EBDC2" FontSize="14">
+        <Button x:Name="submitAnswer" Content="Check" HorizontalAlignment="Left" Margin="354,278,0,0" VerticalAlignment="Top" Width="142" Height="30" Background="#FF7EBDC2" FontSize="14">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="4" />
@@ -27,7 +27,14 @@
         </Button>
         <Label Content="Instructions:" HorizontalAlignment="Left" Height="30" Margin="511,10,0,0" VerticalAlignment="Top" Width="270" Foreground="#FFEF7674" />
         <ListBox x:Name="instructionsBox" HorizontalAlignment="Left" Height="258" Margin="511,50,0,0" MaxWidth="270" VerticalAlignment="Top" Width="279" ScrollViewer.CanContentScroll="False" UseLayoutRounding="True" />
-        <Label Name="stepAnswer" HorizontalAlignment="Left" Margin="55,247,0,0" VerticalAlignment="Top" Width="441" Foreground="White"/>
-        <ListBox x:Name="stepsBox" HorizontalAlignment="Left" Height="149" VerticalAlignment="Top" Width="486" Margin="10,93,0,0"/>
+        <Label Name="stepAnswer" HorizontalAlignment="Left" Margin="55,247,0,0" VerticalAlignment="Top" Width="441" Foreground="White" />
+        <ListBox x:Name="stepsBox" HorizontalAlignment="Left" Height="149" VerticalAlignment="Top" Width="486" Margin="10,93,0,0" />
+        <Button Content="Convert" HorizontalAlignment="Left" Margin="207,10,0,0" VerticalAlignment="Top" Width="142" Height="30" Click="OnConvertClick" Background="#FF7EBDC2" FontSize="14">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="4" />
+                </Style>
+            </Button.Resources>
+        </Button>
     </Grid>
 </Window>
