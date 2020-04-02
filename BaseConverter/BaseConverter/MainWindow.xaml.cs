@@ -80,17 +80,17 @@ namespace BaseConverter
 
                     case Conversion.BinaryToHexadecimal:
                         PopulateInstructionBox(convertUtil.PrintBinaryToHexadecimalInstructions());
-                        //  promptUserGuess(convertUtil.BinaryToHexadecimal(newValue));
+                        promptUserGuess(convertUtil.BinaryToHexadecimal(newValue));
                         break;
 
                     case Conversion.DecimalToUnary:
                         PopulateInstructionBox(convertUtil.PrintDecimalToUnaryInstructions());
                         //   promptUserGuess(convertUtil.DecimalToUnary(newValue));
                         break;
-
+                        
                     case Conversion.DecimalToBinary:
                         PopulateInstructionBox(convertUtil.PrintDecimalToBinaryInstructions());
-                        //promptUserGuess(convertUtil.DecimalToBinary(newValue));
+                        promptUserGuess(convertUtil.DecimalToBinary(newValue));
                         break;
 
                     case Conversion.DecimalToHexadecimal:
@@ -124,9 +124,16 @@ namespace BaseConverter
         {
             foreach (var step in result.Item1)
             {
-                Debug.WriteLine("Step: " + step.Item1 + " Ans: " + step.Item2 + " Type: " + step.Item3);
+                if (step.Item3 == StepType.SubStep)
+                {
+                    Debug.WriteLine("\tStep: " + step.Item1 + " Ans: " + step.Item2 + " Type: " + step.Item3);
+                }
+                else
+                {
+                    Debug.WriteLine("Step: " + step.Item1 + " Ans: " + step.Item2 + " Type: " + step.Item3);
+                }
             }
-            Debug.WriteLine(result.Item2);
+            Debug.WriteLine("FINAL RESULT: " + result.Item2);
         }
 
         /// <summary>

@@ -93,13 +93,36 @@ namespace BaseConverter.ConvertUtils
         public Tuple<List<Tuple<string, string, StepType>>, string> BinaryToHexadecimal(string binary)
         {
             List<Tuple<string, string, StepType>> steps = new List<Tuple<string, string, StepType>>();
-
-            for (int i = binary.Length - 1; i >= 0; i--)
+            string finalAnswer = "";
+            string step;
+            string hexBit = "";
+            double dec = 0.0;
+            string newBinary = binary;
+            while (newBinary.Length % 4 != 0)
             {
-
+                newBinary = newBinary.Insert(0, "0");
             }
-
-            return Tuple.Create(steps, "");
+            for (int i = newBinary.Length - 1; i >= 0; i--)
+            {
+                hexBit += newBinary[i];
+                if (i % 4 == 0) // Separate bits into four
+                {
+                    hexBit = ReverseString(hexBit);
+                    steps.Add(Tuple.Create("Binary Value ", hexBit, StepType.MainStep));
+                    for (int j = hexBit.Length - 1; j >= 0; j--)
+                    {
+                        double tempVal = Math.Pow(2, hexBit.Length - 1 - j) * int.Parse(hexBit[j].ToString());
+                        step = "(2^" + (hexBit.Length - 1 - j) + ")*" + hexBit[j].ToString();
+                        dec += tempVal;
+                        steps.Add(Tuple.Create(step, tempVal.ToString(), StepType.SubStep));
+                    }
+                    steps.Add(Tuple.Create("Result ", ConvertDecimalToHex((int)dec), StepType.Solution));
+                    finalAnswer = finalAnswer.Insert(0, ConvertDecimalToHex((int)dec));
+                    hexBit = "";
+                    dec = 0.0;
+                }
+            }
+            return Tuple.Create(steps, finalAnswer);
         }
 
         public string[] PrintDecimalToUnaryInstructions()
@@ -115,13 +138,29 @@ namespace BaseConverter.ConvertUtils
 
         public string[] PrintDecimalToBinaryInstructions()
         {
-            return new string[] { };
+            return new string[] { "Binary is based on the base 2 number system",
+                "Step 1: Divide the decimal value by 2",
+                "Step 2: Write down the remainder and divide the previous quotient by 2",
+                "Step 3: Repeat these steps until the quotient is equal to 0",
+                "Step 4: Once the quotient is 0, read the remainders from bottom to top (from your recent remainder calculation to the oldest remainder calculation)",
+                "Enter each of the remainders of your calculation below and see if you got it correct!"};
         }
 
-        public Tuple<List<Tuple<string, string>>, string> DecimalToBinary(string binary)
+        public Tuple<List<Tuple<string, string, StepType>>, string> DecimalToBinary(string dec)
         {
-            List<Tuple<string, string>> steps = new List<Tuple<string, string>>();
-            return Tuple.Create(steps, "");
+            List<Tuple<string, string, StepType>> steps = new List<Tuple<string, string, StepType>>();
+            int value = int.Parse(dec);
+            string step;
+            string finalAnswer = "";
+            while (value != 0)
+            {
+                value = Math.DivRem(value, 2, out int remainder);
+                step = value + " % " + 2;
+                steps.Add(Tuple.Create(step, remainder.ToString(), StepType.Solution));
+                finalAnswer = finalAnswer.Insert(0, remainder.ToString());
+            }
+
+            return Tuple.Create(steps, finalAnswer);
         }
 
         /// <summary>
@@ -133,7 +172,7 @@ namespace BaseConverter.ConvertUtils
             return new string[] { "Decimal is based on the 10 base number system while hexadecimal is based on the base 16 number system ",
                 "Getting the remainder is essential for this calculation. We can use modulo, denoted by % to calculate the remainder",
                 "Step 1: Divide the decimal value by 16. Convert the remainder to its hexadecimal equivalent",
-                "Step 2: Take the remainder and divide again by 16",
+                "Step 2: Write down the remainder and divide the previous quotient by 16",
                 "Step 3: Repeat these steps until the quotient is equal to 0",
                 "Step 4: Once you have the values calculated, simply write the remainder values (in hexadecimal) from bottom to top",
                 "Enter the remainder for each divison below (converted to hexadecimal) and see if you got it correct!",
@@ -182,7 +221,8 @@ namespace BaseConverter.ConvertUtils
                 "Step 3: Repeat Step 2 with every quotient you calculate until you reach the quotient of 0",
                 "Step 4: Once the quotient is 0, form the remainders together from the bottom to up (your last calculated remainder is the very first binary digit and your first calculated remainder is the very last of the binary digit)",
                 "Enter the result for each hexadecimal digit in binary form below and see if you got it correct!",
-                "HINT: Each hexedecimal digit corresponds to four binary digits. So if you have two hexadecimal digits, you should get eight binary digits in the end!"};
+                "HINT: Each hexedecimal digit corresponds to four binary digits. So if you have two hexadecimal digits, you should get eight binary digits in the end!",
+                "NOTE: If your guess is less than four digits long, append 0's before it to make it so (ex. 101 -> 0101"};
         }
 
         /// <summary>
@@ -308,6 +348,13 @@ namespace BaseConverter.ConvertUtils
                 default:
                     return value;
             }
+        }
+
+        private static string ReverseString(string s)
+        {
+            char[] arr = s.ToCharArray();
+            Array.Reverse(arr);
+            return new string(arr);
         }
     }
 }
