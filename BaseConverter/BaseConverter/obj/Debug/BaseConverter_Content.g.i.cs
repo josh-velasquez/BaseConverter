@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("arrow1.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("convertutils/conversiontable.png")]
 
 

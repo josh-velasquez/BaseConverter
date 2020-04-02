@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 
 namespace BaseConverter
@@ -22,7 +23,7 @@ namespace BaseConverter
         {
             public bool done;
             public int counter;
-            public Tuple<List<Tuple<string, string>>, string> steps;
+            public Tuple<List<Tuple<string, string, StepType>>, string> steps;
         }
 
         private Question currentQuestion;
@@ -53,63 +54,62 @@ namespace BaseConverter
                 switch (GetEnum<Conversion>(conversionCombobox.SelectedItem.ToString()))
                 {
                     case Conversion.UnaryToBinary:
-                        PopulateInstructionBox(convertUtil.printUnaryToBinaryInstructions());
-                        promptUserGuess(convertUtil.UnaryToBinary(newValue));
+                        PopulateInstructionBox(convertUtil.PrintUnaryToBinaryInstructions());
+                        //    promptUserGuess(convertUtil.UnaryToBinary(newValue));
                         break;
 
                     case Conversion.UnaryToDecimal:
-                        PopulateInstructionBox(convertUtil.printUnaryToDecimalInstructions());
-                        promptUserGuess(convertUtil.UnaryToDecimal(newValue));
+                        PopulateInstructionBox(convertUtil.PrintUnaryToDecimalInstructions());
+                        //    promptUserGuess(convertUtil.UnaryToDecimal(newValue));
                         break;
 
                     case Conversion.UnaryToHexadecimal:
-                        PopulateInstructionBox(convertUtil.printUnaryToHexadecimalInstructions());
-                        promptUserGuess(convertUtil.UnaryToHexadecimal(newValue));
+                        PopulateInstructionBox(convertUtil.PrintUnaryToHexadecimalInstructions());
+                        // promptUserGuess(convertUtil.UnaryToHexadecimal(newValue));
                         break;
 
                     case Conversion.BinaryToUnary:
-                        PopulateInstructionBox(convertUtil.printBinaryToUnaryInstructions());
-                        promptUserGuess(convertUtil.BinaryToUnary(newValue));
+                        PopulateInstructionBox(convertUtil.PrintBinaryToUnaryInstructions());
+                        //    promptUserGuess(convertUtil.BinaryToUnary(newValue));
                         break;
 
                     case Conversion.BinaryToDecimal:
-                        PopulateInstructionBox(convertUtil.printBinaryToDecimalInstructions());
+                        PopulateInstructionBox(convertUtil.PrintBinaryToDecimalInstructions());
                         promptUserGuess(convertUtil.BinaryToDecimal(newValue));
                         break;
 
                     case Conversion.BinaryToHexadecimal:
-                        PopulateInstructionBox(convertUtil.printBinaryToHexadecimalInstructions());
-                        promptUserGuess(convertUtil.BinaryToHexadecimal(newValue));
+                        PopulateInstructionBox(convertUtil.PrintBinaryToHexadecimalInstructions());
+                        //  promptUserGuess(convertUtil.BinaryToHexadecimal(newValue));
                         break;
 
                     case Conversion.DecimalToUnary:
-                        PopulateInstructionBox(convertUtil.printDecimalToUnaryInstructions());
-                        promptUserGuess(convertUtil.DecimalToUnary(newValue));
+                        PopulateInstructionBox(convertUtil.PrintDecimalToUnaryInstructions());
+                        //   promptUserGuess(convertUtil.DecimalToUnary(newValue));
                         break;
 
                     case Conversion.DecimalToBinary:
-                        PopulateInstructionBox(convertUtil.printDecimalToBinaryInstructions());
-                        promptUserGuess(convertUtil.DecimalToBinary(newValue));
+                        PopulateInstructionBox(convertUtil.PrintDecimalToBinaryInstructions());
+                        //promptUserGuess(convertUtil.DecimalToBinary(newValue));
                         break;
 
                     case Conversion.DecimalToHexadecimal:
-                        PopulateInstructionBox(convertUtil.printDecimalToHexadecimalInstructions());
+                        PopulateInstructionBox(convertUtil.PrintDecimalToHexadecimalInstructions());
                         promptUserGuess(convertUtil.DecimalToHexadecimal(newValue));
                         break;
 
                     case Conversion.HexadecimalToUnary:
-                        PopulateInstructionBox(convertUtil.printHexadecimalToUnaryInstructions());
-                        promptUserGuess(convertUtil.HexadecimalToUnary(newValue));
+                        PopulateInstructionBox(convertUtil.PrintHexadecimalToUnaryInstructions());
+                        // promptUserGuess(convertUtil.HexadecimalToUnary(newValue));
                         break;
 
                     case Conversion.HexadecimalToBinary:
-                        PopulateInstructionBox(convertUtil.printHexadecimalToBinaryInstructions());
+                        PopulateInstructionBox(convertUtil.PrintHexadecimalToBinaryInstructions());
                         promptUserGuess(convertUtil.HexadecimalToBinary(newValue));
                         break;
 
                     case Conversion.HexadecimalToDecimal:
-                        PopulateInstructionBox(convertUtil.printHexadecimalToDecimalInstructions());
-                        DebugPrintSteps(convertUtil.HexadecimalToDecimal(value.Text));
+                        PopulateInstructionBox(convertUtil.PrintHexadecimalToDecimalInstructions());
                         promptUserGuess(convertUtil.HexadecimalToDecimal(newValue));
                         break;
                 }
@@ -118,6 +118,15 @@ namespace BaseConverter
             {
                 ShowMessageBox("Input Error", "Invalid input!");
             }
+        }
+
+        private void test(Tuple<List<Tuple<string, string, StepType>>, string> result)
+        {
+            foreach (var step in result.Item1)
+            {
+                Debug.WriteLine("Step: " + step.Item1 + " Ans: " + step.Item2 + " Type: " + step.Item3);
+            }
+            Debug.WriteLine(result.Item2);
         }
 
         /// <summary>
@@ -146,10 +155,9 @@ namespace BaseConverter
         /// Prompts the user for the intial guess. Initializes the question
         /// </summary>
         /// <param name="solution"></param>
-        private void promptUserGuess(Tuple<List<Tuple<string, string>>, string> solution)
+        private void promptUserGuess(Tuple<List<Tuple<string, string, StepType>>, string> solution)
         {
             stepAnswer.Content = "Your turn to guess! What is the result of the first step?";
-            submitAnswer.Click += new RoutedEventHandler(CheckUserGuess);
             currentQuestion = new Question()
             {
                 done = false,
@@ -158,61 +166,21 @@ namespace BaseConverter
             };
         }
 
-        /// <summary>
-        /// Checks the user's guess and sees if its correct or not
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void CheckUserGuess(object sender, EventArgs e)
+        private int GetIndexSolution()
         {
-            if (currentQuestion.Equals(default(Question))) // Check if question is null or done
+            int counter = currentQuestion.counter;
+            while (currentQuestion.steps.Item1[counter].Item3 != StepType.Solution)
             {
-                return; // no question
+                counter++;
             }
-            if (currentQuestion.done)
-            {
-                if (userGuess.Text.ToUpper() == currentQuestion.steps.Item2)
-                {
-                    stepAnswer.Content = "Congrats! You got it right!";
-                    stepAnswer.Foreground = Brushes.LightGreen;
-                    stepsBox.Items.Add("Final Answer: " + currentQuestion.steps.Item2);
-                    currentQuestion = null;
-                }
-                else
-                {
-                    stepAnswer.Content = "Wrong! Please try again.";
-                    stepAnswer.Foreground = Brushes.Red;
-                }
-                return;
-            }
-            CheckIfDone();
-            var stepAndAnswer = currentQuestion.steps.Item1[currentQuestion.counter];
-            if (userGuess.Text.ToUpper() == stepAndAnswer.Item2) // check if its the right answer
-            {
-                stepAnswer.Content = "Correct! What's the next answer?";
-                stepAnswer.Foreground = Brushes.LightGreen;
-                currentQuestion.counter++;
-                stepsBox.Items.Add(stepAndAnswer.Item1 + " = " + stepAndAnswer.Item2);
-                CheckIfDone();
-            }
-            else
-            {
-                stepAnswer.Content = "Wrong! Try again!";
-                stepAnswer.Foreground = Brushes.Red;
-            }
+            return counter;
         }
 
-        /// <summary>
-        /// Checks if the current question is on the final answer
-        /// </summary>
-        private void CheckIfDone()
+        private void ScrollResultsToBottom()
         {
-            if (currentQuestion.counter == (currentQuestion.steps.Item1.Count))
-            {
-                stepAnswer.Content = "Correct! What's the final answer?";
-                currentQuestion.done = true;
-                return;
-            }
+            var border = (Border)VisualTreeHelper.GetChild(stepsBox, 0);
+            var scrollViewer = (ScrollViewer)VisualTreeHelper.GetChild(border, 0);
+            scrollViewer.ScrollToBottom();
         }
 
         /// <summary>
@@ -282,6 +250,70 @@ namespace BaseConverter
             currentQuestion = null;
             stepAnswer.Content = "";
             stepAnswer.Foreground = Brushes.White;
+        }
+
+        private void OnCheckUserGuess(object sender, RoutedEventArgs e)
+        {
+            if (currentQuestion == null) // Check if question is null or done
+            {
+                return; // no question
+            }
+            if (currentQuestion.done)
+            {
+                if (userGuess.Text.ToUpper() == currentQuestion.steps.Item2)
+                {
+                    stepAnswer.Content = "Congrats! You got it right!";
+                    stepAnswer.Foreground = Brushes.LightGreen;
+                    stepsBox.Items.Add("Final Answer: " + currentQuestion.steps.Item2);
+                    currentQuestion = null;
+                    ScrollResultsToBottom();
+                }
+                else
+                {
+                    stepAnswer.Content = "Wrong! Please try again.";
+                    stepAnswer.Foreground = Brushes.Red;
+                }
+                return;
+            }
+            var stepAndAnswer = currentQuestion.steps.Item1;
+            int indexOfSoln = GetIndexSolution();
+            if (userGuess.Text.ToUpper() == stepAndAnswer[indexOfSoln].Item2) // check if its the right answer
+            {
+                stepAnswer.Content = "Correct! What's the next answer?";
+                stepAnswer.Foreground = Brushes.LightGreen;
+                stepsBox.Items.Add(stepAndAnswer[currentQuestion.counter].Item1 + " = " + stepAndAnswer[currentQuestion.counter].Item2);
+                if (stepAndAnswer[currentQuestion.counter].Item3 == StepType.MainStep)
+                {
+                    currentQuestion.counter++;
+                    while (stepAndAnswer[currentQuestion.counter].Item3 != StepType.Solution)
+                    {
+                        stepsBox.Items.Add("\t" + stepAndAnswer[currentQuestion.counter].Item1 + " = " + stepAndAnswer[currentQuestion.counter].Item2);
+                        currentQuestion.counter++;
+                    }
+                    stepsBox.Items.Add(stepAndAnswer[currentQuestion.counter].Item1 + " = " + stepAndAnswer[currentQuestion.counter].Item2);
+                }
+                userGuess.Text = "";
+                currentQuestion.counter++;
+                ScrollResultsToBottom();
+                // Check if guessing the final answer
+                if (currentQuestion.counter == (currentQuestion.steps.Item1.Count))
+                {
+                    stepAnswer.Content = "Correct! What's the final answer?";
+                    currentQuestion.done = true;
+                    return;
+                }
+            }
+            else
+            {
+                stepAnswer.Content = "Wrong! Try again!";
+                stepAnswer.Foreground = Brushes.Red;
+            }
+        }
+
+        private void OnHelpClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            Help help = new Help();
+            help.Show();
         }
     }
 }
