@@ -55,7 +55,8 @@ namespace BaseConverter
                 {
                     case Conversion.UnaryToBinary:
                         PopulateInstructionBox(convertUtil.PrintUnaryToBinaryInstructions());
-                        //    promptUserGuess(convertUtil.UnaryToBinary(newValue));
+                        test(convertUtil.UnaryToBinary(newValue));
+                        PromptUserGuess(convertUtil.UnaryToBinary(newValue));
                         break;
 
                     case Conversion.UnaryToDecimal:
@@ -75,42 +76,43 @@ namespace BaseConverter
 
                     case Conversion.BinaryToDecimal:
                         PopulateInstructionBox(convertUtil.PrintBinaryToDecimalInstructions());
-                        promptUserGuess(convertUtil.BinaryToDecimal(newValue));
+                        PromptUserGuess(convertUtil.BinaryToDecimal(newValue));
                         break;
 
                     case Conversion.BinaryToHexadecimal:
                         PopulateInstructionBox(convertUtil.PrintBinaryToHexadecimalInstructions());
-                        promptUserGuess(convertUtil.BinaryToHexadecimal(newValue));
+                        PromptUserGuess(convertUtil.BinaryToHexadecimal(newValue));
                         break;
 
                     case Conversion.DecimalToUnary:
                         PopulateInstructionBox(convertUtil.PrintDecimalToUnaryInstructions());
-                        //   promptUserGuess(convertUtil.DecimalToUnary(newValue));
+                        PromptUserGuess(convertUtil.DecimalToUnary(newValue));
                         break;
-                        
+
                     case Conversion.DecimalToBinary:
                         PopulateInstructionBox(convertUtil.PrintDecimalToBinaryInstructions());
-                        promptUserGuess(convertUtil.DecimalToBinary(newValue));
+                        PromptUserGuess(convertUtil.DecimalToBinary(newValue));
                         break;
 
                     case Conversion.DecimalToHexadecimal:
                         PopulateInstructionBox(convertUtil.PrintDecimalToHexadecimalInstructions());
-                        promptUserGuess(convertUtil.DecimalToHexadecimal(newValue));
+                        PromptUserGuess(convertUtil.DecimalToHexadecimal(newValue));
                         break;
 
                     case Conversion.HexadecimalToUnary:
                         PopulateInstructionBox(convertUtil.PrintHexadecimalToUnaryInstructions());
-                        // promptUserGuess(convertUtil.HexadecimalToUnary(newValue));
+                        test(convertUtil.HexadecimalToUnary(newValue));
+                        PromptUserGuess(convertUtil.HexadecimalToUnary(newValue));
                         break;
 
                     case Conversion.HexadecimalToBinary:
                         PopulateInstructionBox(convertUtil.PrintHexadecimalToBinaryInstructions());
-                        promptUserGuess(convertUtil.HexadecimalToBinary(newValue));
+                        PromptUserGuess(convertUtil.HexadecimalToBinary(newValue));
                         break;
 
                     case Conversion.HexadecimalToDecimal:
                         PopulateInstructionBox(convertUtil.PrintHexadecimalToDecimalInstructions());
-                        promptUserGuess(convertUtil.HexadecimalToDecimal(newValue));
+                        PromptUserGuess(convertUtil.HexadecimalToDecimal(newValue));
                         break;
                 }
             }
@@ -162,7 +164,7 @@ namespace BaseConverter
         /// Prompts the user for the intial guess. Initializes the question
         /// </summary>
         /// <param name="solution"></param>
-        private void promptUserGuess(Tuple<List<Tuple<string, string, StepType>>, string> solution)
+        private void PromptUserGuess(Tuple<List<Tuple<string, string, StepType>>, string> solution)
         {
             stepAnswer.Content = "Your turn to guess! What is the result of the first step?";
             currentQuestion = new Question()
@@ -265,7 +267,7 @@ namespace BaseConverter
             {
                 return; // no question
             }
-            if (currentQuestion.done)
+            if (currentQuestion.done || currentQuestion.steps.Item1[0].Item3 == StepType.SingleSolution)
             {
                 if (userGuess.Text.ToUpper() == currentQuestion.steps.Item2)
                 {

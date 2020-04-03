@@ -4,6 +4,7 @@
     {
         MainStep,
         SubStep,
-        Solution
+        Solution,
+        SingleSolution
     }
 }
