@@ -61,17 +61,19 @@ namespace BaseConverter
 
                     case Conversion.UnaryToDecimal:
                         PopulateInstructionBox(convertUtil.PrintUnaryToDecimalInstructions());
-                        //    promptUserGuess(convertUtil.UnaryToDecimal(newValue));
+                        PromptUserGuess(convertUtil.UnaryToDecimal(newValue));
                         break;
 
                     case Conversion.UnaryToHexadecimal:
                         PopulateInstructionBox(convertUtil.PrintUnaryToHexadecimalInstructions());
-                        // promptUserGuess(convertUtil.UnaryToHexadecimal(newValue));
+                        test(convertUtil.UnaryToHexadecimal(newValue));
+                        PromptUserGuess(convertUtil.UnaryToHexadecimal(newValue));
                         break;
 
                     case Conversion.BinaryToUnary:
                         PopulateInstructionBox(convertUtil.PrintBinaryToUnaryInstructions());
-                        //    promptUserGuess(convertUtil.BinaryToUnary(newValue));
+                        test(convertUtil.BinaryToUnary(newValue));
+                        PromptUserGuess(convertUtil.BinaryToUnary(newValue));
                         break;
 
                     case Conversion.BinaryToDecimal:

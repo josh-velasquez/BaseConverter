@@ -1,6 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 
+/// <summary>
+/// Contains the conversion algorithms along with their instructions
+///
+/// Returns Examplanation
+/// Tuple<List<Tuple<string, string, StepType>>, string>
+/// Tuple<List<Tuple<steps, answer to the step, type of step>>, final answer>
+/// To achieve the user prompts for each steps, a tuple that contains a list of tuple
+///     contains the steps to arrive to the answer, the answer to that specific step
+///     (for checking if the user guess is correct or not), type of step which dictates
+///     whether the step added.
+///     StepType : MainStep = Just a header that doesn't require a check answer
+///             against the users guess (used for clarification)
+///     StepType : SubStep = A simple substep in conversion (this checks for users input)
+///     StepType : Solution = This indicates the end of a substep (this checks for user input)
+///     StepType : SingleSolution = For simple conversion that is just one step
+/// </summary>
 namespace BaseConverter.ConvertUtils
 {
     internal class ConvertUtil
@@ -40,35 +56,88 @@ namespace BaseConverter.ConvertUtils
 
         public string[] PrintUnaryToDecimalInstructions()
         {
-            return new string[] { };
+            return new string[] {"Unary is based on base 1 numerical system",
+                "Step 1: Count the number of 1's",
+                "Enter your answer below and see if you got it correct!" };
         }
 
-        public Tuple<List<Tuple<string, string>>, string> UnaryToDecimal(string unary)
+        public Tuple<List<Tuple<string, string, StepType>>, string> UnaryToDecimal(string unary)
         {
-            List<Tuple<string, string>> steps = new List<Tuple<string, string>>();
-            return Tuple.Create(steps, "");
+            List<Tuple<string, string, StepType>> steps = new List<Tuple<string, string, StepType>>();
+            int finalAnswer = 0;
+            for (int i = 0; i < unary.Length; i++)
+            {
+                finalAnswer++;
+            }
+            steps.Add(Tuple.Create("", finalAnswer.ToString(), StepType.SingleSolution));
+            return Tuple.Create(steps, finalAnswer.ToString());
         }
 
         public string[] PrintUnaryToHexadecimalInstructions()
         {
-            return new string[] { };
+            return new string[] { "Unary is based on base 1 numerical system. Hexadecimal is based on base 16 numerical system",
+                "To make the conversion between unary to hexadecimal, it is easier to convert the unary value to decimal first then to hexadecimal",
+                "Step 1: Convert the unary value to decimal by counting the amount of 1's there are",
+                "Step 2: Divide the decimal value by 16. Convert the remainder to its hexadecimal equivalent",
+                "Step 3: Write down the remainder and divide the previous quotient by 16",
+                "Step 4: Repeat these steps until the quotient is equal to 0",
+                "Step 5: Once you have the values calculated, simply write the remainder values (in hexadecimal) from bottom to top",
+                "Enter the remainder for each divison below (converted to hexadecimal) and see if you got it correct!"};
         }
 
-        public Tuple<List<Tuple<string, string>>, string> UnaryToHexadecimal(string unary)
+        public Tuple<List<Tuple<string, string, StepType>>, string> UnaryToHexadecimal(string unary)
         {
-            List<Tuple<string, string>> steps = new List<Tuple<string, string>>();
-            return Tuple.Create(steps, "");
+            List<Tuple<string, string, StepType>> steps = new List<Tuple<string, string, StepType>>();
+            int value = 0;
+            string step;
+            string finalAnswer = "";
+            string remVal;
+            for (int i = 0; i < unary.Length; i++)
+            {
+                value++;
+            }
+            steps.Add(Tuple.Create("Decimal value", value.ToString(), StepType.MainStep));
+            while (value != 0)
+            {
+                value = Math.DivRem(value, 16, out int remainder);
+                step = value + " % " + 16;
+                remVal = ConvertDecimalToHex(remainder);
+                finalAnswer = finalAnswer.Insert(0, remVal);
+                steps.Add(Tuple.Create(step, remVal, StepType.Solution));
+            }
+            return Tuple.Create(steps, finalAnswer);
         }
 
         public string[] PrintBinaryToUnaryInstructions()
         {
-            return new string[] { };
+            return new string[] { "Binary is based on base 2 numerical system. Unary is based on base 1 numerical system",
+                "To convert between binary to unary, it is easier to first convert the binary value to decimal and then to unary",
+                "Step 1: Starting with the very last digit or otherwise known as the least significant digit, raise 2 to the power of its index (starting from 0)",
+                "Step 2: You then take this value and multiply it to the bit at that specific index",
+                "Step 3: Do this repeatedly until you reach the very first digit or otherwise known as the most significant bit",
+                "Step 4: Once you have the values for each bits calculated, add all of the values up which will yield in the decimal base equivalence of the binary value",
+                "Step 5: Count out your decimal starting from 1 and for every value, write down a 1",
+                "Enter the decimal value you calculate from the conversion below and then enter its unary value"};
         }
 
-        public Tuple<List<Tuple<string, string>>, string> BinaryToUnary(string binary)
+        public Tuple<List<Tuple<string, string, StepType>>, string> BinaryToUnary(string binary)
         {
-            List<Tuple<string, string>> steps = new List<Tuple<string, string>>();
-            return Tuple.Create(steps, "");
+            List<Tuple<string, string, StepType>> steps = new List<Tuple<string, string, StepType>>();
+            string step;
+            double answer = 0.0;
+            string finalAnswer = "";
+            for (int i = binary.Length - 1; i >= 0; i--)
+            {
+                double tempAnswer = Math.Pow(2, binary.Length - 1 - i) * int.Parse(binary[i].ToString());
+                step = "(2^" + (binary.Length - 1 - i) + ")*" + binary[i].ToString();
+                answer += tempAnswer;
+                steps.Add(Tuple.Create(step, tempAnswer.ToString(), StepType.Solution));
+            }
+            for (int i = 0; i < answer; i++)
+            {
+                finalAnswer += "1";
+            }
+            return Tuple.Create(steps, finalAnswer.ToString());
         }
 
         public string[] PrintBinaryToDecimalInstructions()
