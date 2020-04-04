@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -55,7 +58,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="ConvertUtils\Help.xaml">
+    <Page Include="ConversionTable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Help.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -67,9 +74,12 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ConversionTable.xaml.cs">
+      <DependentUpon>ConversionTable.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ConvertUtils\Conversion.cs" />
     <Compile Include="ConvertUtils\ConvertUtil.cs" />
-    <Compile Include="ConvertUtils\Help.xaml.cs">
+    <Compile Include="Help.xaml.cs">
       <DependentUpon>Help.xaml</DependentUpon>
     </Compile>
     <Compile Include="ConvertUtils\StepType.cs" />
@@ -105,13 +115,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="arrow1.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="help.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="ConvertUtils\ConversionTable.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ConversionTable.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

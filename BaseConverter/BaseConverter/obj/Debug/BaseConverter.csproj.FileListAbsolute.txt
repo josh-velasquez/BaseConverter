@@ -13,5 +13,7 @@ C:\Users\joshv\Desktop\Github\BaseConverter\BaseConverter\BaseConverter\obj\Debu
 C:\Users\joshv\Desktop\Github\BaseConverter\BaseConverter\BaseConverter\obj\Debug\BaseConverter.csproj.CoreCompileInputs.cache
 C:\Users\joshv\Desktop\Github\BaseConverter\BaseConverter\BaseConverter\obj\Debug\BaseConverter.exe
 C:\Users\joshv\Desktop\Github\BaseConverter\BaseConverter\BaseConverter\obj\Debug\BaseConverter.pdb
-C:\Users\joshv\Desktop\Github\BaseConverter\BaseConverter\BaseConverter\obj\Debug\ConvertUtils\Help.g.cs
-C:\Users\joshv\Desktop\Github\BaseConverter\BaseConverter\BaseConverter\obj\Debug\ConvertUtils\Help.baml
+C:\Users\joshv\Desktop\Github\BaseConverter\BaseConverter\BaseConverter\obj\Debug\Help.g.cs
+C:\Users\joshv\Desktop\Github\BaseConverter\BaseConverter\BaseConverter\obj\Debug\Help.baml
+C:\Users\joshv\Desktop\Github\BaseConverter\BaseConverter\BaseConverter\obj\Debug\ConversionTable.g.cs
+C:\Users\joshv\Desktop\Github\BaseConverter\BaseConverter\BaseConverter\obj\Debug\ConversionTable.baml

@@ -55,7 +55,6 @@ namespace BaseConverter
                 {
                     case Conversion.UnaryToBinary:
                         PopulateInstructionBox(convertUtil.PrintUnaryToBinaryInstructions());
-                        test(convertUtil.UnaryToBinary(newValue));
                         PromptUserGuess(convertUtil.UnaryToBinary(newValue));
                         break;
 
@@ -66,13 +65,11 @@ namespace BaseConverter
 
                     case Conversion.UnaryToHexadecimal:
                         PopulateInstructionBox(convertUtil.PrintUnaryToHexadecimalInstructions());
-                        test(convertUtil.UnaryToHexadecimal(newValue));
                         PromptUserGuess(convertUtil.UnaryToHexadecimal(newValue));
                         break;
 
                     case Conversion.BinaryToUnary:
                         PopulateInstructionBox(convertUtil.PrintBinaryToUnaryInstructions());
-                        test(convertUtil.BinaryToUnary(newValue));
                         PromptUserGuess(convertUtil.BinaryToUnary(newValue));
                         break;
 
@@ -103,7 +100,6 @@ namespace BaseConverter
 
                     case Conversion.HexadecimalToUnary:
                         PopulateInstructionBox(convertUtil.PrintHexadecimalToUnaryInstructions());
-                        test(convertUtil.HexadecimalToUnary(newValue));
                         PromptUserGuess(convertUtil.HexadecimalToUnary(newValue));
                         break;
 
@@ -168,7 +164,7 @@ namespace BaseConverter
         /// <param name="solution"></param>
         private void PromptUserGuess(Tuple<List<Tuple<string, string, StepType>>, string> solution)
         {
-            stepAnswer.Content = "Your turn to guess! What is the result of the first step?";
+            stepAnswer.Content = "Your turn to guess! Enter your answer below.";
             currentQuestion = new Question()
             {
                 done = false,
@@ -261,9 +257,40 @@ namespace BaseConverter
             currentQuestion = null;
             stepAnswer.Content = "";
             stepAnswer.Foreground = Brushes.White;
+            workspaceBox.Clear();
         }
 
         private void OnCheckUserGuess(object sender, RoutedEventArgs e)
+        {
+            CheckUserGuess();
+        }
+
+        private void OnHelpClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            Help help = new Help();
+            help.Show();
+        }
+
+        private void OnClearWorkspace(object sender, RoutedEventArgs e)
+        {
+            workspaceBox.Clear();
+        }
+
+        private void OnShowConversionTableClick(object sender, RoutedEventArgs e)
+        {
+            ConversionTable table = new ConversionTable();
+            table.Show();
+        }
+
+        private void OnEnterPress(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Return)
+            {
+                CheckUserGuess();
+            }
+        }
+
+        private void CheckUserGuess()
         {
             if (currentQuestion == null) // Check if question is null or done
             {
@@ -318,13 +345,13 @@ namespace BaseConverter
             {
                 stepAnswer.Content = "Wrong! Try again!";
                 stepAnswer.Foreground = Brushes.Red;
+
             }
         }
 
-        private void OnHelpClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void OnShowFinalAnswerClick(object sender, RoutedEventArgs e)
         {
-            Help help = new Help();
-            help.Show();
+            stepsBox.Items.Add(currentQuestion.steps.Item2);
         }
     }
 }
