@@ -42,9 +42,9 @@ namespace BaseConverter
 
         private void OnConvertClick(object sender, RoutedEventArgs e)
         {
-            if (value.Text == "" || value.Text == "Value")
+            if (value.Text == "")
             {
-                ShowMessageBox("Input Error", "Invalid input!");
+                ShowMessageBox("Input Error", "Invalid input! Please enter a valid value.");
                 return;
             }
             instructionsBox.Items.Clear();
@@ -110,17 +110,18 @@ namespace BaseConverter
 
                     case Conversion.HexadecimalToDecimal:
                         PopulateInstructionBox(convertUtil.PrintHexadecimalToDecimalInstructions());
+                        DebugAnswer(convertUtil.HexadecimalToDecimal(newValue));
                         PromptUserGuess(convertUtil.HexadecimalToDecimal(newValue));
                         break;
                 }
             }
             catch (Exception)
             {
-                ShowMessageBox("Input Error", "Invalid input!");
+                ShowMessageBox("Input Error", "Invalid input! Make sure you have no white spaces between your values and is a valid value.");
             }
         }
 
-        private void test(Tuple<List<Tuple<string, string, StepType>>, string> result)
+        private void DebugAnswer(Tuple<List<Tuple<string, string, StepType>>, string> result)
         {
             foreach (var step in result.Item1)
             {
@@ -133,7 +134,7 @@ namespace BaseConverter
                     Debug.WriteLine("Step: " + step.Item1 + " Ans: " + step.Item2 + " Type: " + step.Item3);
                 }
             }
-            Debug.WriteLine("FINAL RESULT: " + result.Item2);
+            Debug.WriteLine("Final Answer: " + result.Item2);
         }
 
         /// <summary>
@@ -164,6 +165,7 @@ namespace BaseConverter
         /// <param name="solution"></param>
         private void PromptUserGuess(Tuple<List<Tuple<string, string, StepType>>, string> solution)
         {
+            stepAnswer.Foreground = Brushes.White;
             stepAnswer.Content = "Your turn to guess! Enter your answer below.";
             currentQuestion = new Question()
             {
@@ -232,15 +234,6 @@ namespace BaseConverter
             ?.GetCustomAttribute<DescriptionAttribute>()
             ?.Description
         ?? e.ToString();
-        }
-
-        private void DebugPrintSteps(Tuple<List<Tuple<string, string>>, string> solution)
-        {
-            Debug.WriteLine("FINAL ANSWER: " + solution.Item2);
-            foreach (var data in solution.Item1)
-            {
-                Debug.WriteLine("STEP: " + data.Item1 + " ANS: " + data.Item2);
-            }
         }
 
         /// <summary>
@@ -345,13 +338,19 @@ namespace BaseConverter
             {
                 stepAnswer.Content = "Wrong! Try again!";
                 stepAnswer.Foreground = Brushes.Red;
-
             }
         }
 
         private void OnShowFinalAnswerClick(object sender, RoutedEventArgs e)
         {
-            stepsBox.Items.Add(currentQuestion.steps.Item2);
+            if (currentQuestion == null)
+            {
+                ShowMessageBox("Error", "No conversion available. Please enter a conversion value and click the convert button.");
+            }
+            else
+            {
+                stepsBox.Items.Add("Final answer: " + currentQuestion.steps.Item2);
+            }
         }
     }
 }
