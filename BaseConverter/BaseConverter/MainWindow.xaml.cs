@@ -349,28 +349,37 @@ namespace BaseConverter
             else
             {
                 stepsBox.Items.Add("Final answer: " + currentQuestion.steps.Item2);
+                currentQuestion = null;
             }
         }
 
         private void OnShowAnswerClick(object sender, RoutedEventArgs e)
         {
-            if (!currentQuestion.done)
+            if (currentQuestion == null || currentQuestion.done)
             {
-                var stepAndAnswer = currentQuestion.steps.Item1;
-                stepsBox.Items.Add(stepAndAnswer[currentQuestion.counter].Item1 + " = " + stepAndAnswer[currentQuestion.counter].Item2);
-                if (stepAndAnswer[currentQuestion.counter].Item3 == StepType.MainStep)
-                {
-                    currentQuestion.counter++;
-                    while (stepAndAnswer[currentQuestion.counter].Item3 != StepType.Solution)
-                    {
-                        stepsBox.Items.Add("\t" + stepAndAnswer[currentQuestion.counter].Item1 + " = " + stepAndAnswer[currentQuestion.counter].Item2);
-                        currentQuestion.counter++;
-                    }
-                    stepsBox.Items.Add(stepAndAnswer[currentQuestion.counter].Item1 + " = " + stepAndAnswer[currentQuestion.counter].Item2);
-                }
-                userGuess.Text = "";
+                stepAnswer.Content = "";
+                return;
+            }
+            var stepAndAnswer = currentQuestion.steps.Item1;
+            stepsBox.Items.Add(stepAndAnswer[currentQuestion.counter].Item1 + " = " + stepAndAnswer[currentQuestion.counter].Item2);
+            if (stepAndAnswer[currentQuestion.counter].Item3 == StepType.MainStep)
+            {
                 currentQuestion.counter++;
-                ScrollResultsToBottom();
+                while (stepAndAnswer[currentQuestion.counter].Item3 != StepType.Solution)
+                {
+                    stepsBox.Items.Add("\t" + stepAndAnswer[currentQuestion.counter].Item1 + " = " + stepAndAnswer[currentQuestion.counter].Item2);
+                    currentQuestion.counter++;
+                }
+                stepsBox.Items.Add(stepAndAnswer[currentQuestion.counter].Item1 + " = " + stepAndAnswer[currentQuestion.counter].Item2);
+            }
+            userGuess.Text = "";
+            currentQuestion.counter++;
+            ScrollResultsToBottom();
+            if (currentQuestion.counter == (currentQuestion.steps.Item1.Count))
+            {
+                stepAnswer.Content = "What's the final answer?";
+                currentQuestion.done = true;
+                return;
             }
         }
     }

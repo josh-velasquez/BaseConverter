@@ -27,7 +27,7 @@
             </Button.Resources>
         </Button>
         <Label Content="Instructions" HorizontalAlignment="Left" Height="30" Margin="10,85,0,0" VerticalAlignment="Top" Width="110" Foreground="White" FontWeight="Bold" FontSize="14" />
-        <ListBox x:Name="instructionsBox"  HorizontalAlignment="Left" Height="239" Margin="10,123,0,0" VerticalAlignment="Top" Width="764" ToolTip="Conversion instructions" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="#FFFDC9C9" />
+        <ListBox x:Name="instructionsBox"  HorizontalAlignment="Left" Height="239" Margin="10,123,0,0" VerticalAlignment="Top" Width="764" ToolTip="Conversion instructions" ScrollViewer.HorizontalScrollBarVisibility="Auto" Background="#FFFDC9C9" Grid.RowSpan="2" />
         <Label Name="stepAnswer" HorizontalAlignment="Left" Margin="10,551,0,0" VerticalAlignment="Top" Width="492" Foreground="White" Content="" Height="29" />
         <ListBox x:Name="stepsBox" HorizontalAlignment="Left" Height="149" VerticalAlignment="Top" Width="764" Margin="10,402,0,0" ToolTip="Steps for conversion" Background="#FFFDC9C9" />
         <Button Content="Convert" HorizontalAlignment="Left" Margin="359,10,0,0" VerticalAlignment="Top" Width="204" Height="30" Click="OnConvertClick" Background="#FF4EDC61" FontSize="14" Foreground="White">
