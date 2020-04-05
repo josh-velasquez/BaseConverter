@@ -110,7 +110,6 @@ namespace BaseConverter
 
                     case Conversion.HexadecimalToDecimal:
                         PopulateInstructionBox(convertUtil.PrintHexadecimalToDecimalInstructions());
-                        DebugAnswer(convertUtil.HexadecimalToDecimal(newValue));
                         PromptUserGuess(convertUtil.HexadecimalToDecimal(newValue));
                         break;
                 }
@@ -350,6 +349,28 @@ namespace BaseConverter
             else
             {
                 stepsBox.Items.Add("Final answer: " + currentQuestion.steps.Item2);
+            }
+        }
+
+        private void OnShowAnswerClick(object sender, RoutedEventArgs e)
+        {
+            if (!currentQuestion.done)
+            {
+                var stepAndAnswer = currentQuestion.steps.Item1;
+                stepsBox.Items.Add(stepAndAnswer[currentQuestion.counter].Item1 + " = " + stepAndAnswer[currentQuestion.counter].Item2);
+                if (stepAndAnswer[currentQuestion.counter].Item3 == StepType.MainStep)
+                {
+                    currentQuestion.counter++;
+                    while (stepAndAnswer[currentQuestion.counter].Item3 != StepType.Solution)
+                    {
+                        stepsBox.Items.Add("\t" + stepAndAnswer[currentQuestion.counter].Item1 + " = " + stepAndAnswer[currentQuestion.counter].Item2);
+                        currentQuestion.counter++;
+                    }
+                    stepsBox.Items.Add(stepAndAnswer[currentQuestion.counter].Item1 + " = " + stepAndAnswer[currentQuestion.counter].Item2);
+                }
+                userGuess.Text = "";
+                currentQuestion.counter++;
+                ScrollResultsToBottom();
             }
         }
     }

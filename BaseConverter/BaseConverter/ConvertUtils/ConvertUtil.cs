@@ -561,7 +561,7 @@ namespace BaseConverter.ConvertUtils
             {
                 case "A":
                     return 10.ToString();
-
+                    
                 case "B":
                     return 11.ToString();
 

@@ -6,20 +6,20 @@
         xmlns:local="clr-namespace:BaseConverter"
         mc:Ignorable="d"
         ResizeMode="NoResize"
-        Title="Base Converter" Height="664.5" Width="1195.5">
+        Title="Base Converter" Height="665.5" Width="1195.5">
     <Grid Background="#FF353A40">
-        <ComboBox x:Name="conversionCombobox" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="403" Height="30" FontFamily="Rockwell" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="White" />
-        <TextBox x:Name="value" HorizontalAlignment="Left" Height="28" Margin="109,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="665" VerticalContentAlignment="Center" ToolTip="Enter your conversion value" Background="#FFD0F3C5" />
+        <ComboBox x:Name="conversionCombobox" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="344" Height="30" FontFamily="Rockwell" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="White" />
+        <TextBox x:Name="value" HorizontalAlignment="Left" Height="28" Margin="93,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="681" VerticalContentAlignment="Center" ToolTip="Enter your conversion value" Background="#FFD0F3C5" />
         <Label Content="Result" HorizontalAlignment="Left" Margin="10,368,0,0" VerticalAlignment="Top" Width="54" Foreground="White" FontWeight="Bold" FontSize="14" />
-        <Button Content="Reset" HorizontalAlignment="Left" Margin="596,11,0,0" VerticalAlignment="Top" Width="178" Height="30" Click="OnResetClick" Background="#FFE84949" FontSize="14" Foreground="White" RenderTransformOrigin="1.225,0.55">
+        <Button Content="Reset" HorizontalAlignment="Left" Margin="570,11,0,0" VerticalAlignment="Top" Width="204" Height="30" Click="OnResetClick" Background="#FFE84949" FontSize="14" Foreground="White" RenderTransformOrigin="1.225,0.55">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="4" />
                 </Style>
             </Button.Resources>
         </Button>
-        <TextBox x:Name="userGuess" HorizontalAlignment="Left" Height="27" Margin="109,585,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="304" VerticalContentAlignment="Center" ToolTip="Enter your guess" KeyDown="OnEnterPress" BorderBrush="#FFABADB3" Background="#FFD0F3C5" />
-        <Button x:Name="submitAnswer" Content="Check" HorizontalAlignment="Left" Margin="418,584,0,0" VerticalAlignment="Top" Width="173" Height="28" Background="#FF4EDC61" FontSize="14" Click="OnCheckUserGuess" Foreground="White">
+        <TextBox x:Name="userGuess" HorizontalAlignment="Left" Height="27" Margin="93,583,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="261" VerticalContentAlignment="Center" ToolTip="Enter your guess" KeyDown="OnEnterPress" BorderBrush="#FFABADB3" Background="#FFD0F3C5" />
+        <Button x:Name="submitAnswer" Content="Check" HorizontalAlignment="Left" Margin="359,582,0,0" VerticalAlignment="Top" Width="135" Height="28" Background="#FF4EDC61" FontSize="14" Click="OnCheckUserGuess" Foreground="White">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="4" />
@@ -30,7 +30,7 @@
         <ListBox x:Name="instructionsBox"  HorizontalAlignment="Left" Height="239" Margin="10,123,0,0" VerticalAlignment="Top" Width="764" ToolTip="Conversion instructions" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="#FFFDC9C9" />
         <Label Name="stepAnswer" HorizontalAlignment="Left" Margin="10,551,0,0" VerticalAlignment="Top" Width="492" Foreground="White" Content="" Height="29" />
         <ListBox x:Name="stepsBox" HorizontalAlignment="Left" Height="149" VerticalAlignment="Top" Width="764" Margin="10,402,0,0" ToolTip="Steps for conversion" Background="#FFFDC9C9" />
-        <Button Content="Convert" HorizontalAlignment="Left" Margin="418,10,0,0" VerticalAlignment="Top" Width="173" Height="30" Click="OnConvertClick" Background="#FF4EDC61" FontSize="14" Foreground="White">
+        <Button Content="Convert" HorizontalAlignment="Left" Margin="359,10,0,0" VerticalAlignment="Top" Width="204" Height="30" Click="OnConvertClick" Background="#FF4EDC61" FontSize="14" Foreground="White">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="4" />
@@ -54,7 +54,7 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <Button x:Name="submitAnswer_Copy1" Content="Show Final Answer" HorizontalAlignment="Left" Margin="596,584,0,0" VerticalAlignment="Top" Width="178" Height="29" Background="#FFE4A73D" FontSize="14" Click="OnShowFinalAnswerClick" Foreground="White">
+        <Button x:Name="showFinalAnswerButton" Content="Show Final Answer" HorizontalAlignment="Left" Margin="639,582,0,0" VerticalAlignment="Top" Width="135" Height="29" Background="#FFE4A73D" FontSize="14" Click="OnShowFinalAnswerClick" Foreground="White">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="4" />
@@ -62,10 +62,17 @@
             </Button.Resources>
         </Button>
         <Border BorderThickness="1"
-        CornerRadius="7,0,0,7" Background="#FFA85FF1" Margin="10,584,1070,13" />
-        <Label Content="Your Answer" HorizontalAlignment="Left" Height="28" Margin="18,585,0,0" VerticalAlignment="Top" Foreground="White" />
+        CornerRadius="7,0,0,7" Background="#FFA85FF1" Margin="10,582,1084,16" />
+        <Label Content="Your Answer" HorizontalAlignment="Left" Height="28" Margin="15,584,0,0" VerticalAlignment="Top" Foreground="White" />
         <Border BorderThickness="1"
-            CornerRadius="7,0,0,7" Background="#FFA85FF1" Margin="10,49,1070,547" />
+            CornerRadius="7,0,0,7" Background="#FFA85FF1" Margin="10,49,1084,547" />
         <Label Content="Value" HorizontalAlignment="Left" Height="28" Margin="42,50,0,0" VerticalAlignment="Top" Foreground="White" />
+        <Button x:Name="showAnswer" Content="Show Answer" HorizontalAlignment="Left" Margin="499,582,0,0" VerticalAlignment="Top" Width="135" Height="28" Background="#FF85CDBC" FontSize="14" Click="OnShowAnswerClick" Foreground="White">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="4" />
+                </Style>
+            </Button.Resources>
+        </Button>
     </Grid>
 </Window>
