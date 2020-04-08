@@ -21,6 +21,8 @@ namespace BaseConverter.ConvertUtils
 {
     internal class ConvertUtil
     {
+        private static Random random = new Random();
+
         public string[] PrintUnaryToBinaryInstructions()
         {
             return new string[] { "Unary is based on base 1 numerical system. Binary is based on base 2 numerical system.",
@@ -561,7 +563,7 @@ namespace BaseConverter.ConvertUtils
             {
                 case "A":
                     return 10.ToString();
-                    
+
                 case "B":
                     return 11.ToString();
 
@@ -594,6 +596,102 @@ namespace BaseConverter.ConvertUtils
             char[] arr = s.ToCharArray();
             Array.Reverse(arr);
             return new string(arr);
+        }
+
+        public Tuple<int, string> GenerateRandomConversion()
+        {
+            var conversions = Enum.GetValues(typeof(Conversion));
+            var randomInt = random.Next(0, conversions.Length);
+            var value = "";
+
+            switch ((Conversion)conversions.GetValue(new int[] { randomInt }))
+            {
+                case Conversion.UnaryToBinary:
+
+                case Conversion.UnaryToDecimal:
+
+                case Conversion.UnaryToHexadecimal:
+                    value = GenerateRandomUnary();
+                    break;
+
+                case Conversion.BinaryToUnary:
+
+                case Conversion.BinaryToDecimal:
+
+                case Conversion.BinaryToHexadecimal:
+                    value = GenerateRandomBinary();
+                    break;
+
+                case Conversion.DecimalToUnary:
+
+                case Conversion.DecimalToBinary:
+
+                case Conversion.DecimalToHexadecimal:
+                    value = GenerateRandomDecimal();
+                    break;
+
+                case Conversion.HexadecimalToUnary:
+
+                case Conversion.HexadecimalToBinary:
+
+                case Conversion.HexadecimalToDecimal:
+                    value = GenerateRandomHex();
+                    break;
+            }
+            return Tuple.Create(randomInt, value);
+        }
+
+        private static string GenerateRandomUnary()
+        {
+            var value = random.Next(4, 21);
+            var unary = "";
+            for (int i = 0; i < value; i++)
+            {
+                unary += "1";
+            }
+            return unary;
+        }
+
+        private static string GenerateRandomBinary()
+        {
+            var length = random.Next(4, 9);
+            var value = "";
+
+            for (int i = 0; i < length; i++)
+            {
+                value += random.Next(0, 2);
+            }
+
+            while (!checkIfValidBinary(value))
+            {
+                value = GenerateRandomBinary();
+            }
+            return value;
+        }
+
+        private static bool checkIfValidBinary(string value)
+        {
+            var valid = false;
+            for (int i = 0; i < value.Length; i++)
+            {
+                if (value[i] == '1')
+                {
+                    valid = true;
+                }
+            }
+            return valid;
+        }
+
+        private static string GenerateRandomDecimal()
+        {
+            return random.Next(8, 31).ToString();
+        }
+
+        private static string GenerateRandomHex()
+        {
+            var value = ConvertDecimalToHex(random.Next(1, 16));
+            value += ConvertDecimalToHex(random.Next(1, 16));
+            return value;
         }
     }
 }

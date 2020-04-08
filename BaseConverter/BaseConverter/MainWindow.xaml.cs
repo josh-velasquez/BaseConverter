@@ -382,5 +382,12 @@ namespace BaseConverter
                 return;
             }
         }
+
+        private void OnGenerateRandomConversionClick(object sender, RoutedEventArgs e)
+        {
+            var randomConversion = convertUtil.GenerateRandomConversion();
+            conversionCombobox.SelectedIndex = randomConversion.Item1;
+            value.Text = randomConversion.Item2;
+        }
     }
 }
