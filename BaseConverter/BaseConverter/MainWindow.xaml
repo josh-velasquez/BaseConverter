@@ -18,8 +18,8 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <TextBox x:Name="userGuess" HorizontalAlignment="Left" Height="27" Margin="93,583,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="261" VerticalContentAlignment="Center" ToolTip="Enter your guess" KeyDown="OnEnterPress" BorderBrush="#FFABADB3" Background="#FFD0F3C5" />
-        <Button x:Name="submitAnswer" Content="Check" HorizontalAlignment="Left" Margin="359,582,0,0" VerticalAlignment="Top" Width="150" Height="28" Background="#FF4EDC61" FontSize="14" Click="OnCheckUserGuess" Foreground="White">
+        <TextBox x:Name="userGuess" HorizontalAlignment="Left" Height="30" Margin="93,583,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="261" VerticalContentAlignment="Center" ToolTip="Enter your guess" KeyDown="OnEnterPress" BorderBrush="#FFABADB3" Background="#FFD0F3C5" />
+        <Button x:Name="submitAnswer" Content="Check" HorizontalAlignment="Left" Margin="359,583,0,0" VerticalAlignment="Top" Width="150" Height="30" Background="#FF4EDC61" FontSize="14" Click="OnCheckUserGuess" Foreground="White">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="4" />
@@ -38,23 +38,23 @@
             </Button.Resources>
         </Button>
         <Image HorizontalAlignment="Left" Height="21" Margin="1190,19,0,0" VerticalAlignment="Top" Width="20" Source="help.png" RenderTransformOrigin="0.9,0.321" MouseDown="OnHelpClick" />
-        <TextBox x:Name="workspaceBox" HorizontalAlignment="Left" Height="529" Margin="838,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="372" AcceptsReturn="True" ToolTip="Your workspace" Background="#FFA6B6FF" ScrollViewer.CanContentScroll="True" VerticalScrollBarVisibility="Auto" />
+        <TextBox x:Name="workspaceBox" HorizontalAlignment="Left" Height="528" Margin="838,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="372" AcceptsReturn="True" ToolTip="Your workspace" Background="#FFA6B6FF" ScrollViewer.CanContentScroll="True" VerticalScrollBarVisibility="Auto" />
         <Label Content="Workspace" HorizontalAlignment="Left" Margin="838,11,0,0" VerticalAlignment="Top" Width="120" Foreground="White" FontWeight="Bold" FontSize="14" />
-        <Button x:Name="submitAnswer_Copy" Content="Clear Workspace" HorizontalAlignment="Left" Margin="838,584,0,0" VerticalAlignment="Top" Width="372" Height="29" Background="#FFE84949" FontSize="14" Click="OnClearWorkspace" Foreground="White">
+        <Button x:Name="submitAnswer_Copy" Content="Clear Workspace" HorizontalAlignment="Left" Margin="838,583,0,0" VerticalAlignment="Top" Width="372" Height="30" Background="#FFE84949" FontSize="14" Click="OnClearWorkspace" Foreground="White">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="4" />
                 </Style>
             </Button.Resources>
         </Button>
-        <Button Content="Conversion Table" HorizontalAlignment="Left" Margin="669,85,0,0" VerticalAlignment="Top" Width="150" Height="27" Click="OnShowConversionTableClick" Background="#FF5A8BD3" FontSize="14" Foreground="White">
+        <Button Content="Conversion Table" HorizontalAlignment="Left" Margin="669,85,0,0" VerticalAlignment="Top" Width="150" Height="30" Click="OnShowConversionTableClick" Background="#FF5A8BD3" FontSize="14" Foreground="White">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="4" />
                 </Style>
             </Button.Resources>
         </Button>
-        <Button x:Name="showFinalAnswerButton" Content="Show Final Answer" HorizontalAlignment="Left" Margin="669,582,0,0" VerticalAlignment="Top" Width="150" Height="29" Background="#FFE4A73D" FontSize="14" Click="OnShowFinalAnswerClick" Foreground="White">
+        <Button x:Name="showFinalAnswerButton" Content="Show Final Answer" HorizontalAlignment="Left" Margin="669,583,0,0" VerticalAlignment="Top" Width="150" Height="30" Background="#FFE4A73D" FontSize="14" Click="OnShowFinalAnswerClick" Foreground="White">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="4" />
@@ -62,12 +62,12 @@
             </Button.Resources>
         </Button>
         <Border BorderThickness="1"
-        CornerRadius="7,0,0,7" Background="#FFA85FF1" Margin="10,582,1131,16" />
+        CornerRadius="7,0,0,7" Background="#FFA85FF1" Margin="10,582,1131,14" />
         <Label Content="Your Answer" HorizontalAlignment="Left" Height="28" Margin="15,584,0,0" VerticalAlignment="Top" Foreground="White" />
         <Border BorderThickness="1"
             CornerRadius="7,0,0,7" Background="#FFA85FF1" Margin="10,49,1131,547" />
-        <Label Content="Value" HorizontalAlignment="Left" Height="28" Margin="42,50,0,0" VerticalAlignment="Top" Foreground="White" />
-        <Button x:Name="showAnswer" Content="Show Answer" HorizontalAlignment="Left" Margin="514,582,0,0" VerticalAlignment="Top" Width="150" Height="28" Background="#FF85CDBC" FontSize="14" Click="OnShowAnswerClick" Foreground="White">
+        <Label Content="Value" HorizontalAlignment="Left" Height="28" Margin="37,51,0,0" VerticalAlignment="Top" Foreground="White" />
+        <Button x:Name="showAnswer" Content="Show Answer" HorizontalAlignment="Left" Margin="514,583,0,0" VerticalAlignment="Top" Width="150" Height="30" Background="#FF85CDBC" FontSize="14" Click="OnShowAnswerClick" Foreground="White">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="4" />
