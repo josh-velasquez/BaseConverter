@@ -37,12 +37,12 @@ namespace BaseConverter.ConvertUtils
                 "Example: 111111 Unary to Binary",
                 "Applying Step 1, we get its decimal equivalent to 6. We then floor divide this value by 2 and take note of the remainder.",
                 "So we get the following:",
-                "6 % 2 = 0      (Answer = 0)",
-                "3 % 2 = 1      (Answer = 1)",
-                "1 % 2 = 1      (Answer = 1)",
+                "6 % 2 = 0      (Answer = 0 or 0b0)",
+                "3 % 2 = 1      (Answer = 1 or 0b1)",
+                "1 % 2 = 1      (Answer = 1 or 0b1)",
                 "Then we apply Step 5 and simply read the results from bottom to up so we get, 110 in binary",
                 "Therefore, 111111 in Unary is equivalent to 110 in binary.",
-                "Final Answer = 110"};
+                "Final Answer = 110 or 0b110"};
         }
 
         public Tuple<List<Tuple<string, string, StepType>>, string> UnaryToBinary(string unary)
@@ -103,10 +103,10 @@ namespace BaseConverter.ConvertUtils
                 "Example: 1111111111 Unary to Hexadecimal",
                 "Apply Step 1, we get the decimal value of 10. From here we can floor divide until we get the quotient of 0",
                 "So we get the following:",
-                "10 % 16 = 10       (Answer = A)",
+                "10 % 16 = 10       (Answer = A or 0xA)",
                 "Note that 10 in hexadecimal is equivalent to 'A' (checkout the conversion table if you need help)",
                 "Since this case we only floor divided once, our final answer is just A",
-                "Final Answer = A"};
+                "Final Answer = A or 0xA"};
         }
 
         public Tuple<List<Tuple<string, string, StepType>>, string> UnaryToHexadecimal(string unary)
@@ -234,16 +234,16 @@ namespace BaseConverter.ConvertUtils
                 "(2^2)*1 = 4",
                 "(2^3)*1 = 8",
                 "Then we simply add this value up to get its decimal value, 12, which is equivalent to the hexadecimal value 'C' (checkout the conversion table if you need help)",
-                "Answer = C",
+                "Answer = C or 0xC",
                 "Then we process the next four bits, which are 0111, where we get the following (Note we reset the index back to 0)",
                 "(2^0)*1 = 1",
                 "(2^1)*1 = 2",
                 "(2^2)*1 = 4",
                 "(2^3)*0 = 0",
                 "Which we add up leading to its decimal value, 7, which is equivalent to the hexadecimal value '7'",
-                "Answer = 7",
+                "Answer = 7 or 0x7",
                 "Then we simply read the resulting hexadecimal values from top to bottom to get 7C",
-                "Final Answer = 7C"};
+                "Final Answer = 7C or 0x7C"};
         }
 
         public Tuple<List<Tuple<string, string, StepType>>, string> BinaryToHexadecimal(string binary)
@@ -317,12 +317,12 @@ namespace BaseConverter.ConvertUtils
                 "",
                 "Example: 14 Decimal to Binary",
                 "By continuously applying Step 1 and Step 2 we get the following:",
-                "14 % 2 = 0     (Answer = 0)",
-                "7 % 2 = 1      (Answer = 1)",
-                "3 % 2 = 1      (Answer = 1)",
-                "1 % 2 = 1      (Answer = 1)",
+                "14 % 2 = 0     (Answer = 0 or 0b0)",
+                "7 % 2 = 1      (Answer = 1 or 0b1)",
+                "3 % 2 = 1      (Answer = 1 or 0b1)",
+                "1 % 2 = 1      (Answer = 1 or 0b1)",
                 "Then we simply apply Step 4 and read it from bottom to top we get, 1110",
-                "Final Answer = 1110"};
+                "Final Answer = 1110 or 0b1110"};
         }
 
         public Tuple<List<Tuple<string, string, StepType>>, string> DecimalToBinary(string dec)
@@ -356,11 +356,11 @@ namespace BaseConverter.ConvertUtils
                 "",
                 "Example: 26 Decimal to Hexadecimal",
                 "Applying Step 1 and Step 2 repeatedly we get the following:",
-                "26 % 16 = 10       (Answer = A)",
-                "1 % 16 = 1         (Answer = 1)",
+                "26 % 16 = 10       (Answer = A or 0xA)",
+                "1 % 16 = 1         (Answer = 1 or 0x1)",
                 "Note that the equivalent value of 10 decimal to hexadecimal is 'A', and so on",
                 "Once we have the values calculated, we simply read the results from bottom to top to get 1A",
-                "Final Answer = 1A"};
+                "Final Answer = 1A or 0x1A"};
         }
 
         /// <summary>
@@ -440,15 +440,15 @@ namespace BaseConverter.ConvertUtils
                 "3 % 2 = 1",
                 "1 % 2 = 1",
                 "Where we get the binary value 1100 when reading from bottom to top",
-                "Answer = 1100",
+                "Answer = 1100 or 0b1100",
                 "We then apply Step 1 again and figure out the decimal value for the hexadecimal value 2, which is simply just 2",
                 "Applying Step 2 we get the following",
                 "2 % 2 = 0",
                 "1 % 2 = 1",
                 "Where we get the binary value 01 or 0010 when reading from bottom to top",
-                "Answer = 0010",
+                "Answer = 0010 or 0b0010",
                 "We then apply Step 5 and combine the values together from bottom to top which yields 00101100",
-                "Final Answer = 00101100"};
+                "Final Answer = 00101100 or 0b00101100"};
         }
 
         /// <summary>
