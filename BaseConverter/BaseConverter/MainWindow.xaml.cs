@@ -24,6 +24,7 @@ namespace BaseConverter
             public bool done;
             public int counter;
             public Tuple<List<Tuple<string, string, StepType>>, string> steps;
+            public Conversion conversionType;
         }
 
         private Question currentQuestion;
@@ -42,7 +43,7 @@ namespace BaseConverter
 
         private void OnConvertClick(object sender, RoutedEventArgs e)
         {
-            if (value.Text == "")
+            if (value.Text == "" || !IsValidInput(GetEnum<Conversion>(conversionCombobox.SelectedItem.ToString()), value.Text))
             {
                 ShowMessageBox("Input Error", "Invalid input! Please enter a valid value.");
                 return;
@@ -70,16 +71,20 @@ namespace BaseConverter
 
                     case Conversion.BinaryToUnary:
                         PopulateInstructionBox(convertUtil.PrintBinaryToUnaryInstructions());
+                        newValue = StripPrefix(newValue);
                         PromptUserGuess(convertUtil.BinaryToUnary(newValue));
                         break;
 
                     case Conversion.BinaryToDecimal:
                         PopulateInstructionBox(convertUtil.PrintBinaryToDecimalInstructions());
+                        newValue = StripPrefix(newValue);
                         PromptUserGuess(convertUtil.BinaryToDecimal(newValue));
                         break;
 
                     case Conversion.BinaryToHexadecimal:
                         PopulateInstructionBox(convertUtil.PrintBinaryToHexadecimalInstructions());
+                        newValue = StripPrefix(newValue);
+                        Debug.WriteLine(newValue);
                         PromptUserGuess(convertUtil.BinaryToHexadecimal(newValue));
                         break;
 
@@ -100,16 +105,20 @@ namespace BaseConverter
 
                     case Conversion.HexadecimalToUnary:
                         PopulateInstructionBox(convertUtil.PrintHexadecimalToUnaryInstructions());
+                        newValue = StripPrefix(newValue);
                         PromptUserGuess(convertUtil.HexadecimalToUnary(newValue));
                         break;
 
                     case Conversion.HexadecimalToBinary:
                         PopulateInstructionBox(convertUtil.PrintHexadecimalToBinaryInstructions());
+                        newValue = StripPrefix(newValue);
+                        DebugAnswer(convertUtil.HexadecimalToBinary(newValue));
                         PromptUserGuess(convertUtil.HexadecimalToBinary(newValue));
                         break;
 
                     case Conversion.HexadecimalToDecimal:
                         PopulateInstructionBox(convertUtil.PrintHexadecimalToDecimalInstructions());
+                        newValue = StripPrefix(newValue);
                         PromptUserGuess(convertUtil.HexadecimalToDecimal(newValue));
                         break;
                 }
@@ -118,6 +127,168 @@ namespace BaseConverter
             {
                 ShowMessageBox("Input Error", "Invalid input! Make sure you have no white spaces between your values and is a valid value.");
             }
+        }
+
+        private bool IsValidInput(Conversion conversionType, string input)
+        {
+            switch (conversionType)
+            {
+                case Conversion.UnaryToBinary:
+
+                case Conversion.UnaryToDecimal:
+
+                case Conversion.UnaryToHexadecimal:
+                    return IsUnary(input);
+
+                case Conversion.BinaryToUnary:
+
+                case Conversion.BinaryToDecimal:
+
+                case Conversion.BinaryToHexadecimal:
+                    return IsBinary(input);
+
+                case Conversion.DecimalToUnary:
+
+                case Conversion.DecimalToBinary:
+
+                case Conversion.DecimalToHexadecimal:
+                    return IsDecimal(input);
+
+                case Conversion.HexadecimalToUnary:
+
+                case Conversion.HexadecimalToBinary:
+
+                case Conversion.HexadecimalToDecimal:
+                    return IsHexadecimal(input);
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Check if user input is a unary value
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        private bool IsUnary(string value)
+        {
+            foreach (var chr in value)
+            {
+                if (chr != '1')
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Check if user input is a binary value
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        private bool IsBinary(string value)
+        {
+            char[] validCharacters = new char[] { '0', '1' };
+            string newValue = value;
+            if (value.ToUpper().Contains("0B"))
+            {
+                newValue = value.Replace("0B", "");
+            }
+            foreach (var chr in newValue)
+            {
+                if (!Array.Exists(validCharacters, E => E == chr))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Checks if the user input is a decimal value
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        private bool IsDecimal(string value)
+        {
+            if (int.TryParse(value, out _))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Checks if the user input is a hexadecimal value
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        private bool IsHexadecimal(string value)
+        {
+            char[] validCharacters = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
+            string newValue = value.ToUpper();
+            if (newValue.ToUpper().Contains("0X"))
+            {
+                newValue = value.Replace("0X", "");
+            }
+            foreach (var chr in newValue)
+            {
+                if (!Array.Exists(validCharacters, E => E == chr))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Appends prefixes to answer to compare with user guess
+        /// </summary>
+        /// <param name="conversionType"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        private string AppendPrefix(Conversion conversionType, string value)
+        {
+            string newValue = value;
+            switch (conversionType)
+            {
+                case Conversion.UnaryToBinary:
+
+                case Conversion.DecimalToBinary:
+
+                case Conversion.HexadecimalToBinary:
+                    newValue = value.Insert(0, "0B");
+                    break;
+
+                case Conversion.UnaryToHexadecimal:
+
+                case Conversion.BinaryToHexadecimal:
+
+                case Conversion.DecimalToHexadecimal:
+                    newValue = value.Insert(0, "0X");
+                    break;
+            }
+            Debug.WriteLine(newValue);
+            return newValue;
+        }
+
+        /// <summary>
+        /// Strips prefixes from user's guess (0x,0b)
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        private string StripPrefix(string value)
+        {
+            string newValue = value;
+            if (value.Contains("0X"))
+            {
+                newValue = value.Replace("0X", "");
+            }
+            else if (value.Contains("0B"))
+            {
+                newValue = value.Replace("0B", "");
+            }
+            return newValue;
         }
 
         private void DebugAnswer(Tuple<List<Tuple<string, string, StepType>>, string> result)
@@ -170,10 +341,15 @@ namespace BaseConverter
             {
                 done = false,
                 steps = solution,
-                counter = 0
+                counter = 0,
+                conversionType = GetEnum<Conversion>(conversionCombobox.SelectedItem.ToString())
             };
         }
 
+        /// <summary>
+        /// Gets the solution index for the step
+        /// </summary>
+        /// <returns></returns>
         private int GetIndexSolution()
         {
             int counter = currentQuestion.counter;
@@ -184,6 +360,9 @@ namespace BaseConverter
             return counter;
         }
 
+        /// <summary>
+        /// Scrolls to the bottom of the steps box
+        /// </summary>
         private void ScrollResultsToBottom()
         {
             var border = (Border)VisualTreeHelper.GetChild(stepsBox, 0);
@@ -257,17 +436,32 @@ namespace BaseConverter
             CheckUserGuess();
         }
 
+        /// <summary>
+        /// Toggles the help window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnHelpClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             Help help = new Help();
             help.Show();
         }
 
+        /// <summary>
+        /// Clears the workspace
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnClearWorkspace(object sender, RoutedEventArgs e)
         {
             workspaceBox.Clear();
         }
 
+        /// <summary>
+        /// Shows the conversion table
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnShowConversionTableClick(object sender, RoutedEventArgs e)
         {
             ConversionTable table = new ConversionTable();
@@ -282,6 +476,9 @@ namespace BaseConverter
             }
         }
 
+        /// <summary>
+        /// Checks the users solution to the algorithms solution
+        /// </summary>
         private void CheckUserGuess()
         {
             if (currentQuestion == null) // Check if question is null or done
@@ -290,7 +487,7 @@ namespace BaseConverter
             }
             if (currentQuestion.done || currentQuestion.steps.Item1[0].Item3 == StepType.SingleSolution)
             {
-                if (userGuess.Text.ToUpper() == currentQuestion.steps.Item2)
+                if (userGuess.Text.ToUpper() == currentQuestion.steps.Item2 || userGuess.Text.ToUpper() == AppendPrefix(currentQuestion.conversionType, currentQuestion.steps.Item2))
                 {
                     stepAnswer.Content = "Congrats! You got it right!";
                     stepAnswer.Foreground = Brushes.LightGreen;
@@ -307,7 +504,7 @@ namespace BaseConverter
             }
             var stepAndAnswer = currentQuestion.steps.Item1;
             int indexOfSoln = GetIndexSolution();
-            if (userGuess.Text.ToUpper() == stepAndAnswer[indexOfSoln].Item2) // check if its the right answer
+            if (userGuess.Text.ToUpper() == stepAndAnswer[indexOfSoln].Item2 || userGuess.Text.ToUpper() == AppendPrefix(currentQuestion.conversionType, stepAndAnswer[indexOfSoln].Item2)) // check if its the right answer
             {
                 stepAnswer.Content = "Correct! What's the next answer?";
                 stepAnswer.Foreground = Brushes.LightGreen;
@@ -340,6 +537,11 @@ namespace BaseConverter
             }
         }
 
+        /// <summary>
+        /// Shows the final answer to the question. Resets the question once clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnShowFinalAnswerClick(object sender, RoutedEventArgs e)
         {
             if (currentQuestion == null)
@@ -353,6 +555,11 @@ namespace BaseConverter
             }
         }
 
+        /// <summary>
+        /// Shows the partial answer to the question
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnShowAnswerClick(object sender, RoutedEventArgs e)
         {
             if (currentQuestion == null || currentQuestion.done)
@@ -378,11 +585,17 @@ namespace BaseConverter
             if (currentQuestion.counter == (currentQuestion.steps.Item1.Count))
             {
                 stepAnswer.Content = "What's the final answer?";
+                stepAnswer.Foreground = Brushes.White;
                 currentQuestion.done = true;
                 return;
             }
         }
 
+        /// <summary>
+        /// Generates a random question
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnGenerateRandomConversionClick(object sender, RoutedEventArgs e)
         {
             var randomConversion = convertUtil.GenerateRandomConversion();
