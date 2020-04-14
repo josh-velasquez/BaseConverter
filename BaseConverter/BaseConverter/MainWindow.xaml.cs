@@ -55,69 +55,55 @@ namespace BaseConverter
                 switch (GetEnum<Conversion>(conversionCombobox.SelectedItem.ToString()))
                 {
                     case Conversion.UnaryToBinary:
-                        PopulateInstructionBox(convertUtil.PrintUnaryToBinaryInstructions());
                         PromptUserGuess(convertUtil.UnaryToBinary(newValue));
                         break;
 
                     case Conversion.UnaryToDecimal:
-                        PopulateInstructionBox(convertUtil.PrintUnaryToDecimalInstructions());
                         PromptUserGuess(convertUtil.UnaryToDecimal(newValue));
                         break;
 
                     case Conversion.UnaryToHexadecimal:
-                        PopulateInstructionBox(convertUtil.PrintUnaryToHexadecimalInstructions());
                         PromptUserGuess(convertUtil.UnaryToHexadecimal(newValue));
                         break;
 
                     case Conversion.BinaryToUnary:
-                        PopulateInstructionBox(convertUtil.PrintBinaryToUnaryInstructions());
                         newValue = StripPrefix(newValue);
                         PromptUserGuess(convertUtil.BinaryToUnary(newValue));
                         break;
 
                     case Conversion.BinaryToDecimal:
-                        PopulateInstructionBox(convertUtil.PrintBinaryToDecimalInstructions());
                         newValue = StripPrefix(newValue);
                         PromptUserGuess(convertUtil.BinaryToDecimal(newValue));
                         break;
 
                     case Conversion.BinaryToHexadecimal:
-                        PopulateInstructionBox(convertUtil.PrintBinaryToHexadecimalInstructions());
                         newValue = StripPrefix(newValue);
-                        Debug.WriteLine(newValue);
                         PromptUserGuess(convertUtil.BinaryToHexadecimal(newValue));
                         break;
 
                     case Conversion.DecimalToUnary:
-                        PopulateInstructionBox(convertUtil.PrintDecimalToUnaryInstructions());
                         PromptUserGuess(convertUtil.DecimalToUnary(newValue));
                         break;
 
                     case Conversion.DecimalToBinary:
-                        PopulateInstructionBox(convertUtil.PrintDecimalToBinaryInstructions());
                         PromptUserGuess(convertUtil.DecimalToBinary(newValue));
                         break;
 
                     case Conversion.DecimalToHexadecimal:
-                        PopulateInstructionBox(convertUtil.PrintDecimalToHexadecimalInstructions());
                         PromptUserGuess(convertUtil.DecimalToHexadecimal(newValue));
                         break;
 
                     case Conversion.HexadecimalToUnary:
-                        PopulateInstructionBox(convertUtil.PrintHexadecimalToUnaryInstructions());
                         newValue = StripPrefix(newValue);
                         PromptUserGuess(convertUtil.HexadecimalToUnary(newValue));
                         break;
 
                     case Conversion.HexadecimalToBinary:
-                        PopulateInstructionBox(convertUtil.PrintHexadecimalToBinaryInstructions());
                         newValue = StripPrefix(newValue);
-                        DebugAnswer(convertUtil.HexadecimalToBinary(newValue));
                         PromptUserGuess(convertUtil.HexadecimalToBinary(newValue));
                         break;
 
                     case Conversion.HexadecimalToDecimal:
-                        PopulateInstructionBox(convertUtil.PrintHexadecimalToDecimalInstructions());
                         newValue = StripPrefix(newValue);
                         PromptUserGuess(convertUtil.HexadecimalToDecimal(newValue));
                         break;
@@ -601,6 +587,63 @@ namespace BaseConverter
             var randomConversion = convertUtil.GenerateRandomConversion();
             conversionCombobox.SelectedIndex = randomConversion.Item1;
             value.Text = randomConversion.Item2;
+        }
+
+        private void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            instructionsBox.Items.Clear();
+            string newValue = value.Text.ToUpper();
+
+            switch (GetEnum<Conversion>(conversionCombobox.SelectedItem.ToString()))
+            {
+                case Conversion.UnaryToBinary:
+                    PopulateInstructionBox(convertUtil.PrintUnaryToBinaryInstructions());
+                    break;
+
+                case Conversion.UnaryToDecimal:
+                    PopulateInstructionBox(convertUtil.PrintUnaryToDecimalInstructions());
+                    break;
+
+                case Conversion.UnaryToHexadecimal:
+                    PopulateInstructionBox(convertUtil.PrintUnaryToHexadecimalInstructions());
+                    break;
+
+                case Conversion.BinaryToUnary:
+                    PopulateInstructionBox(convertUtil.PrintBinaryToUnaryInstructions());
+                    break;
+
+                case Conversion.BinaryToDecimal:
+                    PopulateInstructionBox(convertUtil.PrintBinaryToDecimalInstructions());
+                    break;
+
+                case Conversion.BinaryToHexadecimal:
+                    PopulateInstructionBox(convertUtil.PrintBinaryToHexadecimalInstructions());
+                    break;
+
+                case Conversion.DecimalToUnary:
+                    PopulateInstructionBox(convertUtil.PrintDecimalToUnaryInstructions());
+                    break;
+
+                case Conversion.DecimalToBinary:
+                    PopulateInstructionBox(convertUtil.PrintDecimalToBinaryInstructions());
+                    break;
+
+                case Conversion.DecimalToHexadecimal:
+                    PopulateInstructionBox(convertUtil.PrintDecimalToHexadecimalInstructions());
+                    break;
+
+                case Conversion.HexadecimalToUnary:
+                    PopulateInstructionBox(convertUtil.PrintHexadecimalToUnaryInstructions());
+                    break;
+
+                case Conversion.HexadecimalToBinary:
+                    PopulateInstructionBox(convertUtil.PrintHexadecimalToBinaryInstructions());
+                    break;
+
+                case Conversion.HexadecimalToDecimal:
+                    PopulateInstructionBox(convertUtil.PrintHexadecimalToDecimalInstructions());
+                    break;
+            }
         }
     }
 }

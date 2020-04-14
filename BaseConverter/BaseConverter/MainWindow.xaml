@@ -8,7 +8,7 @@
         ResizeMode="NoResize"
         Title="Base Converter" Height="665.5" Width="1240.5">
     <Grid Background="#FF353A40">
-        <ComboBox x:Name="conversionCombobox" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="344" Height="30" FontFamily="Rockwell" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="White" />
+        <ComboBox x:Name="conversionCombobox" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="344" Height="30" FontFamily="Rockwell" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="White" SelectionChanged="OnSelectionChanged" />
         <TextBox x:Name="value" HorizontalAlignment="Left" Height="28" Margin="93,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="726" VerticalContentAlignment="Center" ToolTip="Enter your conversion value" Background="#FFD0F3C5" />
         <Label Content="Result" HorizontalAlignment="Left" Margin="10,368,0,0" VerticalAlignment="Top" Width="54" Foreground="White" FontWeight="Bold" FontSize="14" />
         <Button Content="Reset" HorizontalAlignment="Left" Margin="514,10,0,0" VerticalAlignment="Top" Width="150" Height="30" Click="OnResetClick" Background="#FFE84949" FontSize="14" Foreground="White" RenderTransformOrigin="1.225,0.55">
@@ -37,7 +37,7 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <Image HorizontalAlignment="Left" Height="21" Margin="1190,19,0,0" VerticalAlignment="Top" Width="20" Source="help.png" RenderTransformOrigin="0.9,0.321" MouseDown="OnHelpClick" />
+        <Image HorizontalAlignment="Left" Height="21" Margin="1190,19,0,0" VerticalAlignment="Top" Width="20" Source="help.png" RenderTransformOrigin="0.9,0.321" MouseDown="OnHelpClick" ToolTip="Help" />
         <TextBox x:Name="workspaceBox" HorizontalAlignment="Left" Height="528" Margin="838,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="372" AcceptsReturn="True" ToolTip="Your workspace" Background="#FFA6B6FF" ScrollViewer.CanContentScroll="True" VerticalScrollBarVisibility="Auto" />
         <Label Content="Workspace" HorizontalAlignment="Left" Margin="838,11,0,0" VerticalAlignment="Top" Width="120" Foreground="White" FontWeight="Bold" FontSize="14" />
         <Button x:Name="submitAnswer_Copy" Content="Clear Workspace" HorizontalAlignment="Left" Margin="838,583,0,0" VerticalAlignment="Top" Width="372" Height="30" Background="#FFE84949" FontSize="14" Click="OnClearWorkspace" Foreground="White">
