@@ -34,11 +34,18 @@ namespace BaseConverter
         public MainWindow()
         {
             InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             foreach (var val in Enum.GetValues(typeof(Conversion)))
             {
                 conversionCombobox.Items.Add(GetDescription(val));
             }
             conversionCombobox.SelectedIndex = 0;
+
+            // Show instructions page
+            Instructions instructions = new Instructions();
+            instructions.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            instructions.Topmost = true;
+            instructions.Show();
         }
 
         private void OnConvertClick(object sender, RoutedEventArgs e)

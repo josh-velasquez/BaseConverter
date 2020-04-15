@@ -4,9 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BaseConverter"
+        ResizeMode="NoResize"
         mc:Ignorable="d"
-        Title="Instructions" Height="450" Width="800">
-    <Grid>
-        
+        Title="Instructions" Height="568.124" Width="506.105">
+    <Grid Background="#FF353A40">
+        <TextBox HorizontalAlignment="Left" Height="469" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="469" ScrollViewer.CanContentScroll="True" VerticalScrollBarVisibility="Auto" IsReadOnly="True" Background="#FFFDC9C9" />
+        <Button x:Name="dismiss" Content="Dismiss" HorizontalAlignment="Left" Margin="10,484,0,0" VerticalAlignment="Top" Width="469" Height="30" Background="#FFE84949" FontSize="14" Click="OnDismissClick" Foreground="White">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="4" />
+                </Style>
+            </Button.Resources>
+        </Button>
     </Grid>
 </Window>

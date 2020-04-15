@@ -23,5 +23,10 @@ namespace BaseConverter
         {
             InitializeComponent();
         }
+
+        private void OnDismissClick(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
