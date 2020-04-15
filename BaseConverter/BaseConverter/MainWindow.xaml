@@ -10,7 +10,7 @@
     <Grid Background="#FF353A40">
         <ComboBox x:Name="conversionCombobox" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="344" Height="30" FontFamily="Rockwell" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="White" SelectionChanged="OnSelectionChanged" />
         <TextBox x:Name="value" HorizontalAlignment="Left" Height="28" Margin="93,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="726" VerticalContentAlignment="Center" ToolTip="Enter your conversion value" Background="#FFD0F3C5" />
-        <Label Content="Result" HorizontalAlignment="Left" Margin="10,368,0,0" VerticalAlignment="Top" Width="54" Foreground="White" FontWeight="Bold" FontSize="14" />
+        <Label Content="Result" HorizontalAlignment="Left" Margin="10,430,0,0" VerticalAlignment="Top" Width="54" Foreground="White" FontWeight="Bold" FontSize="14" />
         <Button Content="Reset" HorizontalAlignment="Left" Margin="514,10,0,0" VerticalAlignment="Top" Width="150" Height="30" Click="OnResetClick" Background="#FFE84949" FontSize="14" Foreground="White" RenderTransformOrigin="1.225,0.55">
             <Button.Resources>
                 <Style TargetType="Border">
@@ -18,8 +18,8 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <TextBox x:Name="userGuess" HorizontalAlignment="Left" Height="30" Margin="93,583,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="261" VerticalContentAlignment="Center" ToolTip="Enter your guess" KeyDown="OnEnterPress" BorderBrush="#FFABADB3" Background="#FFD0F3C5" />
-        <Button x:Name="submitAnswer" Content="Check" HorizontalAlignment="Left" Margin="359,583,0,0" VerticalAlignment="Top" Width="150" Height="30" Background="#FF4EDC61" FontSize="14" Click="OnCheckUserGuess" Foreground="White">
+        <TextBox x:Name="userGuess" HorizontalAlignment="Left" Height="30" Margin="93,394,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="261" VerticalContentAlignment="Center" ToolTip="Enter your guess" KeyDown="OnEnterPress" BorderBrush="#FFABADB3" Background="#FFD0F3C5" />
+        <Button x:Name="submitAnswer" Content="Check" HorizontalAlignment="Left" Margin="359,394,0,0" VerticalAlignment="Top" Width="150" Height="30" Background="#FF4EDC61" FontSize="14" Click="OnCheckUserGuess" Foreground="White">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="4" />
@@ -28,8 +28,8 @@
         </Button>
         <Label Content="Instructions" HorizontalAlignment="Left" Height="30" Margin="10,85,0,0" VerticalAlignment="Top" Width="110" Foreground="White" FontWeight="Bold" FontSize="14" />
         <ListBox x:Name="instructionsBox"  HorizontalAlignment="Left" Height="239" Margin="10,123,0,0" VerticalAlignment="Top" Width="809" ToolTip="Conversion instructions" ScrollViewer.HorizontalScrollBarVisibility="Auto" Background="#FFFDC9C9" />
-        <Label Name="stepAnswer" HorizontalAlignment="Left" Margin="10,551,0,0" VerticalAlignment="Top" Width="492" Foreground="White" Content="" Height="29" />
-        <ListBox x:Name="stepsBox" HorizontalAlignment="Left" Height="149" VerticalAlignment="Top" Width="809" Margin="10,402,0,0" ToolTip="Steps for conversion" Background="#FFFDC9C9" />
+        <Label Name="stepAnswer" HorizontalAlignment="Left" Margin="10,362,0,0" VerticalAlignment="Top" Width="492" Foreground="White" Content="" Height="29" />
+        <ListBox x:Name="stepsBox" HorizontalAlignment="Left" Height="149" VerticalAlignment="Top" Width="809" Margin="10,464,0,0" ToolTip="Steps for conversion" Background="#FFFDC9C9" />
         <Button Content="Convert" HorizontalAlignment="Left" Margin="359,10,0,0" VerticalAlignment="Top" Width="150" Height="30" Click="OnConvertClick" Background="#FF4EDC61" FontSize="14" Foreground="White">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
@@ -54,7 +54,7 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <Button x:Name="showFinalAnswerButton" Content="Show Final Answer" HorizontalAlignment="Left" Margin="669,583,0,0" VerticalAlignment="Top" Width="150" Height="30" Background="#FFE4A73D" FontSize="14" Click="OnShowFinalAnswerClick" Foreground="White">
+        <Button x:Name="showFinalAnswerButton" Content="Show Final Answer" HorizontalAlignment="Left" Margin="669,394,0,0" VerticalAlignment="Top" Width="150" Height="30" Background="#FFE4A73D" FontSize="14" Click="OnShowFinalAnswerClick" Foreground="White">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="4" />
@@ -62,12 +62,12 @@
             </Button.Resources>
         </Button>
         <Border BorderThickness="1"
-        CornerRadius="7,0,0,7" Background="#FFA85FF1" Margin="10,582,1131,14" />
-        <Label Content="Your Answer" HorizontalAlignment="Left" Height="28" Margin="15,584,0,0" VerticalAlignment="Top" Foreground="White" />
+        CornerRadius="7,0,0,7" Background="#FFA85FF1" Margin="10,393,1131,202" />
+        <Label Content="Your Answer" HorizontalAlignment="Left" Height="28" Margin="15,395,0,0" VerticalAlignment="Top" Foreground="White" />
         <Border BorderThickness="1"
             CornerRadius="7,0,0,7" Background="#FFA85FF1" Margin="10,49,1131,547" />
         <Label Content="Value" HorizontalAlignment="Left" Height="28" Margin="37,51,0,0" VerticalAlignment="Top" Foreground="White" />
-        <Button x:Name="showAnswer" Content="Show Answer" HorizontalAlignment="Left" Margin="514,583,0,0" VerticalAlignment="Top" Width="150" Height="30" Background="#FF85CDBC" FontSize="14" Click="OnShowAnswerClick" Foreground="White">
+        <Button x:Name="showAnswer" Content="Show Answer" HorizontalAlignment="Left" Margin="514,394,0,0" VerticalAlignment="Top" Width="150" Height="30" Background="#FF85CDBC" FontSize="14" Click="OnShowAnswerClick" Foreground="White">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="4" />

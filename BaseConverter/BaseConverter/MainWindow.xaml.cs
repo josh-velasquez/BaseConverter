@@ -55,7 +55,6 @@ namespace BaseConverter
                 ShowMessageBox("Input Error", "Invalid input! Please enter a valid value.");
                 return;
             }
-            instructionsBox.Items.Clear();
             string newValue = value.Text.ToUpper();
             try
             {
