@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Diagnostics;
+using System.Windows;
 
 namespace BaseConverter
 {
@@ -14,7 +15,12 @@ namespace BaseConverter
 
         private void OnDismissClick(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Close();
+        }
+
+        private void UnaryRequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
+        {
+            Process.Start(e.Uri.AbsoluteUri.ToString());
         }
     }
 }

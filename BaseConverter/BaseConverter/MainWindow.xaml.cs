@@ -41,13 +41,14 @@ namespace BaseConverter
             }
             conversionCombobox.SelectedIndex = 0;
 
-            // Show instructions page
-            Instructions instructions = new Instructions();
-            instructions.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            instructions.Topmost = true;
-            instructions.Show();
+            ShowInstructions();
         }
 
+        /// <summary>
+        /// When convert button is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnConvertClick(object sender, RoutedEventArgs e)
         {
             if (value.Text == "" || !IsValidInput(GetEnum<Conversion>(conversionCombobox.SelectedItem.ToString()), value.Text))
@@ -121,6 +122,12 @@ namespace BaseConverter
             }
         }
 
+        /// <summary>
+        /// Checks user input if valid
+        /// </summary>
+        /// <param name="conversionType"></param>
+        /// <param name="input"></param>
+        /// <returns></returns>
         private bool IsValidInput(Conversion conversionType, string input)
         {
             switch (conversionType)
@@ -283,22 +290,6 @@ namespace BaseConverter
             return newValue;
         }
 
-        private void DebugAnswer(Tuple<List<Tuple<string, string, StepType>>, string> result)
-        {
-            foreach (var step in result.Item1)
-            {
-                if (step.Item3 == StepType.SubStep)
-                {
-                    Debug.WriteLine("\tStep: " + step.Item1 + " Ans: " + step.Item2 + " Type: " + step.Item3);
-                }
-                else
-                {
-                    Debug.WriteLine("Step: " + step.Item1 + " Ans: " + step.Item2 + " Type: " + step.Item3);
-                }
-            }
-            Debug.WriteLine("Final Answer: " + result.Item2);
-        }
-
         /// <summary>
         /// Displays a pop up message
         /// </summary>
@@ -328,7 +319,7 @@ namespace BaseConverter
         private void PromptUserGuess(Tuple<List<Tuple<string, string, StepType>>, string> solution)
         {
             stepAnswer.Foreground = Brushes.White;
-            stepAnswer.Content = "Your turn to guess! Enter your answer below.";
+            stepAnswer.Text = "Your turn to guess! Enter your answer below.";
             currentQuestion = new Question()
             {
                 done = false,
@@ -418,7 +409,7 @@ namespace BaseConverter
             userGuess.Text = "";
             instructionsBox.Items.Clear();
             currentQuestion = null;
-            stepAnswer.Content = "";
+            stepAnswer.Text = "";
             stepAnswer.Foreground = Brushes.White;
             workspaceBox.Clear();
         }
@@ -426,17 +417,6 @@ namespace BaseConverter
         private void OnCheckUserGuess(object sender, RoutedEventArgs e)
         {
             CheckUserGuess();
-        }
-
-        /// <summary>
-        /// Toggles the help window
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void OnHelpClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            Help help = new Help();
-            help.Show();
         }
 
         /// <summary>
@@ -481,7 +461,7 @@ namespace BaseConverter
             {
                 if (userGuess.Text.ToUpper() == currentQuestion.steps.Item2 || userGuess.Text.ToUpper() == AppendPrefix(currentQuestion.conversionType, currentQuestion.steps.Item2))
                 {
-                    stepAnswer.Content = "Congrats! You got it right!";
+                    stepAnswer.Text = "Congrats! You got it right!";
                     stepAnswer.Foreground = Brushes.LightGreen;
                     stepsBox.Items.Add("Final Answer: " + currentQuestion.steps.Item2);
                     currentQuestion = null;
@@ -489,7 +469,7 @@ namespace BaseConverter
                 }
                 else
                 {
-                    stepAnswer.Content = "Wrong! Please try again.";
+                    stepAnswer.Text = "Wrong! Please try again.";
                     stepAnswer.Foreground = Brushes.Red;
                 }
                 return;
@@ -498,7 +478,7 @@ namespace BaseConverter
             int indexOfSoln = GetIndexSolution();
             if (userGuess.Text.ToUpper() == stepAndAnswer[indexOfSoln].Item2 || userGuess.Text.ToUpper() == AppendPrefix(currentQuestion.conversionType, stepAndAnswer[indexOfSoln].Item2)) // check if its the right answer
             {
-                stepAnswer.Content = "Correct! What's the next answer?";
+                stepAnswer.Text = "Correct! What's the next answer?";
                 stepAnswer.Foreground = Brushes.LightGreen;
                 stepsBox.Items.Add(stepAndAnswer[currentQuestion.counter].Item1 + " = " + stepAndAnswer[currentQuestion.counter].Item2);
                 if (stepAndAnswer[currentQuestion.counter].Item3 == StepType.MainStep)
@@ -517,14 +497,14 @@ namespace BaseConverter
                 // Check if guessing the final answer
                 if (currentQuestion.counter == (currentQuestion.steps.Item1.Count))
                 {
-                    stepAnswer.Content = "Correct! What's the final answer?";
+                    stepAnswer.Text = "Correct! What's the final answer?";
                     currentQuestion.done = true;
                     return;
                 }
             }
             else
             {
-                stepAnswer.Content = "Wrong! Try again!";
+                stepAnswer.Text = "Wrong! Try again!";
                 stepAnswer.Foreground = Brushes.Red;
             }
         }
@@ -556,7 +536,7 @@ namespace BaseConverter
         {
             if (currentQuestion == null || currentQuestion.done)
             {
-                stepAnswer.Content = "";
+                stepAnswer.Text = "";
                 return;
             }
             var stepAndAnswer = currentQuestion.steps.Item1;
@@ -576,7 +556,7 @@ namespace BaseConverter
             ScrollResultsToBottom();
             if (currentQuestion.counter == (currentQuestion.steps.Item1.Count))
             {
-                stepAnswer.Content = "What's the final answer?";
+                stepAnswer.Text = "What's the final answer?";
                 stepAnswer.Foreground = Brushes.White;
                 currentQuestion.done = true;
                 return;
@@ -595,6 +575,11 @@ namespace BaseConverter
             value.Text = randomConversion.Item2;
         }
 
+        /// <summary>
+        /// Updates the conversion instructions box when selection is changed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             instructionsBox.Items.Clear();
@@ -650,6 +635,47 @@ namespace BaseConverter
                     PopulateInstructionBox(convertUtil.PrintHexadecimalToDecimalInstructions());
                     break;
             }
+        }
+
+        /// <summary>
+        /// Shows the instructions page
+        /// </summary>
+        private void ShowInstructions()
+        {
+            Instructions instructions = new Instructions();
+            instructions.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            instructions.Topmost = true;
+            instructions.Show();
+        }
+
+        /// <summary>
+        /// Instruction icon click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnInstructionsClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            ShowInstructions();
+        }
+
+        /// <summary>
+        /// Used for debugging
+        /// </summary>
+        /// <param name="result"></param>
+        private void DebugAnswer(Tuple<List<Tuple<string, string, StepType>>, string> result)
+        {
+            foreach (var step in result.Item1)
+            {
+                if (step.Item3 == StepType.SubStep)
+                {
+                    Debug.WriteLine("\tStep: " + step.Item1 + " Ans: " + step.Item2 + " Type: " + step.Item3);
+                }
+                else
+                {
+                    Debug.WriteLine("Step: " + step.Item1 + " Ans: " + step.Item2 + " Type: " + step.Item3);
+                }
+            }
+            Debug.WriteLine("Final Answer: " + result.Item2);
         }
     }
 }

@@ -2,13 +2,11 @@ C:\Users\joshv\Desktop\Github\BaseConverter\BaseConverter\BaseConverter\bin\Rele
 C:\Users\joshv\Desktop\Github\BaseConverter\BaseConverter\BaseConverter\bin\Release\BaseConverter.exe
 C:\Users\joshv\Desktop\Github\BaseConverter\BaseConverter\BaseConverter\bin\Release\BaseConverter.pdb
 C:\Users\joshv\Desktop\Github\BaseConverter\BaseConverter\BaseConverter\obj\Release\ConversionTable.g.cs
-C:\Users\joshv\Desktop\Github\BaseConverter\BaseConverter\BaseConverter\obj\Release\Help.g.cs
 C:\Users\joshv\Desktop\Github\BaseConverter\BaseConverter\BaseConverter\obj\Release\MainWindow.g.cs
 C:\Users\joshv\Desktop\Github\BaseConverter\BaseConverter\BaseConverter\obj\Release\App.g.cs
 C:\Users\joshv\Desktop\Github\BaseConverter\BaseConverter\BaseConverter\obj\Release\BaseConverter_MarkupCompile.cache
 C:\Users\joshv\Desktop\Github\BaseConverter\BaseConverter\BaseConverter\obj\Release\BaseConverter_MarkupCompile.lref
 C:\Users\joshv\Desktop\Github\BaseConverter\BaseConverter\BaseConverter\obj\Release\ConversionTable.baml
-C:\Users\joshv\Desktop\Github\BaseConverter\BaseConverter\BaseConverter\obj\Release\Help.baml
 C:\Users\joshv\Desktop\Github\BaseConverter\BaseConverter\BaseConverter\obj\Release\MainWindow.baml
 C:\Users\joshv\Desktop\Github\BaseConverter\BaseConverter\BaseConverter\obj\Release\BaseConverter.g.resources
 C:\Users\joshv\Desktop\Github\BaseConverter\BaseConverter\BaseConverter\obj\Release\BaseConverter.Properties.Resources.resources

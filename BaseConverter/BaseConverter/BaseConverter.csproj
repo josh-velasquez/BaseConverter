@@ -62,10 +62,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Help.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Instructions.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -83,9 +79,6 @@
     </Compile>
     <Compile Include="ConvertUtils\Conversion.cs" />
     <Compile Include="ConvertUtils\ConvertUtil.cs" />
-    <Compile Include="Help.xaml.cs">
-      <DependentUpon>Help.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ConvertUtils\StepType.cs" />
     <Compile Include="Instructions.xaml.cs">
       <DependentUpon>Instructions.xaml</DependentUpon>

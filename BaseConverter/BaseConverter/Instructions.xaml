@@ -6,15 +6,64 @@
         xmlns:local="clr-namespace:BaseConverter"
         ResizeMode="NoResize"
         mc:Ignorable="d"
-        Title="Instructions" Height="568.124" Width="506.105">
+        Title="Instructions" Height="755.24" Width="506.105">
     <Grid Background="#FF353A40">
-        <TextBox HorizontalAlignment="Left" Height="469" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="469" ScrollViewer.CanContentScroll="True" VerticalScrollBarVisibility="Auto" IsReadOnly="True" Background="#FFFDC9C9" />
-        <Button x:Name="dismiss" Content="Dismiss" HorizontalAlignment="Left" Margin="10,484,0,0" VerticalAlignment="Top" Width="469" Height="30" Background="#FFE84949" FontSize="14" Click="OnDismissClick" Foreground="White">
+        <Button x:Name="dismiss" Content="Dismiss" HorizontalAlignment="Left" Margin="10,672,0,0" VerticalAlignment="Top" Width="469" Height="30" Background="#FFE84949" FontSize="14" Click="OnDismissClick" Foreground="White">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="4" />
                 </Style>
             </Button.Resources>
         </Button>
+        <Label Content="Base Converter" Margin="162,10,187,0" VerticalAlignment="Top" HorizontalAlignment="Center" Width="151" FontFamily="Ro" FontSize="20" FontWeight="Bold" HorizontalContentAlignment="Center" Foreground="White" />
+        <Label Content="Author: Josh Velasquez" HorizontalAlignment="Center" Margin="162,44,187,0" VerticalAlignment="Top" Width="151" HorizontalContentAlignment="Center" Foreground="White" />
+        <RichTextBox HorizontalAlignment="Left" Height="588" Margin="10,79,0,0" VerticalAlignment="Top" IsReadOnly="True" Width="469" Background="#FFFDC9C9" IsDocumentEnabled="True">
+            <FlowDocument>
+                <Paragraph>
+                    <Run Text="Converts between" />
+                    <Hyperlink NavigateUri="https://en.wikipedia.org/wiki/Unary_numeral_system" RequestNavigate="UnaryRequestNavigate">
+                        unary,
+                    </Hyperlink>
+                    <Hyperlink NavigateUri="https://en.wikipedia.org/wiki/Binary_number" RequestNavigate="UnaryRequestNavigate">binary,
+                    </Hyperlink>
+                    <Hyperlink NavigateUri="https://en.wikipedia.org/wiki/Decimal" RequestNavigate="UnaryRequestNavigate">decimal,
+                    </Hyperlink>
+                    <Run Text="and" />
+                    <Hyperlink NavigateUri="https://simple.wikipedia.org/wiki/Hexadecimal" RequestNavigate="UnaryRequestNavigate">hexadecimal
+                    </Hyperlink>
+                    <Run Text=". Choose a conversion and enter your value to convert. The instructions box will tell the steps in order to convert from your chosen base to another. Enter your answer for the steps in the &quot;Your answer&quot; box and see if you got it correct. Once you have that done, see if you got the overall correct answer at the end." />
+                </Paragraph>
+                <Paragraph>
+                    <Run Text="A workspace is provided to you so that you can write and see your calculations while converting from one to another. If you're having a hard time converting, click the conversion table button to help you out during conversions." />
+                </Paragraph>
+                <Paragraph>
+                    <Run Text="If you want to practice some more conversions, click the random conversion button to randomly generate a problem for you to try." />
+                </Paragraph>
+                <Paragraph>
+                    <Run Text="If you want to try another conversion, just click the reset button and it will clear every everything." />
+                </Paragraph>
+                <Paragraph>
+                    <Run Text="Tips:" />
+                </Paragraph>
+                <Paragraph>
+                    <Run Text="1. The &quot;Answer&quot; and &quot;Final Answer&quot; denoted for every example is the sample answer that you should enter in the &quot;Your Answer&quot;" />
+                </Paragraph>
+                <Paragraph>
+                    <Run Text="2. Remember that when your dividend is greater than your divisor, the dividend is the remainder (ex. 6/16 = 0 and the remainder is 6)." />
+                </Paragraph>
+                <Paragraph>
+                    <Run Text="3. Floor division is an important concept that is heavily used in this conversion. To floor divide, simply round your quotient to its lowest next value. (ex. 3/2 = 1.5 but its floor division is equal to 1 with a remainder of 1)." />
+                </Paragraph>
+                <Paragraph>
+                    <Run Text="4. Along with floor division, modulo (symbolized by %) is also another important concept. It is used to calculate the remainder of your equation." />
+                </Paragraph>
+                <Paragraph>
+                    <Run Text="5. Each hexadecimal digit corresponds to four binary digits. So if you have two hexadecimal digits, you should get eight binary digits in the end." />
+                </Paragraph>
+                <Paragraph>
+                    <Run Text="If you want to see this again, click the icon on the top right beside the workspace to bring this window up again!" />
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
     </Grid>
 </Window>
