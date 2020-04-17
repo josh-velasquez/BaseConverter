@@ -21,47 +21,77 @@
             <FlowDocument>
                 <Paragraph>
                     <Run Text="Converts between" />
-                    <Hyperlink NavigateUri="https://en.wikipedia.org/wiki/Unary_numeral_system" RequestNavigate="UnaryRequestNavigate">
-                        unary,
+                    <Run Text=" " />
+                    <Hyperlink NavigateUri="https://en.wikipedia.org/wiki/Unary_numeral_system">
+                        <Run Text="unary," />
                     </Hyperlink>
-                    <Hyperlink NavigateUri="https://en.wikipedia.org/wiki/Binary_number" RequestNavigate="UnaryRequestNavigate">binary,
+                    <Run Text=" " />
+                    <Hyperlink NavigateUri="https://en.wikipedia.org/wiki/Binary_number">
+                        <Run Text="binary," />
                     </Hyperlink>
-                    <Hyperlink NavigateUri="https://en.wikipedia.org/wiki/Decimal" RequestNavigate="UnaryRequestNavigate">decimal,
+                    <Run Text=" " />
+                    <Hyperlink NavigateUri="https://en.wikipedia.org/wiki/Decimal">
+                        <Run Text="decimal," />
                     </Hyperlink>
+                    <Run Text=" " />
                     <Run Text="and" />
-                    <Hyperlink NavigateUri="https://simple.wikipedia.org/wiki/Hexadecimal" RequestNavigate="UnaryRequestNavigate">hexadecimal
+                    <Run Text=" " />
+                    <Hyperlink NavigateUri="https://simple.wikipedia.org/wiki/Hexadecimal">
+                        <Run Text="hexadecimal" />
                     </Hyperlink>
+                    <Run Text=" " />
                     <Run Text=". Choose a conversion and enter your value to convert. The instructions box will tell the steps in order to convert from your chosen base to another. Enter your answer for the steps in the &quot;Your answer&quot; box and see if you got it correct. Once you have that done, see if you got the overall correct answer at the end." />
                 </Paragraph>
                 <Paragraph>
                     <Run Text="A workspace is provided to you so that you can write and see your calculations while converting from one to another. If you're having a hard time converting, click the conversion table button to help you out during conversions." />
                 </Paragraph>
                 <Paragraph>
-                    <Run Text="If you want to practice some more conversions, click the random conversion button to randomly generate a problem for you to try." />
+                    <Run FontWeight="Bold" Text="Get Started:" />
                 </Paragraph>
                 <Paragraph>
-                    <Run Text="If you want to try another conversion, just click the reset button and it will clear every everything." />
+                    <Run Text="To get started, select a conversion from the dropdown menu and enter the value to be converted. Once you have the value entered, click the Convert button to start the conversion process. The program will ask you to enter the values for the conversion step until you arrive the final converted value! If you are stumped on a step don't worry! Click the Show Answer button and the answer for the step will be shown. If you want to skip ahead to the final answer, simply click the Show Final Answer button to do so." />
                 </Paragraph>
                 <Paragraph>
-                    <Run Text="Tips:" />
+                    <Run Text="Want some more practice? C" />
+                    <Run Text="lick the random conversion button to randomly generate a problem for you to try." />
                 </Paragraph>
                 <Paragraph>
-                    <Run Text="1. The &quot;Answer&quot; and &quot;Final Answer&quot; denoted for every example is the sample answer that you should enter in the &quot;Your Answer&quot;" />
+                    <Run Text="Once you're ready for another conversion you can" />
+                    <Run Text=" click the reset button and it will clear " />
+                    <Run Text="everything up!" />
+                </Paragraph>
+                <Paragraph>
+                    <Run FontWeight="Bold" Text="Tips:" />
+                </Paragraph>
+                <Paragraph>
+                    <Run Text="1. The &quot;Answer&quot; and &quot;Final Answer&quot; " />
+                    <Run Text="found in the Conversion Instructions " />
+                    <Run Text="denoted for every example is the sample answer that you should enter in the &quot;Your Answer&quot;" />
+                    <Run Text=" box below" />
                 </Paragraph>
                 <Paragraph>
                     <Run Text="2. Remember that when your dividend is greater than your divisor, the dividend is the remainder (ex. 6/16 = 0 and the remainder is 6)." />
                 </Paragraph>
                 <Paragraph>
-                    <Run Text="3. Floor division is an important concept that is heavily used in this conversion. To floor divide, simply round your quotient to its lowest next value. (ex. 3/2 = 1.5 but its floor division is equal to 1 with a remainder of 1)." />
+                    <Run Text="3. Floor division is an important concept that is heavily used in this conversion. To floor divide, simply round your quotient to its lowest next value" />
+                    <Run Text=" " />
+                    <Run Text="(ex. 3/2 = " />
+                    <Run Text="1, 5/4 = 1, etc... )." />
                 </Paragraph>
                 <Paragraph>
                     <Run Text="4. Along with floor division, modulo (symbolized by %) is also another important concept. It is used to calculate the remainder of your equation." />
+                    <Run Text=" To calculate the modulo, subtract the dividend by the divisor multiplied by the rounded quotient (ex. 5/2 = 2, 5 - (2 * 2) = 1 and so the remainder is 1 or 5 % 2 = 1)." />
                 </Paragraph>
                 <Paragraph>
-                    <Run Text="5. Each hexadecimal digit corresponds to four binary digits. So if you have two hexadecimal digits, you should get eight binary digits in the end." />
+                    <Run Text="5. Each hexadecimal digit corresponds to four binary digits. So if you have two hexadecimal digits, you should get" />
+                    <Run Text=" a total of" />
+                    <Run Text=" eight binary digits in the end." />
                 </Paragraph>
                 <Paragraph>
-                    <Run Text="If you want to see this again, click the icon on the top right beside the workspace to bring this window up again!" />
+                    <Run Text="If you want to see this" />
+                    <Run Text=" windows" />
+                    <Run Text=" again, click the icon on the top right beside the" />
+                    <Run Text=" Workspace!" />
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>

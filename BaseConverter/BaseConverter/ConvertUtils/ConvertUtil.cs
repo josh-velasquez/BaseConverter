@@ -23,7 +23,175 @@ namespace BaseConverter.ConvertUtils
     {
         private static Random random = new Random();
 
-        public string[] PrintUnaryToBinaryInstructions()
+        /// <summary>
+        /// Gets the instructions for the conversion type
+        /// </summary>
+        /// <param name="convertType"></param>
+        /// <returns></returns>
+        public string[] GetInstructions(Conversion convertType)
+        {
+            switch (convertType)
+            {
+                case Conversion.UnaryToBinary:
+                    return PrintUnaryToBinaryInstructions();
+
+                case Conversion.UnaryToDecimal:
+                    return PrintUnaryToDecimalInstructions();
+
+                case Conversion.UnaryToHexadecimal:
+                    return PrintUnaryToHexadecimalInstructions();
+
+                case Conversion.BinaryToUnary:
+                    return PrintBinaryToUnaryInstructions();
+
+                case Conversion.BinaryToDecimal:
+                    return PrintBinaryToDecimalInstructions();
+
+                case Conversion.BinaryToHexadecimal:
+                    return PrintBinaryToHexadecimalInstructions();
+
+                case Conversion.DecimalToUnary:
+                    return PrintDecimalToUnaryInstructions();
+
+                case Conversion.DecimalToBinary:
+                    return PrintDecimalToBinaryInstructions();
+
+                case Conversion.DecimalToHexadecimal:
+                    return PrintDecimalToHexadecimalInstructions();
+
+                case Conversion.HexadecimalToUnary:
+                    return PrintHexadecimalToUnaryInstructions();
+
+                case Conversion.HexadecimalToBinary:
+                    return PrintHexadecimalToBinaryInstructions();
+
+                case Conversion.HexadecimalToDecimal:
+                    return PrintHexadecimalToDecimalInstructions();
+
+                default:
+                    return new string[] { };
+            }
+        }
+
+        /// <summary>
+        /// Gets the list of steps and answers for a conversion and value
+        /// </summary>
+        /// <param name="convertType"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public Tuple<List<Tuple<string, string, StepType>>, string> GetSteps(Conversion convertType, string value)
+        {
+            string newValue = value.ToUpper();
+            switch (convertType)
+            {
+                case Conversion.UnaryToBinary:
+                    return UnaryToBinary(newValue);
+
+                case Conversion.UnaryToDecimal:
+                    return UnaryToDecimal(newValue);
+
+                case Conversion.UnaryToHexadecimal:
+                    return UnaryToHexadecimal(newValue);
+
+                case Conversion.BinaryToUnary:
+                    newValue = StripPrefix(newValue);
+                    return BinaryToUnary(newValue);
+
+                case Conversion.BinaryToDecimal:
+                    newValue = StripPrefix(newValue);
+                    return BinaryToDecimal(newValue);
+
+                case Conversion.BinaryToHexadecimal:
+                    newValue = StripPrefix(newValue);
+                    return BinaryToHexadecimal(newValue);
+
+                case Conversion.DecimalToUnary:
+                    return DecimalToUnary(newValue);
+
+                case Conversion.DecimalToBinary:
+                    return DecimalToBinary(newValue);
+
+                case Conversion.DecimalToHexadecimal:
+                    return DecimalToHexadecimal(newValue);
+
+                case Conversion.HexadecimalToUnary:
+                    newValue = StripPrefix(newValue);
+                    return HexadecimalToUnary(newValue);
+
+                case Conversion.HexadecimalToBinary:
+                    newValue = StripPrefix(newValue);
+                    return HexadecimalToBinary(newValue);
+
+                case Conversion.HexadecimalToDecimal:
+                    newValue = StripPrefix(newValue);
+                    return HexadecimalToDecimal(newValue);
+
+                default:
+                    return null;
+            }
+        }
+
+        /// <summary>
+        /// Checks user input if valid
+        /// </summary>
+        /// <param name="conversionType"></param>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public bool IsValidInput(Conversion conversionType, string input)
+        {
+            switch (conversionType)
+            {
+                case Conversion.UnaryToBinary:
+
+                case Conversion.UnaryToDecimal:
+
+                case Conversion.UnaryToHexadecimal:
+                    return IsUnary(input);
+
+                case Conversion.BinaryToUnary:
+
+                case Conversion.BinaryToDecimal:
+
+                case Conversion.BinaryToHexadecimal:
+                    return IsBinary(input);
+
+                case Conversion.DecimalToUnary:
+
+                case Conversion.DecimalToBinary:
+
+                case Conversion.DecimalToHexadecimal:
+                    return IsDecimal(input);
+
+                case Conversion.HexadecimalToUnary:
+
+                case Conversion.HexadecimalToBinary:
+
+                case Conversion.HexadecimalToDecimal:
+                    return IsHexadecimal(input);
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Strips prefixes from user's guess (0x,0b)
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        private string StripPrefix(string value)
+        {
+            string newValue = value;
+            if (value.Contains("0X"))
+            {
+                newValue = value.Replace("0X", "");
+            }
+            else if (value.Contains("0B"))
+            {
+                newValue = value.Replace("0B", "");
+            }
+            return newValue;
+        }
+
+        private string[] PrintUnaryToBinaryInstructions()
         {
             return new string[] { "Unary is based on base 1 numerical system. Binary is based on base 2 numerical system.",
                 "To easily do conversions between unary to binary, it is easier to convert unary first to a decimal value and then conver that to binary",
@@ -34,7 +202,7 @@ namespace BaseConverter.ConvertUtils
                 "Step 5: Once the quotient equal to 0 is reached, read the remainders from bottom to top (from your recent remainder calculation to the oldest)",
                 "Enter your value for the remainder below and see if you got it correct!",
                 "",
-                "Example: 111111 Unary to Binary",
+                "Example: Converting the Unary value 111111 to Binary",
                 "Applying Step 1, we get its decimal equivalent to 6. We then floor divide this value by 2 and take note of the remainder.",
                 "So we get the following:",
                 "6 % 2 = 0      (Answer = 0 or 0b0)",
@@ -45,7 +213,7 @@ namespace BaseConverter.ConvertUtils
                 "Final Answer = 110 or 0b110"};
         }
 
-        public Tuple<List<Tuple<string, string, StepType>>, string> UnaryToBinary(string unary)
+        private Tuple<List<Tuple<string, string, StepType>>, string> UnaryToBinary(string unary)
         {
             List<Tuple<string, string, StepType>> steps = new List<Tuple<string, string, StepType>>();
             int value = 0;
@@ -66,18 +234,18 @@ namespace BaseConverter.ConvertUtils
             return Tuple.Create(steps, finalAnswer);
         }
 
-        public string[] PrintUnaryToDecimalInstructions()
+        private string[] PrintUnaryToDecimalInstructions()
         {
             return new string[] {"Unary is based on base 1 numerical system",
                 "Step 1: Count the number of 1's",
                 "Enter your answer below and see if you got it correct!",
                 "",
-                "Example: 1111 Unary to Decimal",
+                "Example: Converting the Unary value 1111 to Decimal",
                 "By simply applying Step 1, we get the decimal value of 4",
                 "Final Answer = 4"};
         }
 
-        public Tuple<List<Tuple<string, string, StepType>>, string> UnaryToDecimal(string unary)
+        private Tuple<List<Tuple<string, string, StepType>>, string> UnaryToDecimal(string unary)
         {
             List<Tuple<string, string, StepType>> steps = new List<Tuple<string, string, StepType>>();
             int finalAnswer = 0;
@@ -89,7 +257,7 @@ namespace BaseConverter.ConvertUtils
             return Tuple.Create(steps, finalAnswer.ToString());
         }
 
-        public string[] PrintUnaryToHexadecimalInstructions()
+        private string[] PrintUnaryToHexadecimalInstructions()
         {
             return new string[] { "Unary is based on base 1 numerical system. Hexadecimal is based on base 16 numerical system",
                 "To make the conversion between unary to hexadecimal, it is easier to convert the unary value to decimal first then to hexadecimal",
@@ -100,7 +268,7 @@ namespace BaseConverter.ConvertUtils
                 "Step 5: Once you have the values calculated, simply write the remainder values (in hexadecimal) from bottom to top",
                 "Enter the remainder for each divison below (converted to hexadecimal) and see if you got it correct!",
                 "",
-                "Example: 1111111111 Unary to Hexadecimal",
+                "Example: Converting the Unary value 1111111111 to Hexadecimal",
                 "Apply Step 1, we get the decimal value of 10. From here we can floor divide until we get the quotient of 0",
                 "So we get the following:",
                 "10 % 16 = 10       (Answer = A or 0xA)",
@@ -109,7 +277,7 @@ namespace BaseConverter.ConvertUtils
                 "Final Answer = A or 0xA"};
         }
 
-        public Tuple<List<Tuple<string, string, StepType>>, string> UnaryToHexadecimal(string unary)
+        private Tuple<List<Tuple<string, string, StepType>>, string> UnaryToHexadecimal(string unary)
         {
             List<Tuple<string, string, StepType>> steps = new List<Tuple<string, string, StepType>>();
             int value = 0;
@@ -132,7 +300,7 @@ namespace BaseConverter.ConvertUtils
             return Tuple.Create(steps, finalAnswer);
         }
 
-        public string[] PrintBinaryToUnaryInstructions()
+        private string[] PrintBinaryToUnaryInstructions()
         {
             return new string[] { "Binary is based on base 2 numerical system. Unary is based on base 1 numerical system",
                 "To convert between binary to unary, it is easier to first convert the binary value to decimal and then to unary",
@@ -143,7 +311,7 @@ namespace BaseConverter.ConvertUtils
                 "Step 5: Count out your decimal starting from 1 and for every value, write down a 1",
                 "Enter the decimal value you calculate from the conversion below and then enter its unary value",
                 "",
-                "Example: 1101 Binary to Unary",
+                "Example: Converting the Binary value 1101 to Unary",
                 "Applying Step 1 on the value '1' and index 0 we get (2^0)*1 = 1, where 1 is its decimal value",
                 "So we get the following:",
                 "(2^0)*1 = 1        (Answer = 1)",
@@ -156,7 +324,7 @@ namespace BaseConverter.ConvertUtils
                 "Final Answer = 1111111111111"};
         }
 
-        public Tuple<List<Tuple<string, string, StepType>>, string> BinaryToUnary(string binary)
+        private Tuple<List<Tuple<string, string, StepType>>, string> BinaryToUnary(string binary)
         {
             List<Tuple<string, string, StepType>> steps = new List<Tuple<string, string, StepType>>();
             string step;
@@ -176,7 +344,7 @@ namespace BaseConverter.ConvertUtils
             return Tuple.Create(steps, finalAnswer.ToString());
         }
 
-        public string[] PrintBinaryToDecimalInstructions()
+        private string[] PrintBinaryToDecimalInstructions()
         {
             return new string[] { "Binary is based on the base 2 number system. Each position of the digit corresponds to the power they are to be raised in",
                 "Step 1: Starting with the very last digit or otherwise known as the least significant digit (LSB), raise 2 to the power of its index (starting from 0)",
@@ -185,7 +353,7 @@ namespace BaseConverter.ConvertUtils
                 "Step 4: Once you have the values for each bits calculated, add all of the values up which will yield in the decimal base equivalence of the binary value",
                 "Enter the result of each calculated bit below and see if you got it correct!",
                 "",
-                "Example: 1011 Decimal to Binary",
+                "Example: Converting the Binary value 1011 to Decimal",
                 "Applying Step 1, we get the bit 1 as the MSB and an index of 0, so we get (2^0)*1 = 1, where 1 is its decimal value",
                 "So we get the following:",
                 "(2^0)*1 = 1        (Answer = 1)",
@@ -201,7 +369,7 @@ namespace BaseConverter.ConvertUtils
         /// </summary>
         /// <param name="binary"></param>
         /// <returns>Tuple<List<Tuple<step,answer>>, finalAnswer></returns>
-        public Tuple<List<Tuple<string, string, StepType>>, string> BinaryToDecimal(string binary)
+        private Tuple<List<Tuple<string, string, StepType>>, string> BinaryToDecimal(string binary)
         {
             List<Tuple<string, string, StepType>> steps = new List<Tuple<string, string, StepType>>();
             string step;
@@ -216,7 +384,7 @@ namespace BaseConverter.ConvertUtils
             return Tuple.Create(steps, finalAnswer.ToString());
         }
 
-        public string[] PrintBinaryToHexadecimalInstructions()
+        private string[] PrintBinaryToHexadecimalInstructions()
         {
             return new string[] { "Binary is based on the base 2 number system. Hexadecimal is based on the base 16 number system",
                 "For ever four bits, represents one hexedecimal bit",
@@ -227,7 +395,7 @@ namespace BaseConverter.ConvertUtils
                 "Step 5: Once calculated, simply read the values from bottom to top (your most recent hexadecimal calculation to the oldest)",
                 "Enter each hexadecimal value that you calculated for each four bits below and see if you got it correct!",
                 "",
-                "Example: 01111100 Binary to Hexadecimal",
+                "Example: Converting the Binary value 01111100 to Hexadecimal",
                 "For the first four bits we get 1100, where we get the following",
                 "(2^0)*0 = 0",
                 "(2^1)*0 = 0",
@@ -246,7 +414,7 @@ namespace BaseConverter.ConvertUtils
                 "Final Answer = 7C or 0x7C"};
         }
 
-        public Tuple<List<Tuple<string, string, StepType>>, string> BinaryToHexadecimal(string binary)
+        private Tuple<List<Tuple<string, string, StepType>>, string> BinaryToHexadecimal(string binary)
         {
             List<Tuple<string, string, StepType>> steps = new List<Tuple<string, string, StepType>>();
             string finalAnswer = "";
@@ -281,19 +449,19 @@ namespace BaseConverter.ConvertUtils
             return Tuple.Create(steps, finalAnswer);
         }
 
-        public string[] PrintDecimalToUnaryInstructions()
+        private string[] PrintDecimalToUnaryInstructions()
         {
             return new string[] { "The unary number system is based on base 1 numerical system.",
                 "Each value is denoted by 1",
                 "Step 1: Count out your decimal starting from 1 and for every value, write down a 1",
                 "Enter the resulting unary value you below and see if you got it correct!",
                 "",
-                "Example: 6 Decimal to Unary",
+                "Example: Converting the Decimal value 6 to Unary",
                 "By applying Step 1, we simply get 111111",
                 "Final Answer = 111111"};
         }
 
-        public Tuple<List<Tuple<string, string, StepType>>, string> DecimalToUnary(string dec)
+        private Tuple<List<Tuple<string, string, StepType>>, string> DecimalToUnary(string dec)
         {
             List<Tuple<string, string, StepType>> steps = new List<Tuple<string, string, StepType>>();
             int value = int.Parse(dec);
@@ -306,7 +474,7 @@ namespace BaseConverter.ConvertUtils
             return Tuple.Create(steps, finalAnswer);
         }
 
-        public string[] PrintDecimalToBinaryInstructions()
+        private string[] PrintDecimalToBinaryInstructions()
         {
             return new string[] { "Binary is based on the base 2 number system",
                 "Step 1: Floor divide the decimal value by 2",
@@ -315,7 +483,7 @@ namespace BaseConverter.ConvertUtils
                 "Step 4: Once the quotient is 0, read the remainders from bottom to top (from your recent remainder calculation to the oldest remainder calculation)",
                 "Enter each of the remainders of your calculation below and see if you got it correct!",
                 "",
-                "Example: 14 Decimal to Binary",
+                "Example: Converting the Decimal value 14 to Binary",
                 "By continuously applying Step 1 and Step 2 we get the following:",
                 "14 % 2 = 0     (Answer = 0 or 0b0)",
                 "7 % 2 = 1      (Answer = 1 or 0b1)",
@@ -325,7 +493,7 @@ namespace BaseConverter.ConvertUtils
                 "Final Answer = 1110 or 0b1110"};
         }
 
-        public Tuple<List<Tuple<string, string, StepType>>, string> DecimalToBinary(string dec)
+        private Tuple<List<Tuple<string, string, StepType>>, string> DecimalToBinary(string dec)
         {
             List<Tuple<string, string, StepType>> steps = new List<Tuple<string, string, StepType>>();
             int value = int.Parse(dec);
@@ -345,7 +513,7 @@ namespace BaseConverter.ConvertUtils
         /// Instructions for converting decimal to hexadecimal
         /// </summary>
         /// <returns></returns>
-        public string[] PrintDecimalToHexadecimalInstructions()
+        private string[] PrintDecimalToHexadecimalInstructions()
         {
             return new string[] { "Decimal is based on the 10 base number system while hexadecimal is based on the base 16 number system ",
                 "Step 1: Floor divide the decimal value by 16. Convert the remainder to its hexadecimal equivalent",
@@ -354,7 +522,7 @@ namespace BaseConverter.ConvertUtils
                 "Step 4: Once you have the values calculated, simply write the remainder values (in hexadecimal) from bottom to top",
                 "Enter the remainder for each divison below (converted to hexadecimal) and see if you got it correct!",
                 "",
-                "Example: 26 Decimal to Hexadecimal",
+                "Example: Converting the Decimal value 26 to Hexadecimal",
                 "Applying Step 1 and Step 2 repeatedly we get the following:",
                 "26 % 16 = 10       (Answer = A or 0xA)",
                 "1 % 16 = 1         (Answer = 1 or 0x1)",
@@ -368,7 +536,7 @@ namespace BaseConverter.ConvertUtils
         /// </summary>
         /// <param name="dec"></param>
         /// <returns></returns>
-        public Tuple<List<Tuple<string, string, StepType>>, string> DecimalToHexadecimal(string dec)
+        private Tuple<List<Tuple<string, string, StepType>>, string> DecimalToHexadecimal(string dec)
         {
             List<Tuple<string, string, StepType>> steps = new List<Tuple<string, string, StepType>>();
             int value = int.Parse(dec);
@@ -386,7 +554,7 @@ namespace BaseConverter.ConvertUtils
             return Tuple.Create(steps, finalAnswer);
         }
 
-        public string[] PrintHexadecimalToUnaryInstructions()
+        private string[] PrintHexadecimalToUnaryInstructions()
         {
             return new string[] { "Hexadecimal is based on the base 16 number system. Unary is based on base 1 numerical system",
                 "The easiest way to convert base systems to unary is to convert them to the decimal base systems first",
@@ -394,14 +562,14 @@ namespace BaseConverter.ConvertUtils
                 "Step 2: Count out your decimal starting from 1 and for every value, write down a 1",
                 "Enter the decimal equivalent first below and then enter its converted value to unary to see if you got it correct!",
                 "",
-                "Example 1C Hexadecimal to Unary",
+                "Example Converting the Hexadecimal value 1C to Unary",
                 "By applying step 1, we get the following decimal value of the hexadecimal as 28",
                 "Answer = 28",
                 "We simply count out the decimal and represent each count as a 1 so we get the following",
                 "Final Answer = 1111111111111111111111111111"};
         }
 
-        public Tuple<List<Tuple<string, string, StepType>>, string> HexadecimalToUnary(string hexadecimal)
+        private Tuple<List<Tuple<string, string, StepType>>, string> HexadecimalToUnary(string hexadecimal)
         {
             List<Tuple<string, string, StepType>> steps = new List<Tuple<string, string, StepType>>();
             double answer = 0.0;
@@ -421,7 +589,7 @@ namespace BaseConverter.ConvertUtils
             return Tuple.Create(steps, finalAnswer.ToString());
         }
 
-        public string[] PrintHexadecimalToBinaryInstructions()
+        private string[] PrintHexadecimalToBinaryInstructions()
         {
             return new string[] { "Hexadecimal is based on the base 16 number system. Binary is based on the base 2 number system.",
                 "Step 1: Convert each hexadecimal digit to its decimal counterpart to make the conversions easier",
@@ -432,7 +600,7 @@ namespace BaseConverter.ConvertUtils
                 "Enter the result for each hexadecimal digit in binary form below and see if you got it correct!",
                 "NOTE: If your guess is less than four digits long, append 0's before it to make it so (ex. 101 -> 0101)",
                 "",
-                "Example: 2C Hexadecimal to Binary",
+                "Example: Converting the Hexadecimal value 2C to Binary",
                 "By applying Step 1, for the hexadecimal value C, we get the value decimal value 12",
                 "We then apply Step 2 and floor divide the decimal value and we get the following",
                 "12 % 2 = 0",
@@ -456,7 +624,7 @@ namespace BaseConverter.ConvertUtils
         /// </summary>
         /// <param name="hexadecimal"></param>
         /// <returns>Tuple<List<Tuple<string, string, int>>, string> = Tuple<List<Tuple<step, answer, substeps>>, finalAnswer></returns>
-        public Tuple<List<Tuple<string, string, StepType>>, string> HexadecimalToBinary(string hexadecimal)
+        private Tuple<List<Tuple<string, string, StepType>>, string> HexadecimalToBinary(string hexadecimal)
         {
             List<Tuple<string, string, StepType>> steps = new List<Tuple<string, string, StepType>>();
             string step;
@@ -489,7 +657,7 @@ namespace BaseConverter.ConvertUtils
             return Tuple.Create(steps, finalBinary);
         }
 
-        public string[] PrintHexadecimalToDecimalInstructions()
+        private string[] PrintHexadecimalToDecimalInstructions()
         {
             return new string[] { "Hexadecimal is based on the base 16 number system.",
                 "Step 1: Starting with the very last value or otherwise known as the least significant bits, raise 16 to the power of its index (starting from 0)",
@@ -498,7 +666,7 @@ namespace BaseConverter.ConvertUtils
                 "Step 4: Once you have the values for each bits calculated, add all of the values up which will yield in the decimal base equivalence of the hexadecimal value",
                 "Enter the result of each calculated value (in decimal) below and see if you got it correct!",
                 "",
-                "Example: 6C Hexadecimal to Decimal",
+                "Example: Converting the Hexadecimal value 6C to Decimal",
                 "By applying Step 1 and Step 2 repeatedly and starting from index 0 we get the following",
                 "(16^0)*C = 12      (Answer = 12)",
                 "(16^1)*6 = 96      (Answer = 96)",
@@ -507,7 +675,7 @@ namespace BaseConverter.ConvertUtils
                 "Final Answer = 108"};
         }
 
-        public Tuple<List<Tuple<string, string, StepType>>, string> HexadecimalToDecimal(string hexadecimal)
+        private Tuple<List<Tuple<string, string, StepType>>, string> HexadecimalToDecimal(string hexadecimal)
         {
             List<Tuple<string, string, StepType>> steps = new List<Tuple<string, string, StepType>>();
             string step;
@@ -556,6 +724,11 @@ namespace BaseConverter.ConvertUtils
             }
         }
 
+        /// <summary>
+        /// Converts individual hex bit to decimal
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         private static string ConvertHexToDecimal(string value)
         {
             string newValue = value.ToUpper();
@@ -591,6 +764,11 @@ namespace BaseConverter.ConvertUtils
             }
         }
 
+        /// <summary>
+        /// Reverses a string
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
         private static string ReverseString(string s)
         {
             char[] arr = s.ToCharArray();
@@ -598,6 +776,10 @@ namespace BaseConverter.ConvertUtils
             return new string(arr);
         }
 
+        /// <summary>
+        /// Generates a random conversion value and conversion type
+        /// </summary>
+        /// <returns></returns>
         public Tuple<int, string> GenerateRandomConversion()
         {
             var conversions = Enum.GetValues(typeof(Conversion));
@@ -641,6 +823,10 @@ namespace BaseConverter.ConvertUtils
             return Tuple.Create(randomInt, value);
         }
 
+        /// <summary>
+        /// Generates a random unary with length from 4 to 20
+        /// </summary>
+        /// <returns></returns>
         private static string GenerateRandomUnary()
         {
             var value = random.Next(4, 21);
@@ -652,6 +838,10 @@ namespace BaseConverter.ConvertUtils
             return unary;
         }
 
+        /// <summary>
+        /// Generates a random binary value with length between 4 to 8
+        /// </summary>
+        /// <returns></returns>
         private static string GenerateRandomBinary()
         {
             var length = random.Next(4, 9);
@@ -669,6 +859,11 @@ namespace BaseConverter.ConvertUtils
             return value;
         }
 
+        /// <summary>
+        /// Checks if the value is a valid binary value
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         private static bool checkIfValidBinary(string value)
         {
             var valid = false;
@@ -682,16 +877,101 @@ namespace BaseConverter.ConvertUtils
             return valid;
         }
 
+        /// <summary>
+        /// Generates a random decimal between 8 to 30
+        /// </summary>
+        /// <returns></returns>
         private static string GenerateRandomDecimal()
         {
             return random.Next(8, 31).ToString();
         }
 
+        /// <summary>
+        /// Generates a two bits random hex
+        /// </summary>
+        /// <returns></returns>
         private static string GenerateRandomHex()
         {
             var value = ConvertDecimalToHex(random.Next(1, 16));
             value += ConvertDecimalToHex(random.Next(1, 16));
             return value;
+        }
+
+        /// <summary>
+        /// Check if user input is a unary value
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        private bool IsUnary(string value)
+        {
+            foreach (var chr in value)
+            {
+                if (chr != '1')
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Check if user input is a binary value
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        private bool IsBinary(string value)
+        {
+            char[] validCharacters = new char[] { '0', '1' };
+            string newValue = value;
+            if (value.ToUpper().Contains("0B"))
+            {
+                newValue = value.Replace("0B", "");
+            }
+            foreach (var chr in newValue)
+            {
+                if (!Array.Exists(validCharacters, E => E == chr))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Checks if the user input is a decimal value
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        private bool IsDecimal(string value)
+        {
+            if (int.TryParse(value, out _))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Checks if the user input is a hexadecimal value
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        private bool IsHexadecimal(string value)
+        {
+            char[] validCharacters = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
+            string newValue = value.ToUpper();
+            if (newValue.ToUpper().Contains("0X"))
+            {
+                newValue = value.Replace("0X", "");
+            }
+            foreach (var chr in newValue)
+            {
+                if (!Array.Exists(validCharacters, E => E == chr))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }
