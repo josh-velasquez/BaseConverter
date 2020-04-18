@@ -1,7 +1,6 @@
 C:\Users\joshv\Desktop\Github\BaseConverter\BaseConverter\BaseConverter\bin\Debug\BaseConverter.exe.config
 C:\Users\joshv\Desktop\Github\BaseConverter\BaseConverter\BaseConverter\bin\Debug\BaseConverter.exe
 C:\Users\joshv\Desktop\Github\BaseConverter\BaseConverter\BaseConverter\bin\Debug\BaseConverter.pdb
-C:\Users\joshv\Desktop\Github\BaseConverter\BaseConverter\BaseConverter\obj\Debug\BaseConverter.csprojAssemblyReference.cache
 C:\Users\joshv\Desktop\Github\BaseConverter\BaseConverter\BaseConverter\obj\Debug\MainWindow.g.cs
 C:\Users\joshv\Desktop\Github\BaseConverter\BaseConverter\BaseConverter\obj\Debug\App.g.cs
 C:\Users\joshv\Desktop\Github\BaseConverter\BaseConverter\BaseConverter\obj\Debug\BaseConverter_MarkupCompile.cache
@@ -13,7 +12,8 @@ C:\Users\joshv\Desktop\Github\BaseConverter\BaseConverter\BaseConverter\obj\Debu
 C:\Users\joshv\Desktop\Github\BaseConverter\BaseConverter\BaseConverter\obj\Debug\BaseConverter.csproj.CoreCompileInputs.cache
 C:\Users\joshv\Desktop\Github\BaseConverter\BaseConverter\BaseConverter\obj\Debug\BaseConverter.exe
 C:\Users\joshv\Desktop\Github\BaseConverter\BaseConverter\BaseConverter\obj\Debug\BaseConverter.pdb
-C:\Users\joshv\Desktop\Github\BaseConverter\BaseConverter\BaseConverter\obj\Debug\Help.g.cs
-C:\Users\joshv\Desktop\Github\BaseConverter\BaseConverter\BaseConverter\obj\Debug\Help.baml
 C:\Users\joshv\Desktop\Github\BaseConverter\BaseConverter\BaseConverter\obj\Debug\ConversionTable.g.cs
 C:\Users\joshv\Desktop\Github\BaseConverter\BaseConverter\BaseConverter\obj\Debug\ConversionTable.baml
+C:\Users\joshv\Desktop\Github\BaseConverter\BaseConverter\BaseConverter\obj\Debug\Instructions.baml
+C:\Users\joshv\Desktop\Github\BaseConverter\BaseConverter\BaseConverter\obj\Debug\Instructions.g.cs
+C:\Users\joshv\Desktop\Github\BaseConverter\BaseConverter\BaseConverter\obj\Debug\BaseConverter.csprojAssemblyReference.cache

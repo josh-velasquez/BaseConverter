@@ -304,9 +304,9 @@ namespace BaseConverter.ConvertUtils
         {
             return new string[] { "Binary is based on base 2 numerical system. Unary is based on base 1 numerical system",
                 "To convert between binary to unary, it is easier to first convert the binary value to decimal and then to unary",
-                "Step 1: Starting with the very last digit or otherwise known as the least significant bit (LSB), raise 2 to the power of its index (starting from 0)",
+                "Step 1: Starting with the very last digit or otherwise known as the least significant digit (LSD), raise 2 to the power of its index (starting from 0)",
                 "Step 2: You then take this value and multiply it to the bit at that specific index",
-                "Step 3: Do this repeatedly until you reach the very first digit or otherwise known as the most significant bit (MSB)",
+                "Step 3: Do this repeatedly until you reach the very first digit or otherwise known as the most significant digit (MSD)",
                 "Step 4: Once you have the values for each bits calculated, add all of the values up which will yield in the decimal base equivalence of the binary value",
                 "Step 5: Count out your decimal starting from 1 and for every value, write down a 1",
                 "Enter the decimal value you calculate from the conversion below and then enter its unary value",
@@ -347,9 +347,9 @@ namespace BaseConverter.ConvertUtils
         private string[] PrintBinaryToDecimalInstructions()
         {
             return new string[] { "Binary is based on the base 2 number system. Each position of the digit corresponds to the power they are to be raised in",
-                "Step 1: Starting with the very last digit or otherwise known as the least significant digit (LSB), raise 2 to the power of its index (starting from 0)",
+                "Step 1: Starting with the very last digit or otherwise known as the least significant digit (LSD), raise 2 to the power of its index (starting from 0)",
                 "Step 2: You then take this value and multiply it to the bit at that specific index",
-                "Step 3: Do this repeatedly until you reach the very first digit or otherwise known as the most significant bit",
+                "Step 3: Do this repeatedly until you reach the very first digit or otherwise known as the most significant digit",
                 "Step 4: Once you have the values for each bits calculated, add all of the values up which will yield in the decimal base equivalence of the binary value",
                 "Enter the result of each calculated bit below and see if you got it correct!",
                 "",
@@ -388,7 +388,7 @@ namespace BaseConverter.ConvertUtils
         {
             return new string[] { "Binary is based on the base 2 number system. Hexadecimal is based on the base 16 number system",
                 "For ever four bits, represents one hexedecimal bit",
-                "Step 1: Separate the bits into fours starting from the very last value or the least significant bit",
+                "Step 1: Separate the bits into fours starting from the very last value or the least significant digit",
                 "Step 2: Once separated, simply convert each four bits to its decimal counterpart",
                 "Step 3: Convert the decimal to its hexadecimal counterpart",
                 "Step 4: Repeat Steps 2-3 for each four bits that was separated in the beginning",
@@ -660,9 +660,9 @@ namespace BaseConverter.ConvertUtils
         private string[] PrintHexadecimalToDecimalInstructions()
         {
             return new string[] { "Hexadecimal is based on the base 16 number system.",
-                "Step 1: Starting with the very last value or otherwise known as the least significant bits, raise 16 to the power of its index (starting from 0)",
+                "Step 1: Starting with the very last value or otherwise known as the least significant digit, raise 16 to the power of its index (starting from 0)",
                 "Step 2: You then take this value and multiply it to the decimal value of that hexadecimal at that specific index",
-                "Step 3: Do this repeatedly until you reach the very first value or otherwise known as the most significant bits",
+                "Step 3: Do this repeatedly until you reach the very first value or otherwise known as the most significant digit",
                 "Step 4: Once you have the values for each bits calculated, add all of the values up which will yield in the decimal base equivalence of the hexadecimal value",
                 "Enter the result of each calculated value (in decimal) below and see if you got it correct!",
                 "",

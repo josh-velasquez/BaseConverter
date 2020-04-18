@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:BaseConverter"
         ResizeMode="NoResize"
         mc:Ignorable="d"
         Title="Instructions" Height="755.24" Width="506.105">
@@ -17,81 +16,83 @@
         </Button>
         <Label Content="Base Converter" Margin="162,10,187,0" VerticalAlignment="Top" HorizontalAlignment="Center" Width="151" FontFamily="Ro" FontSize="20" FontWeight="Bold" HorizontalContentAlignment="Center" Foreground="White" />
         <Label Content="Author: Josh Velasquez" HorizontalAlignment="Center" Margin="162,44,187,0" VerticalAlignment="Top" Width="151" HorizontalContentAlignment="Center" Foreground="White" />
-        <RichTextBox HorizontalAlignment="Left" Height="588" Margin="10,79,0,0" VerticalAlignment="Top" IsReadOnly="True" Width="469" Background="#FFFDC9C9" IsDocumentEnabled="True">
+        <RichTextBox HorizontalAlignment="Left" Height="588" Margin="10,84,0,0" VerticalAlignment="Top" IsReadOnly="True" Width="469" Background="#FFFDC9C9" IsDocumentEnabled="True" VerticalScrollBarVisibility="Auto">
             <FlowDocument>
                 <Paragraph>
-                    <Run Text="Converts between" />
-                    <Run Text=" " />
-                    <Hyperlink NavigateUri="https://en.wikipedia.org/wiki/Unary_numeral_system">
+                    <Run Text="Converts between " />
+                    <Hyperlink NavigateUri="https://en.wikipedia.org/wiki/Unary_numeral_system" RequestNavigate="RequestNavigate">
                         <Run Text="unary," />
                     </Hyperlink>
                     <Run Text=" " />
-                    <Hyperlink NavigateUri="https://en.wikipedia.org/wiki/Binary_number">
+                    <Hyperlink NavigateUri="https://en.wikipedia.org/wiki/Binary_number" RequestNavigate="RequestNavigate">
                         <Run Text="binary," />
                     </Hyperlink>
                     <Run Text=" " />
-                    <Hyperlink NavigateUri="https://en.wikipedia.org/wiki/Decimal">
+                    <Hyperlink NavigateUri="https://en.wikipedia.org/wiki/Decimal" RequestNavigate="RequestNavigate">
                         <Run Text="decimal," />
                     </Hyperlink>
-                    <Run Text=" " />
-                    <Run Text="and" />
-                    <Run Text=" " />
-                    <Hyperlink NavigateUri="https://simple.wikipedia.org/wiki/Hexadecimal">
+                    <Run Text=" and " />
+                    <Hyperlink NavigateUri="https://simple.wikipedia.org/wiki/Hexadecimal" RequestNavigate="RequestNavigate">
                         <Run Text="hexadecimal" />
                     </Hyperlink>
+                    <Run Text=". Choose a conversion and enter your value to convert. Clicking convert " />
+                    <Run FontWeight="Bold" Text="does not " />
+                    <Run Text="show the final answer right away but rather asks you for answers step by step until you reach the final answer." />
                     <Run Text=" " />
-                    <Run Text=". Choose a conversion and enter your value to convert. The instructions box will tell the steps in order to convert from your chosen base to another. Enter your answer for the steps in the &quot;Your answer&quot; box and see if you got it correct. Once you have that done, see if you got the overall correct answer at the end." />
+                    <Run Text="The instructions box will tell the steps in order to convert from your chosen base to another. Enter your answer for the steps in the &quot;Your answer&quot; box and see if you got it correct. Once you have that done, see if you got the overall correct answer at the end." />
                 </Paragraph>
                 <Paragraph>
                     <Run Text="A workspace is provided to you so that you can write and see your calculations while converting from one to another. If you're having a hard time converting, click the conversion table button to help you out during conversions." />
                 </Paragraph>
                 <Paragraph>
-                    <Run FontWeight="Bold" Text="Get Started:" />
+                    <Run FontWeight="Bold" FontSize="14" Text="Get Started:" />
                 </Paragraph>
                 <Paragraph>
                     <Run Text="To get started, select a conversion from the dropdown menu and enter the value to be converted. Once you have the value entered, click the Convert button to start the conversion process. The program will ask you to enter the values for the conversion step until you arrive the final converted value! If you are stumped on a step don't worry! Click the Show Answer button and the answer for the step will be shown. If you want to skip ahead to the final answer, simply click the Show Final Answer button to do so." />
                 </Paragraph>
                 <Paragraph>
-                    <Run Text="Want some more practice? C" />
-                    <Run Text="lick the random conversion button to randomly generate a problem for you to try." />
+                    <Run Text="Want some more practice? Click the random conversion button to randomly generate a problem for you to try." />
                 </Paragraph>
                 <Paragraph>
-                    <Run Text="Once you're ready for another conversion you can" />
-                    <Run Text=" click the reset button and it will clear " />
-                    <Run Text="everything up!" />
+                    <Run Text="Once you're ready for another conversion you can click the reset button and it will clear everything up!" />
                 </Paragraph>
                 <Paragraph>
-                    <Run FontWeight="Bold" Text="Tips:" />
+                    <Run FontWeight="Bold" FontSize="14" Text="Definitions:" />
                 </Paragraph>
                 <Paragraph>
-                    <Run Text="1. The &quot;Answer&quot; and &quot;Final Answer&quot; " />
-                    <Run Text="found in the Conversion Instructions " />
-                    <Run Text="denoted for every example is the sample answer that you should enter in the &quot;Your Answer&quot;" />
-                    <Run Text=" box below" />
+                    <Run Text="Least Significant Digit (LSD) - is located at the far right of a value. (ex. F4A where A is the least significant digit)" />
+                </Paragraph>
+                <Paragraph>
+                    <Run Text="Most Significant Digit (MSD) - is located at the far left of a value. (ex. F4A where F is the most significant digit)" />
+                </Paragraph>
+                <Paragraph>
+                    <Run Text="Floor Division - " />
+                    <Run Text="Floor division is an important concept that is heavily used in this conversion. To floor divide, simply round your quotient to its lowest next value (ex. 3/2 = 1, 5/4 = 1, etc... )." />
+                </Paragraph>
+                <Paragraph>
+                    <Run Text="Modulo - " />
+                    <Run Text="Along with floor division, modulo (symbolized by %) is also another important concept. It is used to calculate the remainder of your equation." />
+                    <Run Text=" " />
+                    <Run Text="To calculate the modulo, subtract the dividend by the divisor multiplied by the rounded quotient (ex. 5/2 = 2, 5 - (2 * 2) = 1 and so the remainder is 1 or 5 % 2 = 1)." />
+                </Paragraph>
+                <Paragraph>
+                    <Run FontWeight="Bold" FontSize="14" Text="Tips:" />
+                </Paragraph>
+                <Paragraph>
+                    <Run Text="1. The &quot;Answer&quot; and &quot;Final Answer&quot; found in the Conversion Instructions denoted for every example is the sample answer that you should enter in the &quot;Your Answer&quot; box below" />
                 </Paragraph>
                 <Paragraph>
                     <Run Text="2. Remember that when your dividend is greater than your divisor, the dividend is the remainder (ex. 6/16 = 0 and the remainder is 6)." />
                 </Paragraph>
                 <Paragraph>
-                    <Run Text="3. Floor division is an important concept that is heavily used in this conversion. To floor divide, simply round your quotient to its lowest next value" />
-                    <Run Text=" " />
-                    <Run Text="(ex. 3/2 = " />
-                    <Run Text="1, 5/4 = 1, etc... )." />
+                    <Run Text="3" />
+                    <Run Text=". Each hexadecimal digit corresponds to four binary digits. So if you have two hexadecimal digits, you should get a total of eight binary digits in the end." />
                 </Paragraph>
                 <Paragraph>
-                    <Run Text="4. Along with floor division, modulo (symbolized by %) is also another important concept. It is used to calculate the remainder of your equation." />
-                    <Run Text=" To calculate the modulo, subtract the dividend by the divisor multiplied by the rounded quotient (ex. 5/2 = 2, 5 - (2 * 2) = 1 and so the remainder is 1 or 5 % 2 = 1)." />
+                    <Run Text="If you want to see this window again, click the icon on the top right beside the Workspace!" />
                 </Paragraph>
                 <Paragraph>
-                    <Run Text="5. Each hexadecimal digit corresponds to four binary digits. So if you have two hexadecimal digits, you should get" />
-                    <Run Text=" a total of" />
-                    <Run Text=" eight binary digits in the end." />
-                </Paragraph>
-                <Paragraph>
-                    <Run Text="If you want to see this" />
-                    <Run Text=" windows" />
-                    <Run Text=" again, click the icon on the top right beside the" />
-                    <Run Text=" Workspace!" />
+                    <Run />
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
