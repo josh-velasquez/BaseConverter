@@ -304,9 +304,9 @@ namespace BaseConverter.ConvertUtils
         {
             return new string[] { "Binary is based on base 2 numerical system. Unary is based on base 1 numerical system",
                 "To convert between binary to unary, it is easier to first convert the binary value to decimal and then to unary",
-                "Step 1: Starting with the very last digit or otherwise known as the least significant digit (LSD), raise 2 to the power of its index (starting from 0)",
+                "Step 1: Starting from right to left of the value, raise 2 to the power of its index (starting from 0)",
                 "Step 2: You then take this value and multiply it to the bit at that specific index",
-                "Step 3: Do this repeatedly until you reach the very first digit or otherwise known as the most significant digit (MSD)",
+                "Step 3: Do this repeatedly until you reach the very left digit",
                 "Step 4: Once you have the values for each bits calculated, add all of the values up which will yield in the decimal base equivalence of the binary value",
                 "Step 5: Count out your decimal starting from 1 and for every value, write down a 1",
                 "Enter the decimal value you calculate from the conversion below and then enter its unary value",
@@ -347,9 +347,9 @@ namespace BaseConverter.ConvertUtils
         private string[] PrintBinaryToDecimalInstructions()
         {
             return new string[] { "Binary is based on the base 2 number system. Each position of the digit corresponds to the power they are to be raised in",
-                "Step 1: Starting with the very last digit or otherwise known as the least significant digit (LSD), raise 2 to the power of its index (starting from 0)",
+                "Step 1: Starting with the very right digit, raise 2 to the power of its index (starting from 0)",
                 "Step 2: You then take this value and multiply it to the bit at that specific index",
-                "Step 3: Do this repeatedly until you reach the very first digit or otherwise known as the most significant digit",
+                "Step 3: Do this repeatedly until you reach the very left digit",
                 "Step 4: Once you have the values for each bits calculated, add all of the values up which will yield in the decimal base equivalence of the binary value",
                 "Enter the result of each calculated bit below and see if you got it correct!",
                 "",

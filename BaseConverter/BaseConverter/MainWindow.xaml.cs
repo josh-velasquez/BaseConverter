@@ -239,6 +239,11 @@ namespace BaseConverter
             workspaceBox.Clear();
         }
 
+        /// <summary>
+        /// Check user guess click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnCheckUserGuess(object sender, RoutedEventArgs e)
         {
             CheckUserGuess();
@@ -262,6 +267,7 @@ namespace BaseConverter
         private void OnShowConversionTableClick(object sender, RoutedEventArgs e)
         {
             ConversionTable table = new ConversionTable();
+            table.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             table.Show();
         }
 

@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         ResizeMode="NoResize"
         mc:Ignorable="d"
-        Title="Instructions" Height="755.24" Width="506.105">
+        Title="Instructions" Height="763.24" Width="506.105">
     <Grid Background="#FF353A40">
-        <Button x:Name="dismiss" Content="Dismiss" HorizontalAlignment="Left" Margin="10,672,0,0" VerticalAlignment="Top" Width="469" Height="30" Background="#FFE84949" FontSize="14" Click="OnDismissClick" Foreground="White">
+        <Button x:Name="dismiss" Content="Dismiss" HorizontalAlignment="Left" Margin="10,684,0,0" VerticalAlignment="Top" Width="468" Height="30" Background="#FFE84949" FontSize="14" Click="OnDismissClick" Foreground="White">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="4" />
