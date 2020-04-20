@@ -237,6 +237,7 @@ namespace BaseConverter
             stepAnswer.Text = "";
             stepAnswer.Foreground = Brushes.White;
             workspaceBox.Clear();
+            PopulateInstructionBox(convertUtil.GetInstructions(GetSelectedConversion()));
         }
 
         /// <summary>
