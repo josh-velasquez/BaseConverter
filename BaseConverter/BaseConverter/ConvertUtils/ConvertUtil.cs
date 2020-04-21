@@ -203,7 +203,7 @@ namespace BaseConverter.ConvertUtils
                 "\tex. 2 // 2 = 1 with a remainder of 0",
                 "Step 4: Continue to floor divide the quotient until the quotient is 0",
                 "\tex. 1 // 2 = 0 with remainder of 1",
-                "Step 5: Once the quotient equal to 0 is reached, read the remainders from bottom to top (from your recent remainder calculation to the oldest)",
+                "Step 5: Once the quotient equal to 0 is reached, write the remainders from bottom to top (from your recent remainder calculation to the oldest)",
                 "\tex. 0b100 or 100 in binary",
                 "Enter your value for the remainder below and see if you got it correct!",
                 "",
@@ -213,7 +213,7 @@ namespace BaseConverter.ConvertUtils
                 "6 // 2 = 3 with a remainder of 0     (Answer = 0 or 0b0)",
                 "3 // 2 = 1 with a remainder of 1     (Answer = 1 or 0b1)",
                 "1 // 2 = 0 with a remainder of 1     (Answer = 1 or 0b1)",
-                "Then we apply Step 5 and simply read the results from bottom to up so we get, 110 in binary",
+                "Then we apply Step 5 and simply write the results from bottom to up so we get, 110 in binary",
                 "Therefore, 111111 in Unary is equivalent to 110 in binary.",
                 "Final Answer = 110 or 0b110"};
         }
@@ -312,7 +312,7 @@ namespace BaseConverter.ConvertUtils
         {
             return new string[] { "Binary is based on base 2 numerical system. Unary is based on base 1 numerical system",
                 "To convert between binary to unary, it is easier to first convert the binary value to decimal and then to unary",
-                "Step 1: Starting from right to left of the value, raise 2 to the power of its index (starting from 0) and then multiply it by the value at that index",
+                "Step 1: Starting from right to left of the value, take 2 and raise it to the power of its index (starting from 0) and then multiply it by the value at that index",
                 "\tex. Binary of 0011 we get (2^0)*1 = 1",
                 "Step 2: Do this repeatedly until you reach the very left digit",
                 "\tex. (2^1)*1 = 2, (2^2)*0 = 0, (2^3)*0 = 0",
@@ -357,8 +357,8 @@ namespace BaseConverter.ConvertUtils
 
         private string[] PrintBinaryToDecimalInstructions()
         {
-            return new string[] { "Binary is based on the base 2 number system. Each position of the digit corresponds to the power they are to be raised in",
-                "Step 1: Starting with the very right digit, raise 2 to the power of its index (starting from 0) and then multiply it by the value at that index",
+            return new string[] { "Binary is based on the base 2 number system.",
+                "Step 1: Starting with the very right digit, take 2 and raise it to the power of its index (starting from 0) and then multiply it by the value at that index",
                 "\tex. Binary of 0101 we get (2^0)*1 = 1",
                 "Step 2: Do this repeatedly until you reach the very left digit",
                 "\tex. (2^1)*0 = 0, (2^2)*1 = 4, (2^3)*0 = 0",
@@ -404,7 +404,7 @@ namespace BaseConverter.ConvertUtils
                 "\tex. So 10100101 is equal to two digits of hexadecimal (A5)",
                 "Step 1: Separate the bits into fours starting from the very right value",
                 "\tex. 10100101 separated is equal to 1010 0101",
-                "Step 2: Starting with the very right digit, raise 2 to the power of its index (starting from 0) and multiply it by the value at that index",
+                "Step 2: Starting with the very right digit, take 2 and raise it to the power of its index (starting from 0) and multiply it by the value at that index",
                 "\tex. (2^0)*1 = 1, (2^1)*0 = 0, (2^2)*1 = 4, (2^3)*0 = 0",
                 "Step 3: Once separated, simply add all the values together to from its decimal equivalence",
                 "\tex. 1 + 0 + 4 + 0 = 5",
@@ -412,7 +412,7 @@ namespace BaseConverter.ConvertUtils
                 "\tex. In this case, 5 decimal in hexadecimal is 5",
                 "Step 4: Repeat Steps 2-3 for each four bits that was separated in the beginning",
                 "\tex. (2^0)*0 = 0, (2^1)*1 = 2, (2^2)*0 = 0, (2^3)*1 = 8, and so we have 0 + 2 + 0 + 8 = 10 in decimal or A in hexadecimal",
-                "Step 5: Once calculated, simply read the values from bottom to top (your most recent hexadecimal calculation to the oldest)",
+                "Step 5: Once calculated, simply write the values from bottom to top (your most recent hexadecimal calculation to the oldest)",
                 "\tex. 0xA5 or A5",
                 "Enter each hexadecimal value that you calculated for each four bits below and see if you got it correct!",
                 "",
@@ -431,7 +431,7 @@ namespace BaseConverter.ConvertUtils
                 "(2^3)*0 = 0",
                 "Which we add up leading to its decimal value, 7, which is equivalent to the hexadecimal value '7'",
                 "Answer = 7 or 0x7",
-                "Then we simply read the resulting hexadecimal values from top to bottom to get 7C",
+                "Then we simply write the resulting hexadecimal values from top to bottom to get 7C",
                 "Final Answer = 7C or 0x7C"};
         }
 
@@ -503,7 +503,7 @@ namespace BaseConverter.ConvertUtils
                 "\tex. Decimal of 13 and applying this step we get 13 // 2 = 6 with a remainder of 1",
                 "Step 2: Repeat Step 1 until the quotient is equal to 0",
                 "\tex. 6 // 2 = 3 with a remainder of 0, 3 // 2 = 1 with a remainder of 1, 1 // 2 with a remainder of 1",
-                "Step 3: Once the quotient is 0, read the remainders from bottom to top (from your recent remainder calculation to the oldest remainder calculation)",
+                "Step 3: Once the quotient is 0, write the remainders from bottom to top (from your recent remainder calculation to the oldest remainder calculation)",
                 "\tex. 0b1101 or 1101",
                 "Enter each of the remainders of your calculation below and see if you got it correct!",
                 "",
@@ -513,7 +513,7 @@ namespace BaseConverter.ConvertUtils
                 "7 % 2 = 1      (Answer = 1 or 0b1)",
                 "3 % 2 = 1      (Answer = 1 or 0b1)",
                 "1 % 2 = 1      (Answer = 1 or 0b1)",
-                "Then we simply apply Step 4 and read it from bottom to top we get, 1110",
+                "Then we simply apply Step 4 and write it from bottom to top we get, 1110",
                 "Final Answer = 1110 or 0b1110"};
         }
 
@@ -553,7 +553,7 @@ namespace BaseConverter.ConvertUtils
                 "26 % 16 = 10       (Answer = A or 0xA)",
                 "1 % 16 = 1         (Answer = 1 or 0x1)",
                 "Note that the equivalent value of 10 decimal to hexadecimal is 'A', and so on",
-                "Once we have the values calculated, we simply read the results from bottom to top to get 1A",
+                "Once we have the values calculated, we simply write the results from bottom to top to get 1A",
                 "Final Answer = 1A or 0x1A"};
         }
 
@@ -584,7 +584,7 @@ namespace BaseConverter.ConvertUtils
         {
             return new string[] { "Hexadecimal is based on the base 16 number system. Unary is based on base 1 numerical system",
                 "The easiest way to convert base systems to unary is to convert them to the decimal base systems first",
-                "Step 1: Starting with the very right digit, raise 16 to the power of its index (starting from 0) and multiply it by the value at that index",
+                "Step 1: Starting with the very right digit, take 16 and raise it to the power of its index (starting from 0) and multiply it by the value at that index",
                 "\tex. Hexadecimal value of 0x13 or 13 we take 3 and convert it to decimal (16^0)*3 = 3",
                 "Step 2: Repeat Step 1 until you reach the very left digit of the hexadecimal value",
                 "\tex. (16^1)*1 = 16",
@@ -623,28 +623,36 @@ namespace BaseConverter.ConvertUtils
 
         private string[] PrintHexadecimalToBinaryInstructions()
         {
-            return new string[] { "Hexadecimal is based on the base 16 number system. Binary is based on the base 2 number system.",
-                "Step 1: Convert each hexadecimal digit to its decimal counterpart to make the conversions easier",
-                "Step 2: Starting from the very right value or the least significant value, floor divide it by 2 and write down the remainder",
-                "Step 3: Repeat Step 2 with every quotient you calculate until you reach the quotient of 0",
-                "Step 4: Once the quotient is 0, form the remainders together from the bottom to up (your last calculated remainder is the very first binary digit and your first calculated remainder is the very last of the binary digit)",
-                "Step 5: Once you have every hexadecimal value calculated, combine them altogether from bottom to top (your latest hexadecimal value to the oldest)",
+            return new string[] { "Hexadecimal is based on the base 16 number system. Binary is based on the base 2 number system. Remem",
+                "For every four bits, represents one hexedecimal bit. To easily convert a hexadecimal value to binary, it is easier to convert it first to decimal and then to binary",
+                "Step 1: Starting from the very right value or the least significant digit, convert it to its decimal equivalence (see conversion table if you need help)",
+                "\tex. Hexadecimal value of 0x1DA or 1DA, by applying Step 1, we have A which is equal to the decimal value 10",
+                "Step 2: Floor divide the decimal value by 2 and write down the remainder",
+                "\tex. 10 // 2 = 5 with a remainder of 0",
+                "Step 3: Repeat Step 2 until the quotient is equal to 0",
+                "\tex. 5 // 2 = 2 with a remainder of 1, 2 // 2 = 1 with a remainder of 0, 1 // 2 = 0 with a remainder of 1",
+                "Step 4: Once the quotient is 0, write the remainders from bottom to top (from your recent remainder calculation to the oldest). This is the binary equivalence of that decimal value",
+                "\tex. 0b1010 or 1010",
+                "Step 5: Repeat Step 2 to 4 for the rest of the hexadecimal values, by first converting it to its decimal equivalence",
+                "\tex. Hexadecimal value 1 is equivalent to 1 in binary, hexadecimal value of D is equivalent to 1101 in binary",
+                "Step 6: Once you have every hexadecimal value calculated, combine all the binary values altogether from bottom to top (from your recent binary calculation to the oldest)",
+                "\tex. Resulting binary when combined we get 0b111011010 or 111011010",
                 "Enter the result for each hexadecimal digit in binary form below and see if you got it correct!",
                 "NOTE: If your guess is less than four digits long, append 0's before it to make it so (ex. 101 -> 0101)",
                 "",
                 "Example: Converting the Hexadecimal value 2C to Binary",
                 "By applying Step 1, for the hexadecimal value C, we get the value decimal value 12",
                 "We then apply Step 2 and floor divide the decimal value and we get the following",
-                "12 % 2 = 0",
-                "6 % 2 = 0",
-                "3 % 2 = 1",
-                "1 % 2 = 1",
+                "12 // 2 = 6 with a remainder of 0",
+                "6 // 2 = 3 with a remainder of 0",
+                "3 // 2 = 1 with a remainder of 1",
+                "1 // 2 = 0 with a remainder of 1",
                 "Where we get the binary value 1100 when reading from bottom to top",
                 "Answer = 1100 or 0b1100",
-                "We then apply Step 1 again and figure out the decimal value for the hexadecimal value 2, which is simply just 2",
+                "We then apply Step 2 again and figure out the decimal value for the hexadecimal value 2, which is simply just 2",
                 "Applying Step 2 we get the following",
-                "2 % 2 = 0",
-                "1 % 2 = 1",
+                "2 // 2 = 1 with a remainder of 0",
+                "1 // 2 = 0 with a remainder of 1",
                 "Where we get the binary value 01 or 0010 when reading from bottom to top",
                 "Answer = 0010 or 0b0010",
                 "We then apply Step 5 and combine the values together from bottom to top which yields 00101100",
@@ -692,10 +700,9 @@ namespace BaseConverter.ConvertUtils
         private string[] PrintHexadecimalToDecimalInstructions()
         {
             return new string[] { "Hexadecimal is based on the base 16 number system.",
-
                 "Step 1: Starting with the very last value or otherwise known as the least significant digit, convert it to its single decimal equivalence (see conversion table if you need help)",
                 "\tex. Hexadecimal value of 0xAC or AC, we convert C to its decimal value 12",
-                "Step 2: Raise 16 to the power of its index (starting from 0)",
+                "Step 2: Take 16 and raise it to the power of its index (starting from 0)",
                 "\tex. Applying this we get (16^0)*12 = 12",
                 "Step 3: Do this repeatedly until you reach the very left value ",
                 "\tex. Converting hexadecimal A to decimal is 10, so we get (16^1)*10 = 160",
