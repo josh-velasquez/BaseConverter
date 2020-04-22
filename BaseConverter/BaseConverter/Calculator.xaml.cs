@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
+using System.Linq;
 using System.Windows;
 
 namespace BaseConverter
@@ -118,27 +121,116 @@ namespace BaseConverter
             inputBox.AppendText("//");
         }
 
+        /// <summary>
+        /// Evaluates the expression provided by the user
+        /// </summary>
+        /// <param name="expression"></param>
+        /// <returns></returns>
         private string Evaluate(string expression)
         {
             double result;
-
-            if (expression.Contains("^") {
-                return Convert.ToDouble(new DataTable().Compute(ProcessExponent(expression), null)).ToString()
-            }
-            if (expression.Contains("//"))
+            string newExpression = expression;
+            if (expression.Contains("^")) // Handles exponents
             {
-                result = Math.Floor(Convert.ToDouble(new DataTable().Compute(StripExtraDiv(expression), null)));
+                newExpression = ProcessExponent(newExpression);
+            }
+            if (newExpression.Contains("//")) // Handles floor division
+            {
+                result = Math.Floor(Convert.ToDouble(new DataTable().Compute(StripExtraDiv(newExpression), null)));
                 return Math.Floor(result).ToString();
             }
-            return Convert.ToDouble(new DataTable().Compute(expression, null)).ToString();
+            return Convert.ToDouble(new DataTable().Compute(newExpression, null)).ToString();
         }
 
+        /// <summary>
+        /// Splits the user input based on the delimeters. Used for custom computing
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        private List<string> CustomSplit(string text)
+        {
+            var delimiters = new char[] { '^', '(', ')', '*', '-', '+', '%', '/' };
+            List<string> result = new List<string>();
+            for (int i = 0; i < text.Length; i++)
+            {
+                if (Array.IndexOf(delimiters, text[i]) == -1)
+                {
+                    string left = "";
+                    string right = "";
+                    for (int j = i - 1; j > 0; j--)
+                    {
+                        if (Array.IndexOf(delimiters, text[j]) > -1)
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            left = text[j] + left;
+                        }
+                    }
+                    int incremented = -1;
+                    for (int k = i; k < text.Length; k++)
+                    {
+                        if (Array.IndexOf(delimiters, text[k]) > -1)
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            right += text[k];
+                            incremented++;
+                        }
+                    }
+                    result.Add(left + right);
+                    i += incremented;
+                }
+                else
+                {
+                    result.Add(text[i].ToString());
+                }
+            }
+            return result.Where(x => !string.IsNullOrEmpty(x)).ToList();
+        }
+
+        /// <summary>
+        /// Handles exponent arithmetic as DataTable.compute cannot calculate it
+        /// </summary>
+        /// <param name="expression"></param>
+        /// <returns></returns>
         private string ProcessExponent(string expression)
         {
-
-            return ":";
+            List<string> expr = CustomSplit(expression);
+            List<string> calculated = new List<string>();
+            string newExpression = "";
+            for (int i = 0; i < expr.Count; i++)
+            {
+                if (expr[i] == "^")
+                {
+                    calculated.Add(Math.Pow(double.Parse(expr[i - 1]), double.Parse(expr[i + 1])).ToString());
+                    if (calculated.Count > i - 1)
+                    {
+                        calculated.RemoveAt(i - 1);
+                    }
+                    i++;
+                }
+                else
+                {
+                    calculated.Add(expr[i]);
+                }
+            }
+            foreach (var val in calculated)
+            {
+                newExpression += val;
+            }
+            Debug.WriteLine("EXP: " + newExpression);
+            return newExpression;
         }
 
+        /// <summary>
+        /// Strips the extra / in //
+        /// </summary>
+        /// <param name="expression"></param>
+        /// <returns></returns>
         private string StripExtraDiv(string expression)
         {
             return expression.Replace("//", "/");

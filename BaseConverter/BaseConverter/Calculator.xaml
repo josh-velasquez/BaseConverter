@@ -120,14 +120,14 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <Button x:Name="backButton" Content="CE" HorizontalAlignment="Left" Margin="220,104,0,0" VerticalAlignment="Top" Width="100" Height="30" Background="#FFDFA82C" FontSize="14" Click="ClearClick" Foreground="White">
+        <Button x:Name="backButton" Content="CE" HorizontalAlignment="Left" Margin="220,104,0,0" VerticalAlignment="Top" Width="100" Height="30" Background="#FFE4A73D" FontSize="14" Click="ClearClick" Foreground="White">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="4" />
                 </Style>
             </Button.Resources>
         </Button>
-        <Button x:Name="clearButton" Content="C" HorizontalAlignment="Left" Margin="325,104,0,0" VerticalAlignment="Top" Width="100" Height="30" Background="#FF0669D4" FontSize="14" Click="BackClick" Foreground="White">
+        <Button x:Name="clearButton" Content="C" HorizontalAlignment="Left" Margin="325,104,0,0" VerticalAlignment="Top" Width="100" Height="30" Background="#FF85CDBC" FontSize="14" Click="BackClick" Foreground="White">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="4" />
@@ -170,7 +170,7 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <TextBox x:Name="inputBox" HorizontalAlignment="Left" Height="30" Margin="10,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="415" />
-        <TextBox x:Name="resultBox" HorizontalAlignment="Left" Height="30" Margin="10,18,0,0" TextWrapping="Wrap" IsReadOnly="True" VerticalAlignment="Top" Width="415" />
+        <TextBox x:Name="inputBox" HorizontalAlignment="Left" Height="30" Margin="10,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="415" Background="#FFD0F3C5" />
+        <TextBox x:Name="resultBox" HorizontalAlignment="Left" Height="30" Margin="10,18,0,0" TextWrapping="Wrap" IsReadOnly="True" VerticalAlignment="Top" Width="415" Background="#FFFDC9C9" />
     </Grid>
 </Window>
