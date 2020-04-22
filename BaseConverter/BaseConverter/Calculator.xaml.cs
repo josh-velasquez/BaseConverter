@@ -212,11 +212,14 @@ namespace BaseConverter
                         calculated.RemoveAt(i - 1);
                     }
                     i++;
+              
                 }
                 else
                 {
                     calculated.Add(expr[i]);
+          
                 }
+                printHere(calculated);
             }
             foreach (var val in calculated)
             {
@@ -224,6 +227,14 @@ namespace BaseConverter
             }
             Debug.WriteLine("EXP: " + newExpression);
             return newExpression;
+        }
+
+        private void printHere(List<string> test)
+        {
+            foreach(var h in test)
+            {
+                Debug.Write(h);
+            }
         }
 
         /// <summary>
