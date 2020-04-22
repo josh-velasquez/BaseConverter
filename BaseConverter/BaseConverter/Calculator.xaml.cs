@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 
@@ -206,35 +205,20 @@ namespace BaseConverter
             {
                 if (expr[i] == "^")
                 {
+                    calculated.RemoveAt(calculated.Count - 1);
                     calculated.Add(Math.Pow(double.Parse(expr[i - 1]), double.Parse(expr[i + 1])).ToString());
-                    if (calculated.Count > i - 1)
-                    {
-                        calculated.RemoveAt(i - 1);
-                    }
                     i++;
-              
                 }
                 else
                 {
                     calculated.Add(expr[i]);
-          
                 }
-                printHere(calculated);
             }
             foreach (var val in calculated)
             {
                 newExpression += val;
             }
-            Debug.WriteLine("EXP: " + newExpression);
             return newExpression;
-        }
-
-        private void printHere(List<string> test)
-        {
-            foreach(var h in test)
-            {
-                Debug.Write(h);
-            }
         }
 
         /// <summary>
@@ -253,9 +237,9 @@ namespace BaseConverter
             {
                 resultBox.Text = Evaluate(inputBox.Text).ToString();
             }
-            catch (Exception exception)
+            catch (Exception)
             {
-                MessageBox.Show("Invalid input. Error: " + exception, "Error");
+                MessageBox.Show("Invalid input.", "Error");
             }
         }
 

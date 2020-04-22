@@ -18,7 +18,7 @@ namespace BaseConverter
             Close();
         }
 
-        private void RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
+        private void RequestNavigateClick(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
         {
             Process.Start(e.Uri.AbsoluteUri.ToString());
         }
