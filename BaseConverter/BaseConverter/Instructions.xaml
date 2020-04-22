@@ -24,21 +24,21 @@
                 <Paragraph>
                     <Run Text="Converts between"/>
                     <Run Text=" "/>
-                    <Hyperlink NavigateUri="https://en.wikipedia.org/wiki/Unary_numeral_system">
+                    <Hyperlink IsEnabled="True" NavigateUri="https://en.wikipedia.org/wiki/Unary_numeral_system">
                         <Run Text="unary,"/>
                     </Hyperlink>
                     <Run Text=" "/>
-                    <Hyperlink NavigateUri="https://en.wikipedia.org/wiki/Binary_number">
+                    <Hyperlink IsEnabled="True" NavigateUri="https://en.wikipedia.org/wiki/Binary_number">
                         <Run Text="binary,"/>
                     </Hyperlink>
                     <Run Text=" "/>
-                    <Hyperlink NavigateUri="https://en.wikipedia.org/wiki/Decimal">
+                    <Hyperlink IsEnabled="True" NavigateUri="https://en.wikipedia.org/wiki/Decimal">
                         <Run Text="decimal,"/>
                     </Hyperlink>
                     <Run Text=" "/>
                     <Run Text="and"/>
                     <Run Text=" "/>
-                    <Hyperlink NavigateUri="https://simple.wikipedia.org/wiki/Hexadecimal">
+                    <Hyperlink IsEnabled="True" NavigateUri="https://simple.wikipedia.org/wiki/Hexadecimal">
                         <Run Text="hexadecimal"/>
                     </Hyperlink>
                     <Run Text=" "/>
@@ -46,12 +46,18 @@
                     <Run Text=" "/>
                     <Run FontWeight="Bold" Text="does not"/>
                     <Run Text=" "/>
+                    <Run Text=" "/>
+                    <Run Text=" "/>
                     <Run Text="show the final answer right away but rather asks you for answers step by step until you reach the final answer."/>
+                    <Run Text=" "/>
+                    <Run Text=" "/>
                     <Run Text=" "/>
                     <Run Text="The instructions box will tell the steps in order to convert from your chosen base to another. Enter your answer for the steps in the &quot;Your answer&quot; box and see if you got it correct. Once you have that done, see if you got the overall correct answer at the end."/>
                 </Paragraph>
                 <Paragraph>
-                    <Run Text="A workspace is provided to you so that you can write and see your calculations while converting from one to another. If you're having a hard time converting, click the conversion table button to help you out during conversions."/>
+                    <Run Text="A workspace is provided to you so that you can write and see your calculations while converting from one to another."/>
+                    <Run Text=" A custom calculator is also provided in this application. It allows you to calculate the floor division and modulo of two values and your typical arithmetic. Simply click the Calculator button to view the custom calculator. "/>
+                    <Run Text="If you're having a hard time converting, click the conversion table button to help you out during conversions."/>
                 </Paragraph>
                 <Paragraph>
                     <Run FontWeight="Bold" FontSize="14" Text="Get Started:"/>
@@ -75,33 +81,38 @@
                     <Run Text="Most Significant Digit (MSD) - is located at the far left of a value. (ex. F4A where F is the most significant digit)"/>
                 </Paragraph>
                 <Paragraph>
-                    <Run Text="Floor Division -"/>
-                    <Run Text=" "/>
-                    <Run Text="Floor division"/>
-                    <Run Text=" "/>
-                    <Run Text=" (symbolized by //)"/>
-                    <Run Text=" "/>
-                    <Run Text=" is an important concept that is heavily used in this conversion. To floor divide, simply round your quotient to its lowest next value (ex. 3"/>
-                    <Run Text=" "/>
-                    <Run Text="/"/>
-                    <Run Text=" "/>
-                    <Run Text="/2 = 1, 5/"/>
-                    <Run Text=" "/>
-                    <Run Text="/"/>
-                    <Run Text=" "/>
-                    <Run Text="4 = 1, etc... )."/>
+                    <Run Text="Floor Division - Floor division (symbolized by //) is an important concept that is heavily used in this conversion. To floor divide, simply round your quotient to its lowest next value (ex. 3//2 = 1, 5//4 = 1, etc... )."/>
+                </Paragraph>
+                <Paragraph>
+                    <Run Text="Modulo - Modulo (symbolized by %) is used to denote the calculation of the remainder of two values (ex. 3 % 2 = 1, 6 % 4 = 2, etc...)"/>
                 </Paragraph>
                 <Paragraph>
                     <Run FontWeight="Bold" FontSize="14" Text="Tips:"/>
                 </Paragraph>
                 <Paragraph>
-                    <Run Text="1. The &quot;Answer&quot; and &quot;Final Answer&quot; found in the Conversion Instructions denoted for every example is the sample answer that you should enter in the &quot;Your Answer&quot; box below"/>
+                    <Run Text="1. The &quot;Answer&quot; and &quot;Final Answer&quot; found in the Conversion Instructions "/>
+                    <Run Text=" "/>
+                    <Run Text="for each conversion is the"/>
+                    <Run Text=" "/>
+                    <Run Text=" answer that you should enter in the &quot;Your Answer&quot; box below"/>
+                    <Run Text=" "/>
+                    <Run Text=" it"/>
                 </Paragraph>
                 <Paragraph>
-                    <Run Text="2. Remember that when your dividend is greater than your divisor, the dividend is the remainder (ex. 6/16 = 0 and the remainder is 6)."/>
+                    <Run Text="2. Remember that"/>
+                    <Run Text=" "/>
+                    <Run Text=" in floor division"/>
+                    <Run Text=" "/>
+                    <Run Text=" when your dividend is greater than your divisor, the dividend is the remainder (ex. 6 // 16 = 0 and the remainder is 6)."/>
                 </Paragraph>
                 <Paragraph>
-                    <Run Text="3. Each hexadecimal digit corresponds to four binary digits. So if you have two hexadecimal digits, you should get a total of eight binary digits in the end."/>
+                    <Run Text="3. Each hexadecimal "/>
+                    <Run Text=" "/>
+                    <Run Text="character "/>
+                    <Run Text=" "/>
+                    <Run Text="corresponds to four binary digits. So if you have two hexadecimal digits, you should get a total of eight binary digits in the end"/>
+                    <Run Text=" "/>
+                    <Run Text=" (ex. Converting hexadecimal 0xA2 to binary will yield 0b10100010 which has 8 bits)"/>
                 </Paragraph>
                 <Paragraph>
                     <Run Text="If you want to see this window again, click the icon on the top right beside the Workspace!"/>

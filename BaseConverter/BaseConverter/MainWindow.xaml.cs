@@ -125,7 +125,14 @@ namespace BaseConverter
         {
             foreach (string step in steps)
             {
-                instructionsBox.Items.Add(step);
+                if (step.Contains("Answer"))
+                {
+                    instructionsBox.Items.Add(new ListBoxItem { Content = step, Background = Brushes.LightGreen });
+                }
+                else
+                {
+                    instructionsBox.Items.Add(step);
+                }
             }
         }
 
@@ -292,6 +299,7 @@ namespace BaseConverter
         {
             if (currentQuestion == null) // Check if question is null or done
             {
+                ShowMessageBox("Error", "No conversion available. Please enter a conversion value and click the convert button.");
                 return; // no question
             }
             if (currentQuestion.done || currentQuestion.steps.Item1[0].Item3 == StepType.SingleSolution)
@@ -373,7 +381,7 @@ namespace BaseConverter
         {
             if (currentQuestion == null || currentQuestion.done)
             {
-                stepAnswer.Text = "";
+                ShowMessageBox("Error", "No conversion available. Please enter a conversion value and click the convert button.");
                 return;
             }
             var stepAndAnswer = currentQuestion.steps.Item1;
@@ -463,6 +471,13 @@ namespace BaseConverter
                 }
             }
             Debug.WriteLine("Final Answer: " + result.Item2);
+        }
+
+        private void OnShowCalculatorClick(object sender, RoutedEventArgs e)
+        {
+            Calculator calculator = new Calculator();
+            calculator.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            calculator.Show();
         }
     }
 }

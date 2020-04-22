@@ -63,7 +63,7 @@
         CornerRadius="7,0,0,7" Background="#FFA85FF1" Margin="10,439,1125,202" />
         <Label Content="Your Answer" HorizontalAlignment="Left" Height="28" Margin="15,441,0,0" VerticalAlignment="Top" Foreground="White" />
         <Border BorderThickness="1"
-            CornerRadius="7,0,0,7" Background="#FFA85FF1" Margin="10,49,1125,591" />
+            CornerRadius="7,0,0,7" Background="#FFA85FF1" Margin="10,49,1125,592" />
         <Label Content="Value" HorizontalAlignment="Left" Height="28" Margin="37,51,0,0" VerticalAlignment="Top" Foreground="White" />
         <Button x:Name="showAnswer" Content="Show Answer" HorizontalAlignment="Left" Margin="514,439,0,0" VerticalAlignment="Top" Width="150" Height="30" Background="#FF85CDBC" FontSize="14" Click="OnShowAnswerClick" Foreground="White">
             <Button.Resources>
@@ -83,5 +83,12 @@
         <Border  BorderThickness="1"
             CornerRadius="7,0,0,7" Background="#FFA85FF1" Margin="10,401,1125,241" />
         <Label Content="Status" HorizontalAlignment="Left" Height="28" Margin="27,401,0,0" VerticalAlignment="Top" Foreground="White" />
+        <Button Content="Calculator" HorizontalAlignment="Left" Margin="514,85,0,0" VerticalAlignment="Top" Width="150" Height="30" Click="OnShowCalculatorClick" Background="#FF5A8BD3" FontSize="14" Foreground="White">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="4" />
+                </Style>
+            </Button.Resources>
+        </Button>
     </Grid>
 </Window>

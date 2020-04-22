@@ -16,4 +16,6 @@ C:\Users\joshv\Desktop\Github\BaseConverter\BaseConverter\BaseConverter\obj\Debu
 C:\Users\joshv\Desktop\Github\BaseConverter\BaseConverter\BaseConverter\obj\Debug\ConversionTable.baml
 C:\Users\joshv\Desktop\Github\BaseConverter\BaseConverter\BaseConverter\obj\Debug\Instructions.baml
 C:\Users\joshv\Desktop\Github\BaseConverter\BaseConverter\BaseConverter\obj\Debug\Instructions.g.cs
+C:\Users\joshv\Desktop\Github\BaseConverter\BaseConverter\BaseConverter\obj\Debug\Calculator.g.cs
+C:\Users\joshv\Desktop\Github\BaseConverter\BaseConverter\BaseConverter\obj\Debug\Calculator.baml
 C:\Users\joshv\Desktop\Github\BaseConverter\BaseConverter\BaseConverter\obj\Debug\BaseConverter.csprojAssemblyReference.cache
