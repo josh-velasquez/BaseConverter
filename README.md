@@ -6,13 +6,17 @@ It can also act as a stand alone converter. It includes the conversion table for
 
 When the program is opened, you are greeted with an information box which contains instructions on how to use the tool and tips.
 
-![](Assets/Video01.mp4)
+![](Assets/Video01.gif)
 
-After dismissing the video, you can then choose any conversion you want. You can also practice your conversion skills by solving random conversions.
+After dismissing the window, you can then choose any conversion you want. 
 
-![](Assets/Video02.mp4)
+![](Assets/Video02.gif)
 
-You can also use the custom calculator that is built in the application. It allows you to do your usual arithmetic and also do modulo and floor division calculations. You can also do your work in the workspace provided for ease of use.
+You can also practice your conversion skills by solving random conversions. You can also do your work in the workspace provided for ease of use.
+
+![](Assets/Video03.gif)
+
+You can also use the custom calculator that is built in the application. It allows you to do your usual arithmetic and also do modulo and floor division calculations. 
 
 
 ## Running the program
