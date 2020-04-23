@@ -170,7 +170,7 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <TextBox x:Name="inputBox" HorizontalAlignment="Left" Height="30" Margin="10,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="415" Background="#FFD0F3C5" />
-        <TextBox x:Name="resultBox" HorizontalAlignment="Left" Height="30" Margin="10,18,0,0" TextWrapping="Wrap" IsReadOnly="True" VerticalAlignment="Top" Width="415" Background="#FFFDC9C9" />
+        <TextBox x:Name="inputBox" HorizontalAlignment="Left" Height="30" Margin="10,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="415" Background="#FFD0F3C5" MaxLines="1" VerticalContentAlignment="Center" />
+        <TextBox x:Name="resultBox" HorizontalAlignment="Left" Height="30" Margin="10,18,0,0" TextWrapping="Wrap" IsReadOnly="True" VerticalAlignment="Top" Width="415" Background="#FFFDC9C9" MaxLines="1" VerticalContentAlignment="Center" />
     </Grid>
 </Window>

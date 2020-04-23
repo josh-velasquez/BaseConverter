@@ -52,6 +52,8 @@ namespace BaseConverter
         /// <param name="e"></param>
         private void OnConvertClick(object sender, RoutedEventArgs e)
         {
+            stepsBox.Items.Clear();
+            instructionsBox.Items.Clear();
             if (value.Text == "" || !convertUtil.IsValidInput(GetSelectedConversion(), value.Text))
             {
                 ShowMessageBox("Input Error", "Invalid input! Please enter a valid value.");
@@ -60,6 +62,7 @@ namespace BaseConverter
             PopulateInstructionBox(convertUtil.GetInstructions(GetSelectedConversion()));
             try
             {
+                stepAnswer.Text = "";
                 PromptUserGuess(convertUtil.GetSteps(GetSelectedConversion(), value.Text.ToUpper()));
             }
             catch (Exception)
@@ -317,6 +320,7 @@ namespace BaseConverter
                     stepAnswer.Text = "Wrong! Please try again.";
                     stepAnswer.Foreground = Brushes.Red;
                 }
+                userGuess.Text = "";
                 return;
             }
             var stepAndAnswer = currentQuestion.steps.Item1;
@@ -351,6 +355,7 @@ namespace BaseConverter
             {
                 stepAnswer.Text = "Wrong! Try again!";
                 stepAnswer.Foreground = Brushes.Red;
+                userGuess.Text = "";
             }
         }
 
@@ -379,9 +384,15 @@ namespace BaseConverter
         /// <param name="e"></param>
         private void OnShowAnswerClick(object sender, RoutedEventArgs e)
         {
-            if (currentQuestion == null || currentQuestion.done)
+            if (currentQuestion == null)
             {
                 ShowMessageBox("Error", "No conversion available. Please enter a conversion value and click the convert button.");
+                return;
+            }
+            else if (currentQuestion.done)
+            {
+                stepAnswer.Text = "What's the final answer?";
+                stepAnswer.Foreground = Brushes.White;
                 return;
             }
             var stepAndAnswer = currentQuestion.steps.Item1;

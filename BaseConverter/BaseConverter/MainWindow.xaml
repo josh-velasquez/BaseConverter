@@ -79,9 +79,9 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <TextBox x:Name="stepAnswer" HorizontalAlignment="Left" Height="28" Margin="93,402,0,0" TextWrapping="Wrap" IsReadOnly="True" VerticalAlignment="Top" Width="726" Background="#FF4D5280" BorderBrush="{x:Null}" VerticalScrollBarVisibility="Disabled" MaxLines="1" />
+        <TextBox x:Name="stepAnswer" HorizontalAlignment="Left" Height="28" Margin="93,402,0,0" TextWrapping="Wrap" IsReadOnly="True" VerticalAlignment="Top" Width="726" Background="#FF4D5280" BorderBrush="#FFABADB3" VerticalScrollBarVisibility="Disabled" MaxLines="1" VerticalContentAlignment="Center" />
         <Border  BorderThickness="1"
-            CornerRadius="7,0,0,7" Background="#FFA85FF1" Margin="10,401,1125,241" />
+            CornerRadius="7,0,0,7" Background="#FFA85FF1" Margin="10,401,1125,240" />
         <Label Content="Status" HorizontalAlignment="Left" Height="28" Margin="27,401,0,0" VerticalAlignment="Top" Foreground="White" />
         <Button Content="Calculator" HorizontalAlignment="Left" Margin="514,85,0,0" VerticalAlignment="Top" Width="150" Height="30" Click="OnShowCalculatorClick" Background="#FF5A8BD3" FontSize="14" Foreground="White">
             <Button.Resources>

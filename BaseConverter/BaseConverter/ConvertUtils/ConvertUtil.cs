@@ -199,7 +199,7 @@ namespace BaseConverter.ConvertUtils
                 "\tex. Unary of 1111 is equivalent to 4 in decimal",
                 "Step 2: Once you have the decimal value, floor divide that value by 2 and write down the remainder",
                 "\tex. 4 // 2 = 2 with a remainder of 0",
-                "Step 3: Take the quotient and further floor divide that by two and again write down the remainder",
+                "Step 3: Take the quotient and further floor divide that by 2 and again write down the remainder",
                 "\tex. 2 // 2 = 1 with a remainder of 0",
                 "Step 4: Continue to floor divide the quotient until the quotient is 0",
                 "\tex. 1 // 2 = 0 with remainder of 1",
@@ -213,7 +213,7 @@ namespace BaseConverter.ConvertUtils
                 "6 // 2 = 3 with a remainder of 0     (Answer = 0 or 0b0)",
                 "3 // 2 = 1 with a remainder of 1     (Answer = 1 or 0b1)",
                 "1 // 2 = 0 with a remainder of 1     (Answer = 1 or 0b1)",
-                "Then we apply Step 5 and simply write the results from bottom to up so we get, 110 in binary",
+                "Then we apply Step 5 and simply write the results from bottom to top so we get, 110 in binary",
                 "Therefore, 111111 in Unary is equivalent to 110 in binary.",
                 "Final Answer = 110 or 0b110"};
         }
@@ -966,10 +966,10 @@ namespace BaseConverter.ConvertUtils
         private bool IsBinary(string value)
         {
             char[] validCharacters = new char[] { '0', '1' };
-            string newValue = value;
-            if (value.ToUpper().Contains("0B"))
+            string newValue = value.ToUpper();
+            if (newValue.Contains("0B"))
             {
-                newValue = value.Replace("0B", "");
+                newValue = newValue.Replace("0B", "");
             }
             foreach (var chr in newValue)
             {
@@ -1004,9 +1004,9 @@ namespace BaseConverter.ConvertUtils
         {
             char[] validCharacters = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
             string newValue = value.ToUpper();
-            if (newValue.ToUpper().Contains("0X"))
+            if (newValue.Contains("0X"))
             {
-                newValue = value.Replace("0X", "");
+                newValue = newValue.Replace("0X", "");
             }
             foreach (var chr in newValue)
             {
