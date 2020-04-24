@@ -52,13 +52,13 @@ namespace BaseConverter
         /// <param name="e"></param>
         private void OnConvertClick(object sender, RoutedEventArgs e)
         {
-            stepsBox.Items.Clear();
-            instructionsBox.Items.Clear();
             if (value.Text == "" || !convertUtil.IsValidInput(GetSelectedConversion(), value.Text))
             {
                 ShowMessageBox("Input Error", "Invalid input! Please enter a valid value.");
                 return;
             }
+            stepsBox.Items.Clear();
+            instructionsBox.Items.Clear();
             PopulateInstructionBox(convertUtil.GetInstructions(GetSelectedConversion()));
             try
             {

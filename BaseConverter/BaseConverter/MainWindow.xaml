@@ -7,10 +7,10 @@
         ResizeMode="NoResize"
         Title="Base Converter" Height="710.25" Width="1235.333">
     <Grid Background="#FF353A40">
-        <ComboBox x:Name="conversionCombobox" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="344" Height="30" FontFamily="Rockwell" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="White" SelectionChanged="OnSelectionChanged" />
-        <TextBox x:Name="value" HorizontalAlignment="Left" Height="28" Margin="93,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="726" VerticalContentAlignment="Center" ToolTip="Enter your conversion value" Background="#FFD0F3C5" />
+        <ComboBox x:Name="conversionCombobox" HorizontalAlignment="Left" Margin="553,17,0,0" VerticalAlignment="Top" Width="266" Height="28" FontFamily="Rockwell" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="White" SelectionChanged="OnSelectionChanged" />
+        <TextBox x:Name="value" HorizontalAlignment="Left" Height="28" Margin="93,17,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="454" VerticalContentAlignment="Center" ToolTip="Enter your conversion value" Background="#FFD0F3C5" />
         <Label Content="Result" HorizontalAlignment="Left" Margin="10,474,0,0" VerticalAlignment="Top" Width="54" Foreground="White" FontWeight="Bold" FontSize="14" />
-        <Button Content="Reset" HorizontalAlignment="Left" Margin="514,10,0,0" VerticalAlignment="Top" Width="150" Height="30" Click="OnResetClick" Background="#FFE84949" FontSize="14" Foreground="White" RenderTransformOrigin="1.225,0.55">
+        <Button Content="Reset" HorizontalAlignment="Left" Margin="281,50,0,0" VerticalAlignment="Top" Width="266" Height="30" Click="OnResetClick" Background="#FFE84949" FontSize="14" Foreground="White" RenderTransformOrigin="1.225,0.55">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="4" />
@@ -28,7 +28,7 @@
         <Label Content="Conversion Instructions" HorizontalAlignment="Left" Height="30" Margin="10,85,0,0" VerticalAlignment="Top" Width="176" Foreground="White" FontWeight="Bold" FontSize="14" />
         <ListBox x:Name="instructionsBox"  HorizontalAlignment="Left" Height="272" Margin="10,123,0,0" VerticalAlignment="Top" Width="809" ToolTip="Conversion instructions" ScrollViewer.HorizontalScrollBarVisibility="Auto" Background="#FFFDC9C9" />
         <ListBox x:Name="stepsBox" HorizontalAlignment="Left" Height="149" VerticalAlignment="Top" Width="809" Margin="10,508,0,0" ToolTip="Steps for conversion" Background="#FFFDC9C9" />
-        <Button Content="Convert" HorizontalAlignment="Left" Margin="359,10,0,0" VerticalAlignment="Top" Width="150" Height="30" Click="OnConvertClick" Background="#FF4EDC61" FontSize="14" Foreground="White">
+        <Button Content="Convert" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" Width="266" Height="30" Click="OnConvertClick" Background="#FF4EDC61" FontSize="14" Foreground="White">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="4" />
@@ -45,7 +45,7 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <Button Content="Conversion Table" HorizontalAlignment="Left" Margin="669,85,0,0" VerticalAlignment="Top" Width="150" Height="30" Click="OnShowConversionTableClick" Background="#FF5A8BD3" FontSize="14" Foreground="White">
+        <Button Content="Conversion Table" HorizontalAlignment="Left" Margin="689,85,0,0" VerticalAlignment="Top" Width="130" Height="30" Click="OnShowConversionTableClick" Background="#FF5A8BD3" FontSize="14" Foreground="White">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="4" />
@@ -63,8 +63,8 @@
         CornerRadius="7,0,0,7" Background="#FFA85FF1" Margin="10,439,1125,202" />
         <Label Content="Your Answer" HorizontalAlignment="Left" Height="28" Margin="15,441,0,0" VerticalAlignment="Top" Foreground="White" />
         <Border BorderThickness="1"
-            CornerRadius="7,0,0,7" Background="#FFA85FF1" Margin="10,49,1125,592" />
-        <Label Content="Value" HorizontalAlignment="Left" Height="28" Margin="37,51,0,0" VerticalAlignment="Top" Foreground="White" />
+            CornerRadius="7,0,0,7" Background="#FFA85FF1" Margin="9,16,1126,625" />
+        <Label Content="Value" HorizontalAlignment="Left" Height="28" Margin="36,18,0,0" VerticalAlignment="Top" Foreground="White" />
         <Button x:Name="showAnswer" Content="Show Answer" HorizontalAlignment="Left" Margin="514,439,0,0" VerticalAlignment="Top" Width="150" Height="30" Background="#FF85CDBC" FontSize="14" Click="OnShowAnswerClick" Foreground="White">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
@@ -72,7 +72,7 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <Button Content="Random Conversion" HorizontalAlignment="Left" Margin="669,10,0,0" VerticalAlignment="Top" Width="150" Height="30" Click="OnGenerateRandomConversionClick" Background="#FF5A8BD3" FontSize="14" Foreground="White" RenderTransformOrigin="1.225,0.55">
+        <Button Content="Random Conversion" HorizontalAlignment="Left" Margin="553,50,0,0" VerticalAlignment="Top" Width="266" Height="30" Click="OnGenerateRandomConversionClick" Background="#FF5A8BD3" FontSize="14" Foreground="White" RenderTransformOrigin="1.225,0.55">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="4" />
@@ -83,7 +83,7 @@
         <Border  BorderThickness="1"
             CornerRadius="7,0,0,7" Background="#FFA85FF1" Margin="10,401,1125,240" />
         <Label Content="Status" HorizontalAlignment="Left" Height="28" Margin="27,401,0,0" VerticalAlignment="Top" Foreground="White" />
-        <Button Content="Calculator" HorizontalAlignment="Left" Margin="514,85,0,0" VerticalAlignment="Top" Width="150" Height="30" Click="OnShowCalculatorClick" Background="#FF5A8BD3" FontSize="14" Foreground="White">
+        <Button Content="Calculator" HorizontalAlignment="Left" Margin="553,85,0,0" VerticalAlignment="Top" Width="131" Height="30" Click="OnShowCalculatorClick" Background="#FF5A8BD3" FontSize="14" Foreground="White">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="4" />

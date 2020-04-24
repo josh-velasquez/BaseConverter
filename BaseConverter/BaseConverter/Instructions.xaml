@@ -39,7 +39,7 @@
                     <Run Text=". Choose a conversion and enter your value to convert. Clicking convert" />
                     <Run FontWeight="Bold" Text="does not" />
                     <Run Text="show the final answer right away but rather asks you for answers step by step until you reach the final answer." />
-                    <Run Text="The instructions box will tell the steps in order to convert from your chosen base to another. Enter your answer for the steps in the &quot;Your answer&quot; box and see if you got it correct. Once you have that done, see if you got the overall correct answer at the end." />
+                    <Run Text="The Conversion Instructions box will tell the steps in order to convert from your chosen base to another. Enter your answer for the steps in the &quot;Your answer&quot; box and see if you got it correct. Once you have that done, see if you got the overall correct answer at the end." />
                 </Paragraph>
                 <Paragraph>
                     <Run Text="A workspace is provided to you so that you can write and see your calculations while converting from one to another." />
@@ -50,7 +50,47 @@
                     <Run FontWeight="Bold" FontSize="14" Text="Get Started:" />
                 </Paragraph>
                 <Paragraph>
-                    <Run Text="To get started, select a conversion from the dropdown menu and enter the value to be converted. Once you have the value entered, click the Convert button to start the conversion process. The program will ask you to enter the values for the conversion step until you arrive the final converted value! If you are stumped on a step don't worry! Click the Show Answer button and the answer for the step will be shown. If you want to skip ahead to the final answer, simply click the Show Final Answer button to do so." />
+                    <Run Text="To get started, enter the value to be converted." />
+                </Paragraph>
+                <Paragraph>
+                    <InlineUIContainer>
+                        <Image Source="InstructionsImages\step1.PNG" />
+                    </InlineUIContainer>
+                </Paragraph>
+                <Paragraph>
+                    <Run Text="Select a conversion from the dropdown menu." />
+                </Paragraph>
+                <Paragraph>
+                    <InlineUIContainer>
+                        <Image Source="InstructionsImages\step2.PNG" />
+                    </InlineUIContainer>
+                </Paragraph>
+                <Paragraph>
+                    <Run Text="Once you have the value entered and the conversion type selected, click the Convert button to start the conversion process." />
+                </Paragraph>
+                <Paragraph>
+                    <InlineUIContainer>
+                        <Image Source="InstructionsImages\step3.PNG" />
+                    </InlineUIContainer>
+                </Paragraph>
+                <Paragraph>
+                    <Run Text="Enter your answers and your final answer in the box provided." />
+                </Paragraph>
+                <Paragraph>
+                    <InlineUIContainer>
+                        <Image Source="InstructionsImages\step4.PNG" />
+                    </InlineUIContainer>
+                </Paragraph>
+                <Paragraph>
+                    <Run Text="Once you think you got the answer, click the check answer button to see if you got it right!" />
+                </Paragraph>
+                <Paragraph>
+                    <InlineUIContainer>
+                        <Image Source="InstructionsImages\step5.PNG" />
+                    </InlineUIContainer>
+                </Paragraph>
+                <Paragraph>
+                    <Run Text="If you are stumped on a step don't worry! Click the Show Answer button and the answer for the step will be shown. If you want to skip ahead to the final answer, simply click the Show Final Answer button to do so." />
                 </Paragraph>
                 <Paragraph>
                     <Run Text="Want some more practice? Click the random conversion button to randomly generate a problem for you to try." />
@@ -77,7 +117,7 @@
                     <Run FontWeight="Bold" FontSize="14" Text="Tips:" />
                 </Paragraph>
                 <Paragraph>
-                    <Run Text="1. The &quot;Answer&quot; and &quot;Final Answer&quot; found in the Conversion Instructions for each conversion is the answer that you should enter in the &quot;Your Answer&quot; box below it" />
+                    <Run Text="1. The &quot;Answer&quot; and &quot;Final Answer&quot; found in the Conversion Instructions (highlighted in green) for each conversion is the answer that you should enter in the &quot;Your Answer&quot; box below it" />
                 </Paragraph>
                 <Paragraph>
                     <Run Text="2. Remember that in floor division when your dividend is greater than your divisor, the dividend is the remainder (ex. 6 // 16 = 0 and the remainder is 6)." />
@@ -87,6 +127,11 @@
                 </Paragraph>
                 <Paragraph>
                     <Run Text="If you want to see this window again, click the icon on the top right beside the Workspace!" />
+                </Paragraph>
+                <Paragraph>
+                    <InlineUIContainer>
+                        <Image Source="InstructionsImages\help.PNG" />
+                    </InlineUIContainer>
                 </Paragraph>
                 <Paragraph>
                     <Run />

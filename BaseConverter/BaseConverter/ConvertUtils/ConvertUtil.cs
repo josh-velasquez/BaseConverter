@@ -312,7 +312,7 @@ namespace BaseConverter.ConvertUtils
         {
             return new string[] { "Binary is based on base 2 numerical system. Unary is based on base 1 numerical system",
                 "To convert between binary to unary, it is easier to first convert the binary value to decimal and then to unary",
-                "Step 1: Starting from right to left of the value, take 2 and raise it to the power of its index (starting from 0) and then multiply it by the value \n at that index",
+                "Step 1: Starting from the very right digit of the binary value, take 2 and raise it to the power of its index (starting from 0) and then multiply it by the value \n at that index",
                 "\tex. Binary of 0011 we get (2^0)*1 = 1",
                 "Step 2: Do this repeatedly until you reach the very left digit",
                 "\tex. (2^1)*1 = 2, (2^2)*0 = 0, (2^3)*0 = 0",

@@ -133,5 +133,13 @@
   <ItemGroup>
     <Resource Include="ConversionTable.PNG" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="InstructionsImages\help.PNG" />
+    <Resource Include="InstructionsImages\step1.PNG" />
+    <Resource Include="InstructionsImages\step2.PNG" />
+    <Resource Include="InstructionsImages\step3.PNG" />
+    <Resource Include="InstructionsImages\step4.PNG" />
+    <Resource Include="InstructionsImages\step5.PNG" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
